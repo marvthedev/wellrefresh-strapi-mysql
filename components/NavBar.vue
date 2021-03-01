@@ -100,12 +100,12 @@ export default {
       flex-direction: column;
       font-size: 1.8rem;
       line-height: 1.5rem;
-      color: $primary__color;
+      color: #333;
       font-weight: 700;
       & span {
         padding: 0.1rem 0;
         &:first-of-type {
-          color: #333;
+          color: $primary__color;
         }
       }
     }
@@ -169,7 +169,7 @@ export default {
       text-transform: uppercase;
       font-weight: 700;
       padding: 1rem;
-      color: $primary__color;
+      color: $secondary__color;
       &:not(:last-child) {
         border-bottom: 0.1rem solid #e8e8e8;
       }
