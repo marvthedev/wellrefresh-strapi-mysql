@@ -12,7 +12,11 @@ export default {
       {
         rel: 'stylesheet',
         href:
-          'https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&display=swap'
+          'https://fonts.googleapis.com/css2?family=Lato:wght@400;900&display=swap'
+      },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=PT+Serif&display=swap'
       }
     ]
   },

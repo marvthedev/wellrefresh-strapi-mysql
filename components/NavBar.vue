@@ -1,13 +1,20 @@
 <template>
   <nav class="nav" :class="{ nav__scroll: scrollPosition > 50 }">
-    <div class="nav__container">
+    <div
+      class="nav__container"
+      :class="{ nav__container__scroll: scrollPosition > 50 }"
+    >
       <nuxt-link to="/">
         <div class="nav__logo">
           <img
             src="~/assets/img/wellrefresh-health-weightloss-logo.svg"
             class="nav__logo-img"
+            :class="{ nav__logo__img__scroll: scrollPosition > 50 }"
           />
-          <div class="nav__logo-txt">
+          <div
+            class="nav__logo-txt"
+            :class="{ nav__logo__txt__scroll: scrollPosition > 50 }"
+          >
             <span>well</span>
             <span>refresh</span>
           </div>
@@ -21,8 +28,11 @@
         ></div>
       </div>
       <!-- Only visible when viewing with iPad Pro and Desktop. -->
-      <div class="nav__links">
-        <nuxt-link to="/" class="nav__links-item nav__links-item--home"
+      <div
+        class="nav__links"
+        :class="{ nav__links__scroll: scrollPosition > 50 }"
+      >
+        <nuxt-link to="/" class="nav__links-item nav__links-item-home"
           >Home</nuxt-link
         >
         <nuxt-link to="/about" class="nav__links-item">About</nuxt-link>
@@ -40,8 +50,8 @@
     >
       <nuxt-link to="/" class="nav__menu-item">Home</nuxt-link>
       <nuxt-link to="/about" class="nav__menu-item">About</nuxt-link>
-      <nuxt-link to="/orthotics" class="nav__menu-item">Orthotics</nuxt-link>
-      <nuxt-link to="/contact" class="nav__menu-item">Contact</nuxt-link>
+      <nuxt-link to="/orthotics" class="nav__menu-item">Weight Loss</nuxt-link>
+      <nuxt-link to="/contact" class="nav__menu-item">Fitness</nuxt-link>
     </div>
   </nav>
 </template>
@@ -76,9 +86,9 @@ export default {
   width: 100%;
   top: 0;
   left: 0;
-  background: white;
+  font-family: 'Lato', sans-serif;
   &__scroll {
-    box-shadow: 0 -0.5rem 1.5rem #212121;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.08);
     background: rgba(255, 255, 255, 0.9);
   }
   &__container {
@@ -100,13 +110,10 @@ export default {
       flex-direction: column;
       font-size: 1.8rem;
       line-height: 1.5rem;
-      color: #333;
+      color: $primary__color;
       font-weight: 700;
       & span {
         padding: 0.1rem 0;
-        &:first-of-type {
-          color: $primary__color;
-        }
       }
     }
   }
@@ -186,27 +193,47 @@ export default {
 //Desktop View
 @media (min-width: 1248px) {
   .nav {
-    &__toggle {
-      display: none;
+    &__container {
+      flex-direction: column;
+      padding: 2.2rem 0;
+      &__scroll {
+        flex-direction: row;
+        padding: 2rem 15%;
+        justify-content: start;
+      }
     }
     &__logo {
       &-img {
-        height: 3rem;
+        height: 7rem;
+      }
+      &__img__scroll {
+        height: 2.5rem;
       }
       &-txt {
-        font-size: 2.3rem;
+        flex-direction: row;
+        font-size: 8rem;
       }
+      &__txt__scroll {
+        font-size: 2.5rem;
+        border-right: 0.1rem solid #dadada;
+        padding-right: 2rem;
+      }
+    }
+    &__toggle {
+      display: none;
     }
     //Navigation while viewing with bigger screens
     &__links {
+      margin-top: 3rem;
       display: flex;
       font-size: 1.8rem;
       font-weight: 700;
+      &__scroll {
+        margin-top: 0;
+      }
       &-item {
-        margin: 0 1.5rem;
-        text-transform: uppercase;
+        margin: 0 1.7rem;
         color: #333;
-        &--home,
         &:hover {
           color: $primary__color;
         }

@@ -17,10 +17,10 @@ export default {
 
 <style>
 html {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'PT Serif', serif;
   font-size: 62.5%;
   font-weight: 300;
-  color: #777777;
+  color: #333;
   word-spacing: 0;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -40,6 +40,17 @@ html {
 /* Typography */
 a {
   text-decoration: none;
+}
+
+p {
+  line-height: 150%;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Lato', sans-serif;
+  font-weight: 900;
 }
 
 /* Forms */

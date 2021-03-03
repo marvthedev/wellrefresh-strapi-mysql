@@ -1,15 +1,16 @@
 <template>
   <div class="home">
-    <topBanner />
+    <ArticleShowcase />
+    <ArticleShowcase />
   </div>
 </template>
 
 <script>
-import topBanner from '~/components/Home/TopBanner'
+import ArticleShowcase from '~/components/ArticleShowcase'
 
 export default {
   components: {
-    topBanner
+    ArticleShowcase
   }
 }
 </script>
