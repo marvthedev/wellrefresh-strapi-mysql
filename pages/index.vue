@@ -1,7 +1,6 @@
 <template>
   <div class="home">
     <ArticleShowcase />
-    <ArticleShowcase />
   </div>
 </template>
 

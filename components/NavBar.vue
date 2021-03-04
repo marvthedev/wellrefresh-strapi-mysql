@@ -7,17 +7,17 @@
       <nuxt-link to="/">
         <div class="nav__logo">
           <img
-            src="~/assets/img/wellrefresh-health-weightloss-logo.svg"
+            src="~/assets/img/wellrefresh-text.svg"
             class="nav__logo-img"
             :class="{ nav__logo__img__scroll: scrollPosition > 50 }"
           />
-          <div
+          <!-- <div
             class="nav__logo-txt"
             :class="{ nav__logo__txt__scroll: scrollPosition > 50 }"
           >
             <span>well</span>
             <span>refresh</span>
-          </div>
+          </div> -->
         </div>
       </nuxt-link>
       <!-- Only visible when viewing with mobile device. -->
@@ -102,7 +102,7 @@ export default {
     display: flex;
     align-items: center;
     &-img {
-      height: 3rem;
+      height: 2rem;
     }
     &-txt {
       margin-left: 0.2rem;
@@ -204,19 +204,16 @@ export default {
     }
     &__logo {
       &-img {
-        height: 7rem;
+        height: 3rem;
       }
       &__img__scroll {
-        height: 2.5rem;
+        height: 2rem;
+        border-right: 0.1rem solid #dadada;
+        padding-right: 0.5rem;
       }
       &-txt {
         flex-direction: row;
         font-size: 8rem;
-      }
-      &__txt__scroll {
-        font-size: 2.5rem;
-        border-right: 0.1rem solid #dadada;
-        padding-right: 2rem;
       }
     }
     &__toggle {

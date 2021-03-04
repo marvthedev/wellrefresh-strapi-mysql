@@ -1,39 +1,91 @@
 <template>
   <div class="article-showcase">
-    <div class="featured-top">
-      <img src="~/assets/img/featured-img.jpg" class="featured-top__img" />
-      <div class="featured-top__txt-container">
-        <h2 class="featured-top__title">
-          How to Lose Weight During The Pandemic
-        </h2>
-        <p class="featured-top__excerpt">
-          These are the key things you need to be doing to lose weight during
-          the pandemic.
-        </p>
+    <div class="featured-grid">
+      <div class="featured-item featured-main">
+        <img src="~/assets/img/featured-img.jpg" class="featured-item__img" />
+        <div class="featured-item__txt-container featured-main__container">
+          <h2 class="featured-item__title featured-main__title">
+            Main Featured
+          </h2>
+          <p class="featured-item__excerpt">
+            These are the key things you need to be doing to lose weight during
+            the pandemic.
+          </p>
+        </div>
+      </div>
+      <div class="featured-item featured-right--top">
+        <img src="~/assets/img/featured-img.jpg" class="featured-item__img" />
+        <div class="featured-item__txt-container">
+          <h2 class="featured-item__title featured-right__title">
+            How to Lose Weight During The Pandemic
+          </h2>
+          <p class="featured-item__excerpt featured-right__excerpt">
+            These are the key things you need to be doing to lose weight during
+            the pandemic.
+          </p>
+        </div>
+      </div>
+      <div class="featured-item featured-right--bottom">
+        <img src="~/assets/img/featured-img.jpg" class="featured-item__img" />
+        <div class="featured-item__txt-container">
+          <h2 class="featured-item__title featured-right__title">
+            How to Lose Weight During The Pandemic
+          </h2>
+          <p class="featured-item__excerpt featured-right__excerpt">
+            These are the key things you need to be doing to lose weight during
+            the pandemic.
+          </p>
+        </div>
+      </div>
+      <div class="featured-item featured-bottom--left">
+        <img src="~/assets/img/featured-img.jpg" class="featured-item__img" />
+        <div class="featured-item__txt-container featured-bottom__container">
+          <h2 class="featured-item__title featured-bottom__title">
+            How to Lose Weight During The Pandemic
+          </h2>
+          <p class="featured-item__excerpt featured-bottom__excerpt">
+            These are the key things you need to be doing to lose weight during
+            the pandemic.
+          </p>
+        </div>
+      </div>
+      <div class="featured-item featured-bottom--right">
+        <img src="~/assets/img/featured-img.jpg" class="featured-item__img" />
+        <div class="featured-item__txt-container featured-bottom__container">
+          <h2 class="featured-item__title featured-bottom__title">
+            How to Lose Weight During The Pandemic
+          </h2>
+          <p class="featured-item__excerpt featured-bottom__excerpt">
+            These are the key things you need to be doing to lose weight during
+            the pandemic.
+          </p>
+        </div>
       </div>
     </div>
-    <div class="latest-topics">
-      <div class="latest-topics__head-container">
-        <span class="latest-topics__head-slash">/</span>
-        <h2 class="latest-topics__head">Latest Topics</h2>
-        <span class="latest-topics__head-slash">/</span>
-      </div>
-      <div class="latest-topics__list">
-        <h2 class="latest-topics__title">
-          This is a Random Article Title Which Will Be Filled by Strapi
-        </h2>
-        <h2 class="latest-topics__title">
-          This is a Random Article Title Which Will Be Filled by Strapi
-        </h2>
-        <h2 class="latest-topics__title">
-          This is a Random Article Title Which Will Be Filled by Strapi
-        </h2>
-        <h2 class="latest-topics__title">
-          This is a Random Article Title Which Will Be Filled by Strapi
-        </h2>
-        <h2 class="latest-topics__title">
-          This is a Random Article Title Which Will Be Filled by Strapi
-        </h2>
+    <div class="article-showcase__side">
+      <div class="latest-topics">
+        <div class="latest-topics__head-container">
+          <span class="latest-topics__head-slash">/</span>
+          <h2 class="latest-topics__head">Latest Topics</h2>
+          <span class="latest-topics__head-slash">/</span>
+        </div>
+        <div class="latest-topics__list">
+          <h2 class="latest-topics__title">
+            This is a Random Article Title Which Will Be Filled by Strapi
+          </h2>
+          <h2 class="latest-topics__title">
+            This is a Random Article Title Which Will Be Filled by Strapi
+          </h2>
+          <h2 class="latest-topics__title">
+            This is a Random Article Title Which Will Be Filled by Strapi
+          </h2>
+          <h2 class="latest-topics__title">
+            This is a Random Article Title Which Will Be Filled by Strapi
+          </h2>
+          <h2 class="latest-topics__title">
+            This is a Random Article Title Which Will Be Filled by Strapi
+          </h2>
+        </div>
       </div>
     </div>
   </div>
@@ -41,15 +93,18 @@
 
 <style lang="scss" scoped>
 .article-showcase {
+  display: flex;
+  flex-direction: column;
   margin-top: 25%;
-  display: grid;
   justify-content: center;
-  gap: 1rem;
   padding: 0 2.5%;
 }
-
-.featured-top {
-  z-index: -1;
+.featured-grid {
+  display: grid;
+  grid-gap: 1rem;
+  flex-direction: column;
+}
+.featured-item {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -65,7 +120,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 3rem 1.5rem;
+    padding: 2rem;
   }
   &__title {
     font-size: 2.8rem;
@@ -109,15 +164,26 @@
 
 @media (min-width: 1248px) {
   .article-showcase {
-    margin-top: 15%;
-    display: flex;
-    padding: 0 15%;
-  }
-  .featured-top {
-    &:hover {
-      box-shadow: 0px 1.6rem 2rem -1.5rem rgba(0, 0, 0, 0.48);
-      transform: translateY(-1rem);
+    margin-top: 12%;
+    flex-direction: row;
+    padding: 0 10%;
+    width: 100%;
+    &__side {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 110%;
     }
+  }
+  .featured-grid {
+    grid-template-columns: 30% 30% 40%;
+    grid-auto-rows: minmax(min-content, max-content);
+    grid-template-areas:
+      'main main mediumTop'
+      'main main mediumBottom'
+      'smallBottomLeft smallBottomRight mediumBottom';
+  }
+  .featured-item {
     &__txt-container {
       padding: 3rem 2rem;
       text-align: left;
@@ -126,13 +192,52 @@
       font-size: 2rem;
     }
   }
+  .featured-main {
+    grid-area: main;
+    min-height: 75%;
+    &__title {
+      font-size: 4.4rem;
+    }
+  }
+  .featured-right {
+    &--top {
+      grid-area: mediumTop;
+    }
+    &--bottom {
+      grid-area: mediumBottom;
+      min-height: 75%;
+    }
+    &__title {
+      font-size: 2.4rem;
+    }
+  }
+  .featured-bottom {
+    &--left {
+      grid-area: smallBottomLeft;
+    }
+    &--right {
+      grid-area: smallBottomRight;
+    }
+    &__container {
+      padding: 1.3rem;
+    }
+    &__title {
+      font-size: 2rem;
+    }
+    &__excerpt {
+      font-size: 1.7rem;
+    }
+  }
+
   .latest-topics {
+    width: 110%;
     margin: 0 0 0 3.2rem;
     &__head {
       font-size: 1.8rem;
     }
     &__title {
       text-align: left;
+      font-size: 1.6rem;
     }
   }
 }
