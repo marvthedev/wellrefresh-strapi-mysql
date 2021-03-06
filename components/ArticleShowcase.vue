@@ -65,9 +65,8 @@
     <div class="article-showcase__side">
       <div class="latest-topics">
         <div class="latest-topics__head-container">
-          <span class="latest-topics__head-slash">/</span>
+          <span class="latest-topics__head-hash">#</span>
           <h2 class="latest-topics__head">Latest Topics</h2>
-          <span class="latest-topics__head-slash">/</span>
         </div>
         <div class="latest-topics__list">
           <h2 class="latest-topics__title">
@@ -110,6 +109,7 @@
   align-items: center;
   width: 100%;
   border: 1px solid #e7ebfb;
+  border-top: 0;
   border-radius: 1rem;
   box-shadow: 0px 1.6rem 2rem -2.2rem rgba(0, 0, 0, 0.48);
   &__img {
@@ -144,10 +144,9 @@
   &__head {
     font-size: 2.4rem;
     text-transform: uppercase;
-    padding: 0 0.6rem;
-    &-slash {
-      color: $primary__color;
-      font-size: 2.4rem;
+    &-hash {
+      color: $secondary__color;
+      font-size: 3rem;
       font-weight: 900;
     }
   }
@@ -156,6 +155,7 @@
     text-align: center;
     font-weight: 900;
     padding: 3rem 0;
+    color: $primary__color;
     &:not(:last-child) {
       border-bottom: 0.1rem solid #d8d8d8;
     }
@@ -164,7 +164,7 @@
 
 @media (min-width: 1248px) {
   .article-showcase {
-    margin-top: 12%;
+    margin-top: 15%;
     flex-direction: row;
     padding: 0 10%;
     width: 100%;

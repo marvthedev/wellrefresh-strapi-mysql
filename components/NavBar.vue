@@ -7,7 +7,7 @@
       <nuxt-link to="/">
         <div class="nav__logo">
           <img
-            src="~/assets/img/wellrefresh-text.svg"
+            src="~/assets/img/wellrefresh-logo-txt.svg"
             class="nav__logo-img"
             :class="{ nav__logo__img__scroll: scrollPosition > 50 }"
           />
@@ -77,7 +77,6 @@ export default {
 
 <style lang="scss">
 .nav {
-  padding: 0 5%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -92,7 +91,7 @@ export default {
     background: rgba(255, 255, 255, 0.9);
   }
   &__container {
-    padding: 1.5rem 0;
+    padding: 1.5rem 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -102,7 +101,7 @@ export default {
     display: flex;
     align-items: center;
     &-img {
-      height: 2rem;
+      height: 4rem;
     }
     &-txt {
       margin-left: 0.2rem;
@@ -169,14 +168,14 @@ export default {
     position: relative;
     left: 0;
     bottom: 0;
-    background: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.9);
     margin: 1.5rem 0;
     &-item {
       font-size: 1.4rem;
       text-transform: uppercase;
       font-weight: 700;
       padding: 1rem;
-      color: $secondary__color;
+      color: #333;
       &:not(:last-child) {
         border-bottom: 0.1rem solid #e8e8e8;
       }
@@ -193,23 +192,24 @@ export default {
 //Desktop View
 @media (min-width: 1248px) {
   .nav {
+    padding: 0;
     &__container {
       flex-direction: column;
       padding: 2.2rem 0;
       &__scroll {
         flex-direction: row;
-        padding: 2rem 15%;
-        justify-content: start;
+        padding: 1rem 15%;
+        justify-content: center;
       }
     }
     &__logo {
       &-img {
-        height: 3rem;
+        height: 7rem;
       }
       &__img__scroll {
-        height: 2rem;
+        height: 4rem;
         border-right: 0.1rem solid #dadada;
-        padding-right: 0.5rem;
+        padding-right: 4rem;
       }
       &-txt {
         flex-direction: row;
@@ -223,16 +223,19 @@ export default {
     &__links {
       margin-top: 3rem;
       display: flex;
+      justify-content: center;
       font-size: 1.8rem;
       font-weight: 700;
       &__scroll {
         margin-top: 0;
+        padding-left: 3rem;
       }
       &-item {
         margin: 0 1.7rem;
         color: #333;
+        font-size: 2rem;
         &:hover {
-          color: $primary__color;
+          color: $secondary__color;
         }
       }
     }
