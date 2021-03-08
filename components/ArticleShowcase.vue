@@ -5,12 +5,12 @@
         <img src="~/assets/img/featured-img.jpg" class="featured-item__img" />
         <div class="featured-item__txt-container featured-main__container">
           <h2 class="featured-item__title featured-main__title">
-            Main Featured
+            {{ largeFeatured.title }}
           </h2>
-          <p class="featured-item__excerpt">
-            These are the key things you need to be doing to lose weight during
-            the pandemic.
-          </p>
+          <div
+            class="featured-item__excerpt"
+            v-html="largeFeatured.excerpt"
+          ></div>
         </div>
       </div>
       <div class="featured-item featured-right--top">
@@ -89,6 +89,38 @@
     </div>
   </div>
 </template>
+
+<script>
+import FeaturedArticlesQuery from '~/apollo/queries/articles/FeaturedArticlesQuery'
+
+export default {
+  data() {
+    return {
+      mainFeatured: '',
+      medFeatured: ''
+    }
+  },
+
+  apollo: {
+    largeFeatured: {
+      query: FeaturedArticlesQuery,
+      prefetch: true,
+      update: (data) => data.category.posts.edges[0].node,
+      variables() {
+        return { name: 'featured-large' }
+      }
+    },
+    medFeatured: {
+      query: FeaturedArticlesQuery,
+      prefetch: true,
+      update: (data) => data.category.posts.edges.node,
+      variables() {
+        return { name: 'featured-medium' }
+      }
+    }
+  }
+}
+</script>
 
 <style lang="scss" scoped>
 .article-showcase {

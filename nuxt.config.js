@@ -36,7 +36,13 @@ export default {
     '@nuxtjs/eslint-module'
   ],
 
-  modules: ['@nuxtjs/axios', '@nuxtjs/style-resources', '@nuxtjs/pwa'],
+  modules: [
+    '@nuxtjs/apollo',
+    '@nuxtjs/axios',
+    '@nuxtjs/markdownit',
+    '@nuxtjs/pwa',
+    '@nuxtjs/style-resources'
+  ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
@@ -53,5 +59,18 @@ export default {
 
   styleResources: {
     scss: ['./assets/scss/*.scss']
+  },
+
+  apollo: {
+    clientConfigs: {
+      default: {
+        httpEndpoint:
+          process.env.BACKEND_URL || 'http://157.245.242.247/graphql'
+      }
+    }
+  },
+
+  markdownit: {
+    runtime: true // Support `$md()`
   }
 }
