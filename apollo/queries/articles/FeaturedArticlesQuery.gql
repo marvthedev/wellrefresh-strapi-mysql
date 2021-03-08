@@ -1,13 +1,11 @@
 query MyQuery($name: ID!) {
   category(id: $name, idType: NAME) {
     posts {
-      edges {
-        node {
-          title
-          excerpt(format: RENDERED)
-          slug
-          id
-        }
+      nodes {
+        title
+        excerpt
+        id
+        slug
       }
     }
   }

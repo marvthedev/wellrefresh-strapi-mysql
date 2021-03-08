@@ -13,30 +13,26 @@
           ></div>
         </div>
       </div>
-      <div class="featured-item featured-right--top">
-        <img src="~/assets/img/featured-img.jpg" class="featured-item__img" />
-        <div class="featured-item__txt-container">
-          <h2 class="featured-item__title featured-right__title">
-            How to Lose Weight During The Pandemic
-          </h2>
-          <p class="featured-item__excerpt featured-right__excerpt">
-            These are the key things you need to be doing to lose weight during
-            the pandemic.
-          </p>
+
+      <div class="featured-medium">
+        <div
+          class="featured-medium__item"
+          v-for="article in medFeatured"
+          :key="article.id"
+        >
+          <img src="~/assets/img/featured-img.jpg" class="featured-item__img" />
+          <div class="featured-item__txt-container">
+            <h2 class="featured-item__title featured-right__title">
+              {{ article.title }}
+            </h2>
+            <p class="featured-item__excerpt featured-right__excerpt">
+              These are the key things you need to be doing to lose weight
+              during the pandemic.
+            </p>
+          </div>
         </div>
       </div>
-      <div class="featured-item featured-right--bottom">
-        <img src="~/assets/img/featured-img.jpg" class="featured-item__img" />
-        <div class="featured-item__txt-container">
-          <h2 class="featured-item__title featured-right__title">
-            How to Lose Weight During The Pandemic
-          </h2>
-          <p class="featured-item__excerpt featured-right__excerpt">
-            These are the key things you need to be doing to lose weight during
-            the pandemic.
-          </p>
-        </div>
-      </div>
+
       <div class="featured-item featured-bottom--left">
         <img src="~/assets/img/featured-img.jpg" class="featured-item__img" />
         <div class="featured-item__txt-container featured-bottom__container">
@@ -97,7 +93,7 @@ export default {
   data() {
     return {
       mainFeatured: '',
-      medFeatured: ''
+      medFeatured: []
     }
   },
 
@@ -105,7 +101,7 @@ export default {
     largeFeatured: {
       query: FeaturedArticlesQuery,
       prefetch: true,
-      update: (data) => data.category.posts.edges[0].node,
+      update: (data) => data.category.posts.nodes[0],
       variables() {
         return { name: 'featured-large' }
       }
@@ -113,7 +109,7 @@ export default {
     medFeatured: {
       query: FeaturedArticlesQuery,
       prefetch: true,
-      update: (data) => data.category.posts.edges.node,
+      update: (data) => data.category.posts.nodes,
       variables() {
         return { name: 'featured-medium' }
       }
@@ -160,6 +156,18 @@ export default {
   &__excerpt {
     margin-top: 1.5rem;
     font-size: 1.8rem;
+  }
+}
+
+.featured-medium {
+  &__item {
+    border: 1px solid #e7ebfb;
+    border-top: 0;
+    border-radius: 1rem;
+    box-shadow: 0px 1.6rem 2rem -2.2rem rgba(0, 0, 0, 0.48);
+    &:nth-child(2) {
+      margin-top: 1rem;
+    }
   }
 }
 
@@ -211,9 +219,9 @@ export default {
     grid-template-columns: 30% 30% 40%;
     grid-auto-rows: minmax(min-content, max-content);
     grid-template-areas:
-      'main main mediumTop'
-      'main main mediumBottom'
-      'smallBottomLeft smallBottomRight mediumBottom';
+      'main main medium'
+      'main main medium'
+      'smallBottomLeft smallBottomRight medium';
   }
   .featured-item {
     &__txt-container {
@@ -228,21 +236,17 @@ export default {
     grid-area: main;
     min-height: 75%;
     &__title {
-      font-size: 4.4rem;
+      font-size: 3rem;
     }
   }
-  .featured-right {
-    &--top {
-      grid-area: mediumTop;
-    }
-    &--bottom {
-      grid-area: mediumBottom;
-      min-height: 75%;
-    }
-    &__title {
-      font-size: 2.4rem;
-    }
+
+  .featured-medium {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    grid-area: medium;
   }
+
   .featured-bottom {
     &--left {
       grid-area: smallBottomLeft;
