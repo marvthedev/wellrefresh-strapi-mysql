@@ -1,10 +1,13 @@
 <template>
   <div class="article-showcase">
     <div class="featured-grid">
-      <div class="featured-item featured-main">
+      <div class="featured-item featured-large">
         <img src="~/assets/img/featured-img.jpg" class="featured-item__img" />
-        <div class="featured-item__txt-container featured-main__container">
-          <h2 class="featured-item__title featured-main__title">
+        <div class="featured-item__txt-container featured-large__container">
+          <span class="featured-item__category">{{
+            largeFeatured.categories.nodes[1].name
+          }}</span>
+          <h2 class="featured-item__title featured-large__title">
             {{ largeFeatured.title }}
           </h2>
           <div
@@ -16,12 +19,17 @@
 
       <div class="featured-medium">
         <div
-          class="featured-medium__item"
+          class="featured-medium__item featured-item"
           v-for="article in medFeatured"
           :key="article.id"
         >
           <img src="~/assets/img/featured-img.jpg" class="featured-item__img" />
-          <div class="featured-item__txt-container">
+          <div
+            class="featured-item__txt-container featured-medium__txt-container"
+          >
+            <span class="featured-item__category">{{
+              article.categories.nodes[1].name
+            }}</span>
             <h2 class="featured-item__title featured-right__title">
               {{ article.title }}
             </h2>
@@ -33,28 +41,27 @@
         </div>
       </div>
 
-      <div class="featured-item featured-bottom--left">
-        <img src="~/assets/img/featured-img.jpg" class="featured-item__img" />
-        <div class="featured-item__txt-container featured-bottom__container">
-          <h2 class="featured-item__title featured-bottom__title">
-            How to Lose Weight During The Pandemic
-          </h2>
-          <p class="featured-item__excerpt featured-bottom__excerpt">
-            These are the key things you need to be doing to lose weight during
-            the pandemic.
-          </p>
-        </div>
-      </div>
-      <div class="featured-item featured-bottom--right">
-        <img src="~/assets/img/featured-img.jpg" class="featured-item__img" />
-        <div class="featured-item__txt-container featured-bottom__container">
-          <h2 class="featured-item__title featured-bottom__title">
-            How to Lose Weight During The Pandemic
-          </h2>
-          <p class="featured-item__excerpt featured-bottom__excerpt">
-            These are the key things you need to be doing to lose weight during
-            the pandemic.
-          </p>
+      <div class="featured-small">
+        <div
+          class="featured-item featured-small__item"
+          v-for="article in smallFeatured"
+          :key="article.id"
+        >
+          <img src="~/assets/img/featured-img.jpg" class="featured-item__img" />
+          <div
+            class="featured-item__txt-container featured-small__txt-container"
+          >
+            <span class="featured-item__category featured-small__category">{{
+              article.categories.nodes[1].name
+            }}</span>
+            <h2 class="featured-item__title featured-small__title">
+              {{ article.title }}
+            </h2>
+            <p class="featured-item__excerpt featured-small__excerpt">
+              These are the key things you need to be doing to lose weight
+              during the pandemic.
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -93,7 +100,8 @@ export default {
   data() {
     return {
       mainFeatured: '',
-      medFeatured: []
+      medFeatured: [],
+      smallFeatured: []
     }
   },
 
@@ -112,6 +120,14 @@ export default {
       update: (data) => data.category.posts.nodes,
       variables() {
         return { name: 'featured-medium' }
+      }
+    },
+    smallFeatured: {
+      query: FeaturedArticlesQuery,
+      prefetch: true,
+      update: (data) => data.category.posts.nodes,
+      variables() {
+        return { name: 'featured-small' }
       }
     }
   }
@@ -148,7 +164,14 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 2rem;
+    padding: 1.6rem;
+  }
+  &__category {
+    font-family: 'Lato', sans-serif;
+    font-weight: 900;
+    font-size: 1.6rem;
+    color: $primary__color;
+    text-transform: uppercase;
   }
   &__title {
     font-size: 2.8rem;
@@ -165,6 +188,14 @@ export default {
     border-top: 0;
     border-radius: 1rem;
     box-shadow: 0px 1.6rem 2rem -2.2rem rgba(0, 0, 0, 0.48);
+    &:nth-child(2) {
+      margin-top: 1rem;
+    }
+  }
+}
+
+.featured-small {
+  &__item {
     &:nth-child(2) {
       margin-top: 1rem;
     }
@@ -219,9 +250,9 @@ export default {
     grid-template-columns: 30% 30% 40%;
     grid-auto-rows: minmax(min-content, max-content);
     grid-template-areas:
-      'main main medium'
-      'main main medium'
-      'smallBottomLeft smallBottomRight medium';
+      'large large medium'
+      'large large medium'
+      'small small medium';
   }
   .featured-item {
     &__txt-container {
@@ -232,8 +263,8 @@ export default {
       font-size: 2rem;
     }
   }
-  .featured-main {
-    grid-area: main;
+  .featured-large {
+    grid-area: large;
     min-height: 75%;
     &__title {
       font-size: 3rem;
@@ -245,16 +276,23 @@ export default {
     flex-direction: column;
     justify-content: space-between;
     grid-area: medium;
+    &__txt-container {
+      padding: 1.6rem;
+    }
   }
 
-  .featured-bottom {
-    &--left {
-      grid-area: smallBottomLeft;
+  .featured-small {
+    grid-area: small;
+    display: flex;
+    &__item {
+      &:nth-child(2) {
+        margin: 0 0 0 1rem;
+      }
     }
-    &--right {
-      grid-area: smallBottomRight;
+    &__category {
+      font-size: 1.4rem;
     }
-    &__container {
+    &__txt-container {
       padding: 1.3rem;
     }
     &__title {

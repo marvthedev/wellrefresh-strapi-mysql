@@ -6,7 +6,13 @@ query MyQuery($name: ID!) {
         excerpt
         id
         slug
+        categories {
+          nodes {
+            name
+          }
+        }
       }
     }
   }
 }
+
