@@ -1,0 +1,10 @@
+query ArticleListQuery {
+  posts {
+    nodes {
+      title
+      id
+    }
+  }
+}
+
+

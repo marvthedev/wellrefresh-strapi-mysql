@@ -66,37 +66,19 @@
       </div>
     </div>
     <div class="article-showcase__side">
-      <div class="latest-topics">
-        <div class="latest-topics__head-container">
-          <span class="latest-topics__head-hash">#</span>
-          <h2 class="latest-topics__head">Latest Topics</h2>
-        </div>
-        <div class="latest-topics__list">
-          <h2 class="latest-topics__title">
-            This is a Random Article Title Which Will Be Filled by Strapi
-          </h2>
-          <h2 class="latest-topics__title">
-            This is a Random Article Title Which Will Be Filled by Strapi
-          </h2>
-          <h2 class="latest-topics__title">
-            This is a Random Article Title Which Will Be Filled by Strapi
-          </h2>
-          <h2 class="latest-topics__title">
-            This is a Random Article Title Which Will Be Filled by Strapi
-          </h2>
-          <h2 class="latest-topics__title">
-            This is a Random Article Title Which Will Be Filled by Strapi
-          </h2>
-        </div>
-      </div>
+      <ArticleListSide />
     </div>
   </div>
 </template>
 
 <script>
 import FeaturedArticlesQuery from '~/apollo/queries/articles/FeaturedArticlesQuery'
+import ArticleListSide from '~/components/ArticleListSidebar'
 
 export default {
+  components: {
+    ArticleListSide
+  },
   data() {
     return {
       mainFeatured: '',
@@ -202,51 +184,21 @@ export default {
   }
 }
 
-.latest-topics {
-  margin-top: 6rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0 4rem;
-  &__head-container {
-    display: flex;
-    align-items: center;
-  }
-  &__head {
-    font-size: 2.4rem;
-    text-transform: uppercase;
-    &-hash {
-      color: $secondary__color;
-      font-size: 3rem;
-      font-weight: 900;
-    }
-  }
-  &__title {
-    font-size: 2rem;
-    text-align: center;
-    font-weight: 900;
-    padding: 3rem 0;
-    color: $primary__color;
-    &:not(:last-child) {
-      border-bottom: 0.1rem solid #d8d8d8;
-    }
-  }
-}
-
 @media (min-width: 1248px) {
   .article-showcase {
     margin-top: 15%;
     flex-direction: row;
-    padding: 0 10%;
-    width: 100%;
+    justify-content: space-between;
+    padding: 0 15%;
     &__side {
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 110%;
+      width: 18%;
     }
   }
   .featured-grid {
+    width: 78%;
     grid-template-columns: 30% 30% 40%;
     grid-auto-rows: minmax(min-content, max-content);
     grid-template-areas:
@@ -277,7 +229,7 @@ export default {
     justify-content: space-between;
     grid-area: medium;
     &__txt-container {
-      padding: 1.6rem;
+      padding: 1.8rem;
     }
   }
 
@@ -300,18 +252,6 @@ export default {
     }
     &__excerpt {
       font-size: 1.7rem;
-    }
-  }
-
-  .latest-topics {
-    width: 110%;
-    margin: 0 0 0 3.2rem;
-    &__head {
-      font-size: 1.8rem;
-    }
-    &__title {
-      text-align: left;
-      font-size: 1.6rem;
     }
   }
 }

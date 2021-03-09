@@ -22,6 +22,7 @@ html {
   font-weight: 300;
   color: #333;
   word-spacing: 0;
+  background: #f7f9f9;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
