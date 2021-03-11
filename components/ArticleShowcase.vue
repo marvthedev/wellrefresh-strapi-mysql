@@ -1,7 +1,10 @@
 <template>
   <div class="article-showcase">
     <div class="featured-grid">
-      <div class="featured-item featured-large">
+      <nuxt-link
+        :to="{ name: 'articles-slug', params: { slug: largeFeatured.slug } }"
+        class="featured-item featured-large"
+      >
         <img src="~/assets/img/featured-img.jpg" class="featured-item__img" />
         <div class="featured-item__txt-container featured-large__container">
           <span class="featured-item__category">{{
@@ -15,13 +18,14 @@
             v-html="largeFeatured.excerpt"
           ></div>
         </div>
-      </div>
+      </nuxt-link>
 
       <div class="featured-medium">
-        <div
-          class="featured-medium__item featured-item"
+        <nuxt-link
           v-for="article in medFeatured"
           :key="article.id"
+          :to="{ name: 'articles-slug', params: { slug: article.slug } }"
+          class="featured-medium__item featured-item"
         >
           <img src="~/assets/img/featured-img.jpg" class="featured-item__img" />
           <div
@@ -38,14 +42,15 @@
               during the pandemic.
             </p>
           </div>
-        </div>
+        </nuxt-link>
       </div>
 
       <div class="featured-small">
-        <div
-          class="featured-item featured-small__item"
+        <nuxt-link
           v-for="article in smallFeatured"
           :key="article.id"
+          :to="{ name: 'articles-slug', params: { slug: article.slug } }"
+          class="featured-item featured-small__item"
         >
           <img src="~/assets/img/featured-img.jpg" class="featured-item__img" />
           <div
@@ -62,7 +67,7 @@
               during the pandemic.
             </p>
           </div>
-        </div>
+        </nuxt-link>
       </div>
     </div>
     <div class="article-showcase__side">
@@ -207,6 +212,10 @@ export default {
       'small small medium';
   }
   .featured-item {
+    &:hover {
+      box-shadow: 0px 1.6rem 2rem -1.5rem rgba(0, 0, 0, 0.48);
+      transform: translateY(-1rem);
+    }
     &__txt-container {
       padding: 3rem 2rem;
       text-align: left;

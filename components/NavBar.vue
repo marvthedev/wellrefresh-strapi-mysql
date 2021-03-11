@@ -77,6 +77,7 @@ export default {
 
 <style lang="scss">
 .nav {
+  z-index: 9999;
   display: flex;
   flex-direction: column;
   justify-content: center;

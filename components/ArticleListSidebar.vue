@@ -1,13 +1,14 @@
 <template>
   <div class="articles-side">
     <h2 class="articles-side__title">Latest Topics</h2>
-    <div
-      class="articles-side__list"
+    <nuxt-link
       v-for="article in articles"
-      :key="article.id"
+      :key="article.slug"
+      :to="{ name: 'articles-slug', params: { slug: article.slug } }"
+      class="articles-side__list"
     >
       <div class="articles-side__topic-title">{{ article.title }}</div>
-    </div>
+    </nuxt-link>
   </div>
 </template>
 
