@@ -5,7 +5,10 @@
         :to="{ name: 'articles-slug', params: { slug: largeFeatured.slug } }"
         class="featured-item featured-large"
       >
-        <img src="~/assets/img/featured-img.jpg" class="featured-item__img" />
+        <img
+          :src="largeFeatured.featuredImage.node.mediaItemUrl"
+          class="featured-item__img"
+        />
         <div class="featured-item__txt-container featured-large__container">
           <span class="featured-item__category">{{
             largeFeatured.categories.nodes[1].name

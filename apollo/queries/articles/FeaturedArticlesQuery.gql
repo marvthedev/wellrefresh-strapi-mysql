@@ -6,6 +6,11 @@ query MyQuery($name: ID!) {
         excerpt
         id
         slug
+        featuredImage {
+        node {
+          mediaItemUrl
+        }
+      }
         categories {
           nodes {
             name

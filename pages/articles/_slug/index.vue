@@ -1,9 +1,14 @@
 <template>
-  <div class="article-container">
-    <article class="article">
-      {{ article.title }}
-    </article>
-  </div>
+  <article class="post">
+    <div class="post__return">
+      <nuxt-link to="/articles" class="post__return-link"
+        >back to blog</nuxt-link
+      >
+    </div>
+    <h1 class="post__title">{{ article.title }}</h1>
+    <span class="post__date">{{ $formatDate(article.date) }}</span>
+    <div class="post__content" v-html="article.content"></div>
+  </article>
 </template>
 
 <script>

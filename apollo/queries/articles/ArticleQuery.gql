@@ -3,5 +3,11 @@ query Article ($slug: ID!) {
     title
 		content
     slug
+    date
+    featuredImage {
+      node {
+        mediaItemUrl
+      }
+    }
   }
 }
