@@ -196,7 +196,8 @@ export default {
     padding: 0;
     &__container {
       flex-direction: column;
-      padding: 2.2rem 0;
+      justify-content: center;
+      padding: 1rem 0 2rem 0;
       &__scroll {
         flex-direction: row;
         padding: 1rem 15%;
@@ -205,7 +206,8 @@ export default {
     }
     &__logo {
       &-img {
-        height: 7rem;
+        height: auto;
+        width: 100%;
       }
       &__img__scroll {
         height: 4rem;
@@ -222,7 +224,7 @@ export default {
     }
     //Navigation while viewing with bigger screens
     &__links {
-      margin-top: 3rem;
+      margin-top: 1rem;
       display: flex;
       justify-content: center;
       font-size: 1.8rem;
@@ -234,7 +236,7 @@ export default {
       &-item {
         margin: 0 1.7rem;
         color: #333;
-        font-size: 2rem;
+        font-size: 1.6rem;
         &:hover {
           color: $secondary__color;
         }

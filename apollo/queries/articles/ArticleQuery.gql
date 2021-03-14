@@ -1,8 +1,17 @@
 query Article ($slug: ID!) {
   post(id: $slug, idType: SLUG) {
     title
-		content
+    content
     slug
+    author {
+      node {
+        firstName
+        lastName
+        avatar {
+          url
+        }
+      }
+    }
     date
     featuredImage {
       node {

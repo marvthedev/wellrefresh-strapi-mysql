@@ -50,9 +50,7 @@ export default {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    &:not(:last-child) {
-      border-bottom: 0.1rem solid #d8d8d8;
-    }
+    color: $primary__color;
   }
   &__topic-title {
     font-size: 2rem;
@@ -70,16 +68,17 @@ export default {
 @media (min-width: 1248px) {
   .articles-side {
     margin-top: 0;
+    border-left: 2px solid #cfd8dc;
     &__title {
       text-align: left;
-      font-size: 1.8rem;
+      font-size: 1.6rem;
     }
     &__list {
       padding: 0;
       align-items: flex-start;
     }
     &__topic-title {
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       padding: 1rem 0;
       text-align: left;
     }
