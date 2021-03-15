@@ -1,5 +1,5 @@
 <template>
-  <article class="article">
+  <article class="article" v-if="!loading">
     <h1 class="article__title">{{ article.title }}</h1>
     <div class="article-info">
       <img :src="article.author.node.avatar.url" class="article-info__avatar" />
