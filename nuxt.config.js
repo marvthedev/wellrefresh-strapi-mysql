@@ -67,6 +67,12 @@ export default {
         httpEndpoint:
           process.env.BACKEND_URL || 'http://157.245.242.247/graphql'
       }
+    },
+    defaultOptions: {
+      $query: {
+        loadingKey: 'loading',
+        fetchPolicy: 'cache-and-network'
+      }
     }
   },
 

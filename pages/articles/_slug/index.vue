@@ -1,5 +1,5 @@
 <template>
-  <article class="article">
+  <article class="article" v-if="!loading">
     <h1 class="article__title">{{ article.title }}</h1>
     <div class="article-info">
       <img :src="article.author.node.avatar.url" class="article-info__avatar" />
@@ -35,13 +35,14 @@ export default {
 
   data() {
     return {
+      loading: 0,
       article: ''
     }
   },
 
   apollo: {
     article: {
-      prefetch: true,
+      prefetch: false,
       query: ArticleQuery,
       variables() {
         return { slug: this.$route.params.slug }
@@ -67,7 +68,7 @@ export default {
   &-info {
     display: flex;
     align-items: center;
-    margin-top: 3rem;
+    margin-top: 2rem;
     font-size: 1.4rem;
     font-weight: 900;
     &__avatar {

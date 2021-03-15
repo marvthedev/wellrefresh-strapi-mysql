@@ -1,5 +1,5 @@
 <template>
-  <div class="article-showcase">
+  <div class="article-showcase" v-if="!loading">
     <div class="featured-grid">
       <nuxt-link
         :to="{ name: 'articles-slug', params: { slug: largeFeatured.slug } }"
@@ -30,7 +30,10 @@
           :to="{ name: 'articles-slug', params: { slug: article.slug } }"
           class="featured-medium__item featured-item"
         >
-          <img src="~/assets/img/featured-img.jpg" class="featured-item__img" />
+          <img
+            :src="article.featuredImage.node.mediaItemUrl"
+            class="featured-item__img"
+          />
           <div
             class="featured-item__txt-container featured-medium__txt-container"
           >
@@ -89,6 +92,7 @@ export default {
   },
   data() {
     return {
+      loading: 0,
       mainFeatured: '',
       medFeatured: [],
       smallFeatured: []
