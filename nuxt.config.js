@@ -68,12 +68,12 @@ export default {
       default: {
         httpEndpoint: process.env.BACKEND_URL
       }
+    },
+    defaultOptions: {
+      $query: {
+        loadingKey: 'loading'
+      }
     }
-    // defaultOptions: {
-    //   $query: {
-    //     loadingKey: 'loading',
-    //   }
-    // }
   },
 
   markdownit: {
