@@ -42,7 +42,7 @@ export default {
 
   apollo: {
     article: {
-      prefetch: false,
+      prefetch: true,
       query: ArticleQuery,
       variables() {
         return { slug: this.$route.params.slug }
