@@ -1,13 +1,5 @@
 <template>
-  <div class="articles">
-    <div
-      class="articles-list"
-      v-for="post in articles.edges"
-      :key="post.node.id"
-    >
-      <h2>{{ post.node.title }}</h2>
-    </div>
-  </div>
+  <div class="articles"></div>
 </template>
 
 <script>
