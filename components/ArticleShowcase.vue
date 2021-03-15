@@ -1,5 +1,5 @@
 <template>
-  <div class="article-showcase" v-if="!loading">
+  <div class="article-showcase">
     <div class="featured-grid">
       <nuxt-link
         :to="{ name: 'articles-slug', params: { slug: largeFeatured.slug } }"
@@ -11,7 +11,7 @@
         />
         <div class="featured-item__txt-container featured-large__container">
           <span class="featured-item__category">{{
-            largeFeatured.categories.nodes[1].name
+            largeFeatured.categories.nodes.name
           }}</span>
           <h2 class="featured-item__title featured-large__title">
             {{ largeFeatured.title }}
