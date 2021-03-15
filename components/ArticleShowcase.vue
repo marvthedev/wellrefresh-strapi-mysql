@@ -11,7 +11,7 @@
         />
         <div class="featured-item__txt-container featured-large__container">
           <span class="featured-item__category">{{
-            largeFeatured.categories.nodes.name
+            largeFeatured.categories.nodes[0].name
           }}</span>
           <h2 class="featured-item__title featured-large__title">
             {{ largeFeatured.title }}
@@ -93,7 +93,7 @@ export default {
   data() {
     return {
       loading: 0,
-      mainFeatured: '',
+      largeFeatured: '',
       medFeatured: [],
       smallFeatured: []
     }

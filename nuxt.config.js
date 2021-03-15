@@ -1,5 +1,8 @@
 export default {
   target: 'static',
+  generate: {
+    fallback: true
+  },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -67,6 +70,11 @@ export default {
     clientConfigs: {
       default: {
         httpEndpoint: process.env.BACKEND_URL
+      }
+    },
+    defaultOptions: {
+      $query: {
+        loadingKey: 'loading'
       }
     }
   },
