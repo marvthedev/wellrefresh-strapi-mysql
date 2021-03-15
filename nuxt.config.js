@@ -1,9 +1,5 @@
 export default {
-  ssr: false,
   target: 'static',
-  generate: {
-    fallback: true
-  },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -72,13 +68,12 @@ export default {
       default: {
         httpEndpoint: process.env.BACKEND_URL
       }
-    },
-    defaultOptions: {
-      $query: {
-        loadingKey: 'loading',
-        fetchPolicy: 'cache-and-network'
-      }
     }
+    // defaultOptions: {
+    //   $query: {
+    //     loadingKey: 'loading',
+    //   }
+    // }
   },
 
   markdownit: {

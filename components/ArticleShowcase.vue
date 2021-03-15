@@ -1,5 +1,5 @@
 <template>
-  <div class="article-showcase" v-if="!loading">
+  <div class="article-showcase">
     <div class="featured-grid">
       <nuxt-link
         :to="{ name: 'articles-slug', params: { slug: largeFeatured.slug } }"
