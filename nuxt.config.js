@@ -1,4 +1,6 @@
 export default {
+  target: 'static',
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'Wellrefresh',
@@ -64,8 +66,7 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint:
-          process.env.BACKEND_URL || 'http://157.245.242.247/graphql'
+        httpEndpoint: process.env.BACKEND_URL
       }
     },
     defaultOptions: {
