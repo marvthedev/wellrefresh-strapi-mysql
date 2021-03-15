@@ -71,8 +71,7 @@ export default {
     },
     defaultOptions: {
       $query: {
-        loadingKey: 'loading',
-        fetchPolicy: 'cache-and-network'
+        loadingKey: 'loading'
       }
     }
   },
