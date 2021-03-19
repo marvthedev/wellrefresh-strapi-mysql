@@ -1,19 +1,21 @@
-query MyQuery($name: ID!) {
-  category(id: $name, idType: NAME) {
+query MyQuery ($tag: ID!){
+  tag(id: $tag, idType: NAME) {
     posts {
       nodes {
-        title
-        excerpt
         id
         slug
-        featuredImage {
-        node {
-          mediaItemUrl
-        }
-      }
+        excerpt
+        title
         categories {
           nodes {
+            id
             name
+          }
+        }
+        featuredImage {
+          node {
+            id
+            mediaItemUrl
           }
         }
       }

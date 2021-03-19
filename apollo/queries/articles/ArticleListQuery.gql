@@ -3,8 +3,13 @@ query ArticleListQuery {
     nodes {
       title
       slug
+      id
+      categories {
+        nodes {
+          name
+          id
+        }
+      }
     }
   }
 }
-
-

@@ -1,45 +1,41 @@
 <template>
+  <!-- :to="{ name: 'articles-slug', params: { slug: largeFeatured.slug } }" -->
   <div class="article-showcase">
     <div class="featured-grid">
       <nuxt-link
-        :to="{ name: 'articles-slug', params: { slug: largeFeatured.slug } }"
         class="featured-item featured-large"
+        to="/"
+        v-for="article in largeFeatured"
+        :key="article.id"
       >
-        <img
-          :src="largeFeatured.featuredImage.node.mediaItemUrl"
-          class="featured-item__img"
-        />
-        <div class="featured-item__txt-container featured-large__container">
-          <span class="featured-item__category">{{
-            largeFeatured.categories.nodes[0].name
-          }}</span>
+        <img src="~/assets/img/featured-img.jpg" class="featured-item__img" />
+        <div
+          class="featured-item__txt-container featured-large__container"
+          v-for="category in article.categories.nodes"
+          :key="category.id"
+        >
+          <span class="featured-item__category">{{ category.name }}</span>
           <h2 class="featured-item__title featured-large__title">
-            {{ largeFeatured.title }}
+            {{ article.title }}
           </h2>
-          <div
-            class="featured-item__excerpt"
-            v-html="largeFeatured.excerpt"
-          ></div>
+          <div class="featured-item__excerpt" v-html="article.excerpt"></div>
         </div>
       </nuxt-link>
 
       <div class="featured-medium">
         <nuxt-link
-          v-for="article in medFeatured"
-          :key="article.id"
           :to="{ name: 'articles-slug', params: { slug: article.slug } }"
           class="featured-medium__item featured-item"
+          v-for="article in mediumFeatured"
+          :key="article.id"
         >
-          <img
-            :src="article.featuredImage.node.mediaItemUrl"
-            class="featured-item__img"
-          />
+          <img src="~/assets/img/featured-img.jpg" class="featured-item__img" />
           <div
             class="featured-item__txt-container featured-medium__txt-container"
+            v-for="category in article.categories.nodes"
+            :key="category.id"
           >
-            <span class="featured-item__category">{{
-              article.categories.nodes[1].name
-            }}</span>
+            <span class="featured-item__category">{{ category.name }}</span>
             <h2 class="featured-item__title featured-right__title">
               {{ article.title }}
             </h2>
@@ -53,17 +49,19 @@
 
       <div class="featured-small">
         <nuxt-link
-          v-for="article in smallFeatured"
-          :key="article.id"
           :to="{ name: 'articles-slug', params: { slug: article.slug } }"
           class="featured-item featured-small__item"
+          v-for="article in smallFeatured"
+          :key="article.id"
         >
           <img src="~/assets/img/featured-img.jpg" class="featured-item__img" />
           <div
             class="featured-item__txt-container featured-small__txt-container"
+            v-for="category in article.categories.nodes"
+            :key="category.id"
           >
             <span class="featured-item__category featured-small__category">{{
-              article.categories.nodes[1].name
+              category.name
             }}</span>
             <h2 class="featured-item__title featured-small__title">
               {{ article.title }}
@@ -92,37 +90,42 @@ export default {
   },
   data() {
     return {
-      loading: 0,
-      largeFeatured: '',
-      medFeatured: [],
+      largeFeatured: [],
+      mediumFeatured: [],
       smallFeatured: []
     }
   },
 
   apollo: {
     largeFeatured: {
-      query: FeaturedArticlesQuery,
       prefetch: true,
-      update: (data) => data.category.posts.nodes[0],
-      variables() {
-        return { name: 'featured-large' }
+      query: FeaturedArticlesQuery,
+      update: (data) => data.tag.posts.nodes,
+      variables: {
+        tag: 'featured-large'
       }
     },
-    medFeatured: {
-      query: FeaturedArticlesQuery,
+    mediumFeatured: {
       prefetch: true,
-      update: (data) => data.category.posts.nodes,
-      variables() {
-        return { name: 'featured-medium' }
+      query: FeaturedArticlesQuery,
+      update: (data) => data.tag.posts.nodes,
+      variables: {
+        tag: 'featured-medium'
       }
     },
     smallFeatured: {
-      query: FeaturedArticlesQuery,
       prefetch: true,
-      update: (data) => data.category.posts.nodes,
-      variables() {
-        return { name: 'featured-small' }
+      query: FeaturedArticlesQuery,
+      update: (data) => data.tag.posts.nodes,
+      variables: {
+        tag: 'featured-small'
       }
+    }
+  },
+
+  computed: {
+    getTag: function () {
+      return this.articles.nodes.posts.nodes.tags.nodes
     }
   }
 }
