@@ -1,8 +1,12 @@
 <template>
-  <article class="article">
+  <article class="article" v-if="!loading">
     <h1 class="article__title">{{ article.title }}</h1>
     <div class="article-info">
-      <img :src="article.author.node.avatar.url" class="article-info__avatar" />
+      <img
+        :src="article.author.node.avatar.url"
+        class="article-info__avatar"
+        v-if="article.author.node.avatar.url"
+      />
       <div class="article-info__author">
         <span class="article-info__author-head">written by</span>
 
@@ -16,7 +20,7 @@
         <span article-info__date-update>{{ $formatDate(article.date) }}</span>
       </div>
     </div>
-    <img :src="article.featuredImage.node.mediaItemUrl" class="article__img" />
+    <img :src="article.featuredImage.node.sourceUrl" class="article__img" />
     <div class="article__container">
       <div class="article__content" v-html="article.content"></div>
       <section class="article__sidebar"><ArticleListSide /></section>
@@ -36,7 +40,7 @@ export default {
   data() {
     return {
       loading: 0,
-      article: ''
+      article: []
     }
   },
 
@@ -105,7 +109,7 @@ export default {
 //Desktop View
 @media (min-width: 1248px) {
   .article {
-    padding: 12% 20%;
+    padding: 15% 20%;
     &__container {
       display: flex;
       flex-direction: row;

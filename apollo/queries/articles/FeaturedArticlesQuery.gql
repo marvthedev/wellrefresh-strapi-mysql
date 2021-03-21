@@ -1,4 +1,4 @@
-query MyQuery ($tag: ID!){
+query MyQuery($tag: ID!) {
   tag(id: $tag, idType: NAME) {
     posts {
       nodes {
@@ -14,12 +14,10 @@ query MyQuery ($tag: ID!){
         }
         featuredImage {
           node {
-            id
-            mediaItemUrl
+            sourceUrl
           }
         }
       }
     }
   }
 }
-

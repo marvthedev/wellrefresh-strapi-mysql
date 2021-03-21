@@ -4,11 +4,16 @@
     <div class="featured-grid">
       <nuxt-link
         class="featured-item featured-large"
-        to="/"
+        :to="{ name: 'articles-slug', params: { slug: article.slug } }"
         v-for="article in largeFeatured"
         :key="article.id"
       >
-        <img src="~/assets/img/featured-img.jpg" class="featured-item__img" />
+        <div class="featured-item__img-container">
+          <img
+            :src="article.featuredImage.node.sourceUrl"
+            class="featured-item__img"
+          />
+        </div>
         <div
           class="featured-item__txt-container featured-large__container"
           v-for="category in article.categories.nodes"
@@ -29,7 +34,11 @@
           v-for="article in mediumFeatured"
           :key="article.id"
         >
-          <img src="~/assets/img/featured-img.jpg" class="featured-item__img" />
+          <img
+            :src="article.featuredImage.node.sourceUrl"
+            class="featured-item__img"
+            v-if="article.featuredImage.node.sourceUrl"
+          />
           <div
             class="featured-item__txt-container featured-medium__txt-container"
             v-for="category in article.categories.nodes"
