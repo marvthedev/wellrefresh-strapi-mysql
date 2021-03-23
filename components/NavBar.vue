@@ -102,7 +102,7 @@ export default {
     display: flex;
     align-items: center;
     &-img {
-      height: 4rem;
+      height: 3rem;
     }
     &-txt {
       margin-left: 0.2rem;
