@@ -93,15 +93,15 @@ export default {
   }
 
   &__img {
-    margin-top: 3rem;
-    max-width: 90%;
+    margin-top: 5rem;
+    max-width: 100%;
     height: auto;
   }
   &__content {
     font-size: 2rem;
     & p {
       margin-top: 3rem;
-      line-height: 2;
+      line-height: 1.8;
     }
   }
 }
@@ -116,6 +116,9 @@ export default {
     }
     &__title {
       font-size: 5.4rem;
+    }
+    &__img {
+      max-width: 90%;
     }
     &__content {
       width: 90%;
