@@ -94,14 +94,14 @@ export default {
 
   &__img {
     margin-top: 3rem;
-    max-width: 100%;
+    max-width: 90%;
     height: auto;
   }
   &__content {
     font-size: 1.8rem;
-    line-height: 150%;
     & p {
       margin-top: 3rem;
+      line-height: 2;
     }
   }
 }
@@ -125,7 +125,7 @@ export default {
     &__sidebar {
       margin-top: 4rem;
       position: absolute;
-      right: 9%;
+      right: 7%;
     }
   }
 }

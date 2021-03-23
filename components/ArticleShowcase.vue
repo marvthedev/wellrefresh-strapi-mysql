@@ -3,10 +3,10 @@
   <div class="article-showcase">
     <div class="featured-grid">
       <nuxt-link
-        class="featured-item featured-large"
-        :to="{ name: 'articles-slug', params: { slug: article.slug } }"
         v-for="article in largeFeatured"
         :key="article.id"
+        class="featured-item featured-large"
+        :to="{ name: 'articles-slug', params: { slug: article.slug } }"
       >
         <div class="featured-item__img-container">
           <img
@@ -15,9 +15,9 @@
           />
         </div>
         <div
-          class="featured-item__txt-container featured-large__container"
           v-for="category in article.categories.nodes"
           :key="category.id"
+          class="featured-item__txt-container featured-large__container"
         >
           <span class="featured-item__category">{{ category.name }}</span>
           <h2 class="featured-item__title featured-large__title">
@@ -29,20 +29,20 @@
 
       <div class="featured-medium">
         <nuxt-link
-          :to="{ name: 'articles-slug', params: { slug: article.slug } }"
-          class="featured-medium__item featured-item"
           v-for="article in mediumFeatured"
           :key="article.id"
+          :to="{ name: 'articles-slug', params: { slug: article.slug } }"
+          class="featured-medium__item featured-item"
         >
           <img
+            v-if="article.featuredImage.node.sourceUrl"
             :src="article.featuredImage.node.sourceUrl"
             class="featured-item__img"
-            v-if="article.featuredImage.node.sourceUrl"
           />
           <div
-            class="featured-item__txt-container featured-medium__txt-container"
             v-for="category in article.categories.nodes"
             :key="category.id"
+            class="featured-item__txt-container featured-medium__txt-container"
           >
             <span class="featured-item__category">{{ category.name }}</span>
             <h2 class="featured-item__title featured-right__title">
@@ -58,16 +58,24 @@
 
       <div class="featured-small">
         <nuxt-link
-          :to="{ name: 'articles-slug', params: { slug: article.slug } }"
-          class="featured-item featured-small__item"
           v-for="article in smallFeatured"
           :key="article.id"
+          :to="{ name: 'articles-slug', params: { slug: article.slug } }"
+          class="featured-item featured-small__item"
         >
-          <img src="~/assets/img/featured-img.jpg" class="featured-item__img" />
           <div
-            class="featured-item__txt-container featured-small__txt-container"
+            class="featured-item__img-container"
+            v-if="article.featuredImage.node !== null"
+          >
+            <img
+              :src="article.featuredImage.node.sourceUrl"
+              class="featured-item__img"
+            />
+          </div>
+          <div
             v-for="category in article.categories.nodes"
             :key="category.id"
+            class="featured-item__txt-container featured-small__txt-container"
           >
             <span class="featured-item__category featured-small__category">{{
               category.name
@@ -75,10 +83,10 @@
             <h2 class="featured-item__title featured-small__title">
               {{ article.title }}
             </h2>
-            <p class="featured-item__excerpt featured-small__excerpt">
-              These are the key things you need to be doing to lose weight
-              during the pandemic.
-            </p>
+            <div
+              class="featured-item__excerpt featured-small__excerpt"
+              v-html="article.excerpt"
+            ></div>
           </div>
         </nuxt-link>
       </div>
@@ -148,11 +156,14 @@ export default {
   justify-content: center;
   padding: 0 2.5%;
 }
-.featured-grid {
+
+.featured-grid,
+.featured-medium,
+.featured-small {
   display: grid;
-  grid-gap: 1rem;
-  flex-direction: column;
+  grid-gap: 3.2rem;
 }
+
 .featured-item {
   display: flex;
   flex-direction: column;
@@ -194,17 +205,6 @@ export default {
     border-top: 0;
     border-radius: 1rem;
     box-shadow: 0px 1.6rem 2rem -2.2rem rgba(0, 0, 0, 0.48);
-    &:nth-child(2) {
-      margin-top: 1rem;
-    }
-  }
-}
-
-.featured-small {
-  &__item {
-    &:nth-child(2) {
-      margin-top: 1rem;
-    }
   }
 }
 
@@ -221,7 +221,13 @@ export default {
       width: 18%;
     }
   }
+  .featured-medium,
+  .featured-small {
+    grid-gap: 1rem;
+  }
+
   .featured-grid {
+    grid-gap: 1rem;
     width: 78%;
     grid-template-columns: 30% 30% 40%;
     grid-auto-rows: minmax(min-content, max-content);
@@ -264,11 +270,6 @@ export default {
   .featured-small {
     grid-area: small;
     display: flex;
-    &__item {
-      &:nth-child(2) {
-        margin: 0 0 0 1rem;
-      }
-    }
     &__category {
       font-size: 1.4rem;
     }

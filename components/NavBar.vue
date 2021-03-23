@@ -210,7 +210,7 @@ export default {
         width: 100%;
       }
       &__img__scroll {
-        height: 4rem;
+        height: 2.4rem;
         border-right: 0.1rem solid #dadada;
         padding-right: 4rem;
       }
