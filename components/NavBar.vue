@@ -105,7 +105,7 @@ export default {
       height: 1rem;
     }
     &-img {
-      height: 2.2rem;
+      height: 2.4rem;
     }
     &-txt {
       margin-left: 0.2rem;
