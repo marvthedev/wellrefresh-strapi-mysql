@@ -101,8 +101,11 @@ export default {
   &__logo {
     display: flex;
     align-items: center;
+    &__img__scroll {
+      height: 1rem;
+    }
     &-img {
-      height: 3rem;
+      height: 2.2rem;
     }
     &-txt {
       margin-left: 0.2rem;
