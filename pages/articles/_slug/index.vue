@@ -98,7 +98,7 @@ export default {
     height: auto;
   }
   &__content {
-    font-size: 1.8rem;
+    font-size: 2rem;
     & p {
       margin-top: 3rem;
       line-height: 2;
