@@ -35,7 +35,7 @@ export default {
 <style lang="scss">
 .articles-side {
   margin: 6rem 0;
-  padding: 0 5%;
+  padding-left: 2rem;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -44,13 +44,13 @@ export default {
     font-size: 2.2rem;
     text-transform: uppercase;
     margin-bottom: 2rem;
+    color: $primary__color;
   }
   &__list {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    color: $primary__color;
   }
   &__topic-title {
     font-size: 2rem;
@@ -58,9 +58,11 @@ export default {
     text-align: center;
     font-weight: 900;
     padding: 2rem 4rem;
-    color: $primary__color;
     &:not(:last-child) {
       border-bottom: 0.1rem solid #d8d8d8;
+    }
+    &:hover {
+      color: $secondary__color;
     }
   }
 }
@@ -71,7 +73,7 @@ export default {
     border-left: 2px solid #cfd8dc;
     &__title {
       text-align: left;
-      font-size: 1.6rem;
+      font-size: 1.8rem;
     }
     &__list {
       padding: 0;

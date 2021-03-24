@@ -11,19 +11,12 @@
             class="nav__logo-img"
             :class="{ nav__logo__img__scroll: scrollPosition > 50 }"
           />
-          <!-- <div
-            class="nav__logo-txt"
-            :class="{ nav__logo__txt__scroll: scrollPosition > 50 }"
-          >
-            <span>well</span>
-            <span>refresh</span>
-          </div> -->
         </div>
       </nuxt-link>
       <!-- Only visible when viewing with mobile device. -->
       <div class="nav__toggle" @click="menuOpened = !menuOpened">
         <div
-          v-bind:class="{ nav__clicked: menuOpened }"
+          :class="{ nav__clicked: menuOpened }"
           class="nav__toggle-bar"
         ></div>
       </div>
@@ -44,8 +37,8 @@
     </div>
     <!-- Only visible when viewing with smaller devices. -->
     <div
-      class="nav__menu"
       v-show="menuOpened"
+      class="nav__menu"
       @click="menuOpened = !menuOpened"
     >
       <nuxt-link to="/" class="nav__menu-item">Home</nuxt-link>
@@ -200,7 +193,7 @@ export default {
     &__container {
       flex-direction: column;
       justify-content: center;
-      padding: 1rem 0 2rem 0;
+      padding: 2rem 0;
       &__scroll {
         flex-direction: row;
         padding: 1rem 15%;
@@ -209,8 +202,8 @@ export default {
     }
     &__logo {
       &-img {
-        height: auto;
-        width: 100%;
+        height: 3rem;
+        width: auto;
       }
       &__img__scroll {
         height: 2.4rem;
@@ -239,7 +232,7 @@ export default {
       &-item {
         margin: 0 1.7rem;
         color: #333;
-        font-size: 1.6rem;
+        font-size: 1.8rem;
         &:hover {
           color: $secondary__color;
         }

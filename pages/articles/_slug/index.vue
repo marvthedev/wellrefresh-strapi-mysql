@@ -96,6 +96,7 @@ export default {
     margin-top: 5rem;
     max-width: 100%;
     height: auto;
+    margin-bottom: 4rem;
   }
   &__content {
     font-size: 2rem;
@@ -109,13 +110,13 @@ export default {
 //Desktop View
 @media (min-width: 1248px) {
   .article {
-    padding: 15% 20%;
+    padding: 10% 20%;
     &__container {
       display: flex;
       flex-direction: row;
     }
     &__title {
-      font-size: 5.4rem;
+      font-size: 8.4rem;
     }
     &__img {
       max-width: 90%;

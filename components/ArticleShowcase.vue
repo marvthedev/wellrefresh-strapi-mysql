@@ -45,10 +45,10 @@
             class="featured-item__txt-container featured-medium__txt-container"
           >
             <span class="featured-item__category">{{ category.name }}</span>
-            <h2 class="featured-item__title featured-right__title">
+            <h2 class="featured-item__title featured-medium__title">
               {{ article.title }}
             </h2>
-            <p class="featured-item__excerpt featured-right__excerpt">
+            <p class="featured-item__excerpt featured-medium__excerpt">
               These are the key things you need to be doing to lose weight
               during the pandemic.
             </p>
@@ -63,10 +63,7 @@
           :to="{ name: 'articles-slug', params: { slug: article.slug } }"
           class="featured-item featured-small__item"
         >
-          <div
-            class="featured-item__img-container"
-            v-if="article.featuredImage.node !== null"
-          >
+          <div class="featured-item__img-container">
             <img
               :src="article.featuredImage.node.sourceUrl"
               class="featured-item__img"
@@ -83,10 +80,6 @@
             <h2 class="featured-item__title featured-small__title">
               {{ article.title }}
             </h2>
-            <div
-              class="featured-item__excerpt featured-small__excerpt"
-              v-html="article.excerpt"
-            ></div>
           </div>
         </nuxt-link>
       </div>
@@ -191,6 +184,7 @@ export default {
     text-transform: uppercase;
   }
   &__title {
+    margin-top: 1rem;
     font-size: 2.8rem;
   }
   &__excerpt {
@@ -210,7 +204,7 @@ export default {
 
 @media (min-width: 1248px) {
   .article-showcase {
-    margin-top: 15%;
+    margin-top: 10%;
     flex-direction: row;
     justify-content: space-between;
     padding: 0 15%;
@@ -229,7 +223,7 @@ export default {
   .featured-grid {
     grid-gap: 1rem;
     width: 78%;
-    grid-template-columns: 30% 30% 40%;
+    grid-template-columns: 35% 30% 35%;
     grid-auto-rows: minmax(min-content, max-content);
     grid-template-areas:
       'large large medium'
@@ -242,7 +236,7 @@ export default {
       transform: translateY(-1rem);
     }
     &__txt-container {
-      padding: 3rem 2rem;
+      padding: 2rem 1.5rem;
       text-align: left;
     }
     &__excerpt {
@@ -253,7 +247,7 @@ export default {
     grid-area: large;
     min-height: 75%;
     &__title {
-      font-size: 3rem;
+      font-size: 2.8rem;
     }
   }
 
@@ -263,13 +257,21 @@ export default {
     justify-content: space-between;
     grid-area: medium;
     &__txt-container {
-      padding: 1.8rem;
+      padding: 1.6rem;
+    }
+    &__title {
+      font-size: 2.4rem;
+    }
+    &__excerpt {
+      font-size: 1.8rem;
     }
   }
 
   .featured-small {
     grid-area: small;
     display: flex;
+    min-width: 0;
+    min-height: 0;
     &__category {
       font-size: 1.4rem;
     }
@@ -280,7 +282,7 @@ export default {
       font-size: 2rem;
     }
     &__excerpt {
-      font-size: 1.7rem;
+      font-size: 1.6rem;
     }
   }
 }
