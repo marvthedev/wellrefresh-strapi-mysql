@@ -91,7 +91,7 @@ export default {
     align-items: center;
     width: 100%;
     &__scroll {
-      padding: 0.8rem;
+      padding: 1.2rem;
     }
   }
   &__logo {
