@@ -59,7 +59,7 @@ export default {
 
 <style lang="scss">
 .article {
-  padding: 30% 4% 0 4%;
+  padding: 25% 5% 0 5%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -72,7 +72,7 @@ export default {
   &-info {
     display: flex;
     align-items: center;
-    margin-top: 2rem;
+    margin-top: 2.4rem;
     font-size: 1.4rem;
     font-weight: 900;
     &__avatar {
@@ -93,16 +93,15 @@ export default {
   }
 
   &__img {
-    margin-top: 5rem;
+    margin-top: 3.2rem;
     max-width: 100%;
     height: auto;
-    margin-bottom: 4rem;
   }
   &__content {
     font-size: 2rem;
     & p {
-      margin-top: 3rem;
-      line-height: 1.8;
+      margin-top: 2rem;
+      line-height: 1.7;
     }
   }
 }
@@ -120,16 +119,17 @@ export default {
     }
     &__img {
       max-width: 90%;
+      margin-bottom: 0.8rem;
     }
     &__content {
       width: 90%;
-      padding: 0 4%;
+      padding: 0 8%;
       font-size: 2rem;
     }
     &__sidebar {
       margin-top: 4rem;
       position: absolute;
-      right: 7%;
+      right: 5%;
     }
   }
 }

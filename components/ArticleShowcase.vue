@@ -1,5 +1,4 @@
 <template>
-  <!-- :to="{ name: 'articles-slug', params: { slug: largeFeatured.slug } }" -->
   <div class="article-showcase">
     <div class="featured-grid">
       <nuxt-link

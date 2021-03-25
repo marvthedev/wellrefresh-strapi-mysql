@@ -85,11 +85,14 @@ export default {
     background: rgba(255, 255, 255, 0.9);
   }
   &__container {
-    padding: 1.5rem 5%;
+    padding: 1.5rem 1.8rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    &__scroll {
+      padding: 0.8rem;
+    }
   }
   &__logo {
     display: flex;
@@ -98,7 +101,7 @@ export default {
       height: 1rem;
     }
     &-img {
-      height: 2.4rem;
+      height: 2rem;
     }
     &-txt {
       margin-left: 0.2rem;
