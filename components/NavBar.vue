@@ -85,14 +85,11 @@ export default {
     background: rgba(255, 255, 255, 0.9);
   }
   &__container {
-    padding: 1.5rem 1.8rem;
+    padding: 1.2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    &__scroll {
-      padding: 1.2rem;
-    }
   }
   &__logo {
     display: flex;
