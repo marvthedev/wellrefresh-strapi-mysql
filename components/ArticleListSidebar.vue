@@ -68,7 +68,7 @@ export default {
     margin: 0;
     border-left: 2px solid #cfd8dc;
     padding: 0 2rem;
-    width: 70%;
+
     &__title {
       text-align: left;
       font-size: 1.6rem;

@@ -39,10 +39,10 @@
     <div
       v-show="menuOpened"
       class="nav__menu"
+      :class="{ nav__menu__scroll: scrollPosition > 50 }"
       @click="menuOpened = !menuOpened"
     >
       <nuxt-link to="/" class="nav__menu-item">Home</nuxt-link>
-      <nuxt-link to="/about" class="nav__menu-item">About</nuxt-link>
       <nuxt-link to="/orthotics" class="nav__menu-item">Weight Loss</nuxt-link>
       <nuxt-link to="/contact" class="nav__menu-item">Fitness</nuxt-link>
     </div>
@@ -80,16 +80,17 @@ export default {
   top: 0;
   left: 0;
   font-family: 'Lato', sans-serif;
-  &__scroll {
-    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.08);
-    background: rgba(255, 255, 255, 0.9);
-  }
   &__container {
     padding: 1.2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    background: white;
+    &__scroll {
+      background: rgba(255, 255, 255, 0.97);
+      box-shadow: 0 3px 4px rgba(0, 0, 0, 0.08);
+    }
   }
   &__logo {
     display: flex;
@@ -165,8 +166,10 @@ export default {
     position: relative;
     left: 0;
     bottom: 0;
-    background: rgba(255, 255, 255, 0.9);
-    margin: 1.5rem 0;
+    background: white;
+    &__scroll {
+      background: rgba(255, 255, 255, 0.97);
+    }
     &-item {
       font-size: 1.4rem;
       text-transform: uppercase;
@@ -196,7 +199,7 @@ export default {
       padding: 2rem 0;
       &__scroll {
         flex-direction: row;
-        padding: 1rem 15%;
+        padding: 1.6rem 8%;
         justify-content: center;
       }
     }

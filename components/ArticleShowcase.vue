@@ -47,10 +47,10 @@
             <h2 class="featured-item__title featured-medium__title">
               {{ article.title }}
             </h2>
-            <p class="featured-item__excerpt featured-medium__excerpt">
-              These are the key things you need to be doing to lose weight
-              during the pandemic.
-            </p>
+            <div
+              class="featured-item__excerpt featured-medium__excerpt"
+              v-html="article.excerpt"
+            ></div>
           </div>
         </nuxt-link>
       </div>

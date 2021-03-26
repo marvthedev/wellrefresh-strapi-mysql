@@ -43,6 +43,10 @@ a {
   color: #333;
 }
 
+p {
+  line-height: 1.5;
+}
+
 h1,
 h2,
 h3 {

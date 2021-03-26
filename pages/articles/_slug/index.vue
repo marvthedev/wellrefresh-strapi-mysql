@@ -1,12 +1,8 @@
 <template>
-  <article class="article" v-if="!loading">
+  <article v-if="!loading" class="article">
     <h1 class="article__title">{{ article.title }}</h1>
     <div class="article-info">
-      <img
-        :src="article.author.node.avatar.url"
-        class="article-info__avatar"
-        v-if="article.author.node.avatar.url"
-      />
+      <img :src="article.author.node.avatar.url" class="article-info__avatar" />
       <div class="article-info__author">
         <span class="article-info__author-head">written by</span>
 
@@ -93,12 +89,12 @@ export default {
   }
 
   &__img {
-    margin-top: 3.2rem;
+    margin: 3.2rem 0 1rem 0;
     max-width: 100%;
     height: auto;
   }
   &__content {
-    font-size: 2rem;
+    font-size: 1.8rem;
     & p {
       margin-top: 2rem;
       line-height: 1.7;
@@ -127,9 +123,10 @@ export default {
       font-size: 2rem;
     }
     &__sidebar {
-      margin-top: 4rem;
+      margin-top: 2.5rem;
       position: absolute;
-      right: 5%;
+      right: 12%;
+      width: 15%;
     }
   }
 }
