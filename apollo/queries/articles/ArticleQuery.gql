@@ -1,8 +1,9 @@
-query Article ($slug: ID!) {
+query Article($slug: ID!) {
   post(id: $slug, idType: SLUG) {
     title
     content
     slug
+    excerpt
     author {
       node {
         firstName
@@ -18,6 +19,10 @@ query Article ($slug: ID!) {
       node {
         sourceUrl
       }
+    }
+    seo {
+      metaDesc
+      title
     }
   }
 }

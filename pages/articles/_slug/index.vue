@@ -29,6 +29,19 @@ import ArticleQuery from '~/apollo/queries/articles/ArticleQuery'
 import ArticleListSide from '~/components/ArticleListSidebar'
 
 export default {
+  head() {
+    return {
+      title: this.article.seo.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.article.seo.metaDesc
+        }
+      ]
+    }
+  },
+
   components: {
     ArticleListSide
   },
