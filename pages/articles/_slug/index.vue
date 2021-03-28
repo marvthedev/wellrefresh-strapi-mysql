@@ -1,5 +1,10 @@
 <template>
   <article v-if="!loading" class="article">
+    <SocialHead
+      :title="article.seo.title"
+      :description="article.seo.metaDesc"
+      :image="article.featuredImage.node.sourceUrl"
+    />
     <h1 class="article__title">{{ article.title }}</h1>
     <div class="article-info">
       <img :src="article.author.node.avatar.url" class="article-info__avatar" />
@@ -27,6 +32,7 @@
 <script>
 import ArticleQuery from '~/apollo/queries/articles/ArticleQuery'
 import ArticleListSide from '~/components/ArticleListSidebar'
+import SocialHead from '~/components/SocialHead'
 
 export default {
   head() {
@@ -43,7 +49,8 @@ export default {
   },
 
   components: {
-    ArticleListSide
+    ArticleListSide,
+    SocialHead
   },
 
   data() {
