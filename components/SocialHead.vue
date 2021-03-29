@@ -25,6 +25,17 @@ export default {
     return {
       meta: [
         {
+          hid: 'twitter:card',
+          name: 'twitter:card',
+          content: 'summary_large_image'
+        },
+        { hid: 'twitter:site', name: 'twitter:site', content: '@wellrefresh' },
+        {
+          hid: 'twitter:url',
+          name: 'twitter:url',
+          content: 'https://www.wellrefresh.com'
+        },
+        {
           hid: 'twitter:title',
           name: 'twitter:title',
           content: this.title
