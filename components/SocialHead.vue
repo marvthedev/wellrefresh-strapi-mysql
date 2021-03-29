@@ -24,6 +24,7 @@ export default {
   head() {
     return {
       meta: [
+        //Twitter
         {
           hid: 'twitter:card',
           name: 'twitter:card',
@@ -55,6 +56,8 @@ export default {
           name: 'twitter:image:alt',
           content: this.title
         },
+
+        //Facebook
         {
           hid: 'og:title',
           property: 'og:title',
