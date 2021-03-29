@@ -2,7 +2,7 @@
   <div>
     <SocialHead
       title="Wellrefresh "
-      description="A Health and Wellness website aiming to help people with dieting, weightloss, and fitness."
+      description="A Health and Wellness website aiming to help people with dieting, weightloss, and fitness!"
       image="/twitter-seo-card.png"
     />
     <ArticleShowcase />
