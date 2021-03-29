@@ -14,6 +14,36 @@ export default {
         name: 'description',
         content:
           'A Health and Wellness site aiming to help people become better verisons of themselves.'
+      },
+
+      // Twitter
+      // Test on: https://cards-dev.twitter.com/validator
+      {
+        hid: 'twitter:card',
+        name: 'twitter:card',
+        content: 'summary_large_image'
+      },
+      { hid: 'twitter:site', name: 'twitter:site', content: '@nuxt_js' },
+      {
+        hid: 'twitter:url',
+        name: 'twitter:url',
+        content: 'https://nuxtjs.org'
+      },
+      {
+        hid: 'twitter:title',
+        name: 'twitter:title',
+        content: 'My amazing Nuxt application'
+      },
+      {
+        hid: 'twitter:description',
+        name: 'twitter:description',
+        content:
+          'The amazing Nuxt application that teaches me all the cool features of Nuxt'
+      },
+      {
+        hid: 'twitter:image',
+        name: 'twitter:image',
+        content: 'https://nuxtjs.org/nuxt-card.png'
       }
     ],
     link: [
