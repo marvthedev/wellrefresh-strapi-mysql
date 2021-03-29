@@ -1,8 +1,4 @@
 export default {
-  // generate: {
-  //   fallback: true
-  // },
-
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'Wellrefresh',
@@ -43,7 +39,7 @@ export default {
       {
         hid: 'twitter:image',
         name: 'twitter:image',
-        content: '~/assets/img/twitter-seo-card.png'
+        content: '/twitter-seo-card.png'
       }
     ],
     link: [
@@ -115,5 +111,9 @@ export default {
 
   markdownit: {
     runtime: true // Support `$md()`
+  },
+
+  env: {
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000'
   }
 }
