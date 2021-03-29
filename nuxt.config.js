@@ -13,7 +13,7 @@ export default {
         hid: 'description',
         name: 'description',
         content:
-          'A Health and Wellness site aiming to help people become better verisons of themselves.'
+          'A Health and Wellness website aiming to help people with dieting, weightloss, and fitness.'
       },
 
       // Twitter
@@ -23,27 +23,27 @@ export default {
         name: 'twitter:card',
         content: 'summary_large_image'
       },
-      { hid: 'twitter:site', name: 'twitter:site', content: '@nuxt_js' },
+      { hid: 'twitter:site', name: 'twitter:site', content: '@wellrefresh' },
       {
         hid: 'twitter:url',
         name: 'twitter:url',
-        content: 'https://nuxtjs.org'
+        content: 'https://www.wellrefresh.com'
       },
       {
         hid: 'twitter:title',
         name: 'twitter:title',
-        content: 'My amazing Nuxt application'
+        content: 'Wellrefresh - Diet, Weight Loss, Fitness'
       },
       {
         hid: 'twitter:description',
         name: 'twitter:description',
         content:
-          'The amazing Nuxt application that teaches me all the cool features of Nuxt'
+          'A Health and Wellness website aiming to help people with dieting, weight loss, and fitness.'
       },
       {
         hid: 'twitter:image',
         name: 'twitter:image',
-        content: 'https://nuxtjs.org/nuxt-card.png'
+        content: '~/assets/img/twitter-seo-card.png'
       }
     ],
     link: [
