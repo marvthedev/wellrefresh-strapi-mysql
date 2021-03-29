@@ -3,7 +3,7 @@
     <SocialHead
       title="Wellrefresh "
       description="A Health and Wellness website aiming to help people with dieting, weightloss, and fitness!"
-      image="/twitter-seo-card.png"
+      :image="baseURL + '/twitter-seo-card.png'"
     />
     <ArticleShowcase />
     <CategoryArticles />
@@ -13,11 +13,18 @@
 <script>
 import ArticleShowcase from '~/components/ArticleShowcase'
 import CategoryArticles from '~/components/CategoryArticles'
+import SocialHead from '~/components/SocialHead'
 
 export default {
   components: {
     ArticleShowcase,
-    CategoryArticles
+    CategoryArticles,
+    SocialHead
+  },
+  data() {
+    return {
+      baseURL: process.env.BASE_URL
+    }
   }
 }
 </script>
