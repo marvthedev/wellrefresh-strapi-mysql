@@ -1,5 +1,10 @@
 <template>
-  <div class="home">
+  <div>
+    <SocialHead
+      title="Wellrefresh "
+      description="A Health and Wellness website aiming to help people with dieting, weightloss, and fitness."
+      image="/twitter-seo-card.png"
+    />
     <ArticleShowcase />
     <CategoryArticles />
   </div>
@@ -17,8 +22,4 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.home {
-  margin-top: 6rem;
-}
-</style>
+<style lang="scss"></style>

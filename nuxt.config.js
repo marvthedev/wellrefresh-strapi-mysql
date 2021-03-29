@@ -10,36 +10,6 @@ export default {
         name: 'description',
         content:
           'A Health and Wellness website aiming to help people with dieting, weightloss, and fitness.'
-      },
-
-      // Twitter
-      // Test on: https://cards-dev.twitter.com/validator
-      {
-        hid: 'twitter:card',
-        name: 'twitter:card',
-        content: 'summary_large_image'
-      },
-      { hid: 'twitter:site', name: 'twitter:site', content: '@wellrefresh' },
-      {
-        hid: 'twitter:url',
-        name: 'twitter:url',
-        content: 'https://www.wellrefresh.com'
-      },
-      {
-        hid: 'twitter:title',
-        name: 'twitter:title',
-        content: 'Wellrefresh - Diet, Weight Loss, Fitness'
-      },
-      {
-        hid: 'twitter:description',
-        name: 'twitter:description',
-        content:
-          'A Health and Wellness website aiming to help people with dieting, weight loss, and fitness.'
-      },
-      {
-        hid: 'twitter:image',
-        name: 'twitter:image',
-        content: '/twitter-seo-card.png'
       }
     ],
     link: [
