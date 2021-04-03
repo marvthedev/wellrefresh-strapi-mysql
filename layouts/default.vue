@@ -2,15 +2,18 @@
   <div>
     <NavBar />
     <Nuxt />
+    <Foot />
   </div>
 </template>
 
 <script>
 import NavBar from '~/components/NavBar'
+import Foot from '~/components/Foot'
 
 export default {
   components: {
-    NavBar
+    NavBar,
+    Foot
   }
 }
 </script>
@@ -96,7 +99,7 @@ textarea {
   }
   &__title {
     margin-top: 0.8rem;
-    font-size: 2.8rem;
+    font-size: 2rem;
   }
 }
 
