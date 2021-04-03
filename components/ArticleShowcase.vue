@@ -4,25 +4,22 @@
       <nuxt-link
         v-for="article in largeFeatured"
         :key="article.id"
-        class="featured-item featured-large"
+        class="featured-large card"
         :to="{ name: 'articles-slug', params: { slug: article.slug } }"
       >
-        <div class="featured-item__img-container">
-          <img
-            :src="article.featuredImage.node.sourceUrl"
-            class="featured-item__img"
-          />
-        </div>
+        <img :src="article.featuredImage.node.sourceUrl" class="card__img" />
         <div
           v-for="category in article.categories.nodes"
           :key="category.id"
-          class="featured-item__txt-container featured-large__container"
+          class="featured-large__txt-container"
         >
-          <span class="featured-item__category">{{ category.name }}</span>
-          <h2 class="featured-item__title featured-large__title">
+          <span class="featured-large__category card__category">{{
+            category.name
+          }}</span>
+          <h2 class="card__title featured-large__title">
             {{ article.title }}
           </h2>
-          <div class="featured-item__excerpt" v-html="article.excerpt"></div>
+          <div class="featured-large__excerpt" v-html="article.excerpt"></div>
         </div>
       </nuxt-link>
 
@@ -31,26 +28,22 @@
           v-for="article in mediumFeatured"
           :key="article.id"
           :to="{ name: 'articles-slug', params: { slug: article.slug } }"
-          class="featured-medium__item featured-item"
+          class="card"
         >
           <img
             v-if="article.featuredImage.node.sourceUrl"
             :src="article.featuredImage.node.sourceUrl"
-            class="featured-item__img"
+            class="card__img"
           />
           <div
             v-for="category in article.categories.nodes"
             :key="category.id"
-            class="featured-item__txt-container featured-medium__txt-container"
+            class="card__txt-container"
           >
-            <span class="featured-item__category">{{ category.name }}</span>
-            <h2 class="featured-item__title featured-medium__title">
+            <span class="card__category">{{ category.name }}</span>
+            <h2 class="card__title">
               {{ article.title }}
             </h2>
-            <div
-              class="featured-item__excerpt featured-medium__excerpt"
-              v-html="article.excerpt"
-            ></div>
           </div>
         </nuxt-link>
       </div>
@@ -60,23 +53,16 @@
           v-for="article in smallFeatured"
           :key="article.id"
           :to="{ name: 'articles-slug', params: { slug: article.slug } }"
-          class="featured-item featured-small__item"
+          class="card"
         >
-          <div class="featured-item__img-container">
-            <img
-              :src="article.featuredImage.node.sourceUrl"
-              class="featured-item__img"
-            />
-          </div>
+          <img :src="article.featuredImage.node.sourceUrl" class="card__img" />
           <div
             v-for="category in article.categories.nodes"
             :key="category.id"
-            class="featured-item__txt-container featured-small__txt-container"
+            class="card__txt-container"
           >
-            <span class="featured-item__category featured-small__category">{{
-              category.name
-            }}</span>
-            <h2 class="featured-item__title featured-small__title">
+            <span class="card__category">{{ category.name }}</span>
+            <h2 class="card__title">
               {{ article.title }}
             </h2>
           </div>
@@ -156,49 +142,9 @@ export default {
   grid-gap: 3.2rem;
 }
 
-.featured-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  border: 1px solid #e7ebfb;
-  border-top: 0;
-  border-radius: 1rem;
-  box-shadow: 0px 1.6rem 2rem -2.2rem rgba(0, 0, 0, 0.48);
-  &__img {
-    width: 100%;
-    border-radius: 1rem 1rem 0 0;
-  }
-  &__txt-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 1.6rem;
-  }
-  &__category {
-    font-family: 'Lato', sans-serif;
-    font-weight: 900;
-    font-size: 1.6rem;
-    color: $primary__color;
-    text-transform: uppercase;
-  }
-  &__title {
-    margin-top: 1rem;
-    font-size: 2.8rem;
-  }
-  &__excerpt {
-    margin-top: 1.5rem;
-    font-size: 1.8rem;
-  }
-}
-
-.featured-medium {
-  &__item {
-    border: 1px solid #e7ebfb;
-    border-top: 0;
-    border-radius: 1rem;
-    box-shadow: 0px 1.6rem 2rem -2.2rem rgba(0, 0, 0, 0.48);
-  }
+.featured-large__excerpt {
+  margin-top: 1.6rem;
+  font-size: 2rem;
 }
 
 @media (min-width: 1248px) {
@@ -229,22 +175,16 @@ export default {
       'large large medium'
       'small small medium';
   }
-  .featured-item {
-    &:hover {
-      box-shadow: 0px 1.6rem 2rem -1.5rem rgba(0, 0, 0, 0.48);
-      transform: translateY(-1rem);
-    }
-    &__txt-container {
-      padding: 2rem 1.5rem;
-      text-align: left;
-    }
-    &__excerpt {
-      font-size: 2rem;
-    }
-  }
+
   .featured-large {
     grid-area: large;
     min-height: 75%;
+    &__txt-container {
+      padding: 6%;
+    }
+    &__category {
+      font-size: 1.8rem;
+    }
     &__title {
       font-size: 2.8rem;
     }
@@ -255,15 +195,6 @@ export default {
     flex-direction: column;
     justify-content: space-between;
     grid-area: medium;
-    &__txt-container {
-      padding: 1.6rem;
-    }
-    &__title {
-      font-size: 2.4rem;
-    }
-    &__excerpt {
-      font-size: 1.8rem;
-    }
   }
 
   .featured-small {
@@ -271,18 +202,6 @@ export default {
     display: flex;
     min-width: 0;
     min-height: 0;
-    &__category {
-      font-size: 1.4rem;
-    }
-    &__txt-container {
-      padding: 1.3rem;
-    }
-    &__title {
-      font-size: 2rem;
-    }
-    &__excerpt {
-      font-size: 1.6rem;
-    }
   }
 }
 </style>

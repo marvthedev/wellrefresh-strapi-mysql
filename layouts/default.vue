@@ -12,46 +12,10 @@ export default {
   components: {
     NavBar
   }
-
-  // head() {
-  //   return {
-  //     meta: [
-  //       // Twitter
-  //       // Test on: https://cards-dev.twitter.com/validator
-  //       {
-  //         hid: 'twitter:card',
-  //         name: 'twitter:card',
-  //         content: 'summary_large_image'
-  //       },
-  //       { hid: 'twitter:site', name: 'twitter:site', content: '@wellrefresh' },
-  //       {
-  //         hid: 'twitter:url',
-  //         name: 'twitter:url',
-  //         content: 'https://www.wellrefresh.com'
-  //       },
-  //       {
-  //         hid: 'twitter:title',
-  //         name: 'twitter:title',
-  //         content: 'Wellrefresh - Diet, Weight Loss, Fitness'
-  //       },
-  //       {
-  //         hid: 'twitter:description',
-  //         name: 'twitter:description',
-  //         content:
-  //           'A Health and Wellness website aiming to help people with dieting, weight loss, and fitness.'
-  //       },
-  //       {
-  //         hid: 'twitter:image',
-  //         name: 'twitter:image',
-  //         content: '/twitter-seo-card.png'
-  //       }
-  //     ]
-  //   }
-  // }
 }
 </script>
 
-<style>
+<style lang="scss">
 html {
   font-family: 'PT Serif', serif;
   font-size: 62.5%;
@@ -102,5 +66,49 @@ textarea {
 
 textarea {
   resize: none;
+}
+
+// Article grid cards styling
+.card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e7ebfb;
+  border-top: 0;
+  border-radius: 1rem;
+  box-shadow: 0px 1.6rem 2rem -2.2rem rgba(0, 0, 0, 0.48);
+  &__txt-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.3rem;
+  }
+  &__img {
+    width: 100%;
+    height: auto;
+    border-radius: 1rem 1rem 0 0;
+  }
+  &__category {
+    font-family: 'Lato', sans-serif;
+    font-weight: 900;
+    font-size: 1.4rem;
+    color: $primary__color;
+    text-transform: uppercase;
+  }
+  &__title {
+    margin-top: 0.8rem;
+    font-size: 2.8rem;
+  }
+}
+
+@media (min-width: 1248px) {
+  .card {
+    &:hover {
+      box-shadow: 0px 1.6rem 2rem -1.5rem rgba(0, 0, 0, 0.48);
+      transform: translateY(-1rem);
+    }
+    &__title {
+      font-size: 2rem;
+    }
+  }
 }
 </style>
