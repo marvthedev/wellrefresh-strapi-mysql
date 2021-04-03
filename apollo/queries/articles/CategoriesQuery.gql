@@ -1,0 +1,23 @@
+query MyQuery($category: String) {
+  posts(where: {categoryName: $category}) {
+    nodes {
+      title
+      excerpt
+      slug
+      id
+      categories {
+        edges {
+          node {
+            name
+            id
+          }
+        }
+      }
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
+    }
+  }
+}

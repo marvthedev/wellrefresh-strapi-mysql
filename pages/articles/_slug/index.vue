@@ -1,6 +1,8 @@
 <template>
   <article v-if="!loading" class="article">
     <SocialHead
+      :pageTitle="article.title"
+      :pageDescription="article.seo.metaDesc"
       :title="article.seo.title"
       :description="article.seo.metaDesc"
       :image="article.featuredImage.node.sourceUrl"
@@ -35,19 +37,6 @@ import ArticleListSide from '~/components/ArticleListSidebar'
 import SocialHead from '~/components/SocialHead'
 
 export default {
-  head() {
-    return {
-      title: this.article.seo.title,
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: this.article.seo.metaDesc
-        }
-      ]
-    }
-  },
-
   components: {
     ArticleListSide,
     SocialHead
@@ -134,7 +123,8 @@ export default {
       font-size: 8.4rem;
     }
     &__img {
-      max-width: 90%;
+      height: 50rem;
+      width: auto;
       margin-bottom: 0.8rem;
     }
     &__content {

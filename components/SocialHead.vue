@@ -7,6 +7,12 @@
 // Test on: https://developers.facebook.com/tools/debug/
 export default {
   props: {
+    pageTitle: {
+      type: String
+    },
+    pageDescription: {
+      type: String
+    },
     title: {
       type: String,
       required: true
@@ -17,13 +23,21 @@ export default {
     },
     image: {
       type: String,
-      default: 'https://nuxtjs.org/nuxt-card.png'
+      default:
+        'https://res.cloudinary.com/dnmi26dca/image/upload/v1616986929/wellrefresh_wp/twitter-seo-card_si5ls2.png'
     }
   },
 
   head() {
     return {
+      title: this.pageTitle,
       meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.pageDescription
+        },
+
         //Twitter
         {
           hid: 'twitter:card',
