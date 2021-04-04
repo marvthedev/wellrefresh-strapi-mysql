@@ -11,7 +11,7 @@
         <div
           v-for="category in article.categories.nodes"
           :key="category.id"
-          class="featured-large__txt-container"
+          class="card__txt-container featured-large__txt-container"
         >
           <span class="featured-large__category card__category">{{
             category.name
