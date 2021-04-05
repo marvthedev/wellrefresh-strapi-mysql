@@ -13,9 +13,11 @@
           :key="category.id"
           class="card__txt-container featured-large__txt-container"
         >
-          <span class="featured-large__category card__category">{{
-            category.name
-          }}</span>
+          <div class="card__category-container">
+            <div class="featured-large__category card__category">
+              {{ category.name }}
+            </div>
+          </div>
           <h2 class="card__title featured-large__title">
             {{ article.title }}
           </h2>
@@ -40,7 +42,9 @@
             :key="category.id"
             class="card__txt-container"
           >
-            <span class="card__category">{{ category.name }}</span>
+            <div class="card__category-container">
+              <span class="card__category">{{ category.name }}</span>
+            </div>
             <h2 class="card__title">
               {{ article.title }}
             </h2>
@@ -53,7 +57,7 @@
           v-for="article in smallFeatured"
           :key="article.id"
           :to="{ name: 'articles-slug', params: { slug: article.slug } }"
-          class="card"
+          class="card featured-small"
         >
           <img :src="article.featuredImage.node.sourceUrl" class="card__img" />
           <div
@@ -61,7 +65,9 @@
             :key="category.id"
             class="card__txt-container"
           >
-            <span class="card__category">{{ category.name }}</span>
+            <div class="card__category-container">
+              <span class="card__category">{{ category.name }}</span>
+            </div>
             <h2 class="card__title">
               {{ article.title }}
             </h2>
@@ -142,9 +148,6 @@ export default {
   grid-gap: 3.2rem;
 }
 .featured-large {
-  &__category {
-    font-size: 1.8rem;
-  }
   &__title {
     font-size: 2.2rem;
   }
@@ -164,7 +167,8 @@ export default {
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 18%;
+      width: 25%;
+      margin-left: 1rem;
     }
   }
   .featured-medium,
@@ -174,13 +178,12 @@ export default {
 
   .featured-grid {
     grid-gap: 1rem;
-    width: 78%;
-    grid-template-columns: 35% 30% 35%;
+    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: minmax(min-content, max-content);
     grid-template-areas:
       'large large medium'
-      'large large medium'
-      'small small medium';
+      'large large medium';
   }
 
   .featured-large {
@@ -190,7 +193,7 @@ export default {
       padding: 6%;
     }
     &__category {
-      font-size: 1.8rem;
+      font-size: 1.4rem;
     }
     &__title {
       font-size: 2.8rem;
@@ -206,9 +209,11 @@ export default {
 
   .featured-small {
     grid-area: small;
+    grid-column: 1 / 4;
+    grid-row: 3 / 4;
+    width: 100%;
     display: flex;
-    min-width: 0;
-    min-height: 0;
+    justify-content: space-evenly;
   }
 }
 </style>

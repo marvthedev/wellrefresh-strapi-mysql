@@ -90,11 +90,18 @@ textarea {
     height: auto;
     border-radius: 1rem 1rem 0 0;
   }
+  &__category-container {
+    display: flex;
+  }
+
   &__category {
     font-family: 'Lato', sans-serif;
     font-weight: 900;
-    font-size: 1.4rem;
-    color: $primary__color;
+    font-size: 1rem;
+    background: $secondary__color;
+    padding: 0.24rem 0.4rem;
+    border-radius: 0.14rem;
+    color: white;
     text-transform: uppercase;
   }
   &__title {

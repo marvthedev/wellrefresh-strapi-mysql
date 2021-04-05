@@ -47,7 +47,6 @@ export default {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    color: $primary__color;
   }
   &__topic-title {
     font-size: 2rem;
@@ -58,7 +57,7 @@ export default {
       border-bottom: 0.1rem solid #d8d8d8;
     }
     &:hover {
-      color: black;
+      color: $secondary__color;
     }
   }
 }

@@ -80,9 +80,8 @@ export default {
   background: #f9f9f9;
   &__title {
     margin-top: 2.8rem;
-    color: $primary__color;
+    color: $secondary__color;
     font-size: 2rem;
-    text-transform: uppercase;
   }
 }
 
