@@ -141,10 +141,17 @@ export default {
   display: grid;
   grid-gap: 3.2rem;
 }
-
-.featured-large__excerpt {
-  margin-top: 1.6rem;
-  font-size: 2rem;
+.featured-large {
+  &__category {
+    font-size: 1.8rem;
+  }
+  &__title {
+    font-size: 2.2rem;
+  }
+  &__excerpt {
+    margin-top: 1.6rem;
+    font-size: 1.8rem;
+  }
 }
 
 @media (min-width: 1248px) {
