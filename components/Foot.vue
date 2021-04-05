@@ -28,6 +28,9 @@
 
 <style lang="scss" scoped>
 .footer {
+  position: static;
+  bottom: 0;
+  left: 0;
   padding: 0 6%;
   display: flex;
   flex-direction: column;
@@ -37,8 +40,6 @@
   font-weight: 900;
   font-family: 'Lato', sans-serif;
   &__logo-container {
-    display: flex;
-    justify-content: center;
     width: 100%;
     border-bottom: dotted 0.1rem #646464;
     padding: 1.6rem 0;
@@ -75,9 +76,6 @@
     padding: 0 15%;
     &__logo {
       width: 18rem;
-    }
-    &__nav {
-      grid-template-columns: repeat(3, 1fr);
     }
   }
 }
