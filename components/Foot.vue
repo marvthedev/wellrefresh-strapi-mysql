@@ -1,23 +1,28 @@
 <template>
   <footer class="footer">
-    <img
-      src="~/assets/img/wellrefresh-logo-txt.svg"
-      alt="Wellrefresh"
-      class="footer__logo"
-    />
-    <div class="footer__nav">
-      <ul class="footer__nav-row-1">
-        <li>About Us</li>
-        <li>Advertise</li>
-        <li>Write For Us</li>
-        <li>Contact</li>
-      </ul>
-      <ul class="footer__nav-row-1">
-        <li>Weight Loss</li>
-        <li>Fitness</li>
-        <li>Build Muscle</li>
-      </ul>
+    <div class="footer__logo-container">
+      <img
+        src="~/assets/img/wellrefresh-logo-txt.svg"
+        alt="Wellrefresh"
+        class="footer__logo"
+      />
     </div>
+    <div class="footer-mid">
+      <div class="footer__nav">
+        <ul class="footer__nav-row-1">
+          <li>About Us</li>
+          <li>Advertise</li>
+          <li>Write For Us</li>
+          <li>Contact</li>
+        </ul>
+        <ul class="footer__nav-row-2">
+          <li>Weight Loss</li>
+          <li>Fitness</li>
+          <li>Build Muscle</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-copyright">Ⓒ 2021 Wellrefresh - All rights reserved</div>
   </footer>
 </template>
 
@@ -27,30 +32,47 @@
   display: flex;
   flex-direction: column;
   background: #26262a;
+  color: #787878;
+  font-size: 1.4rem;
+  font-weight: 900;
+  font-family: 'Lato', sans-serif;
+  &__logo-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border-bottom: dotted 0.1rem #646464;
+    padding: 1.6rem 0;
+  }
   &__logo {
-    margin-top: 2rem;
     height: auto;
-    width: 15rem;
+    width: 14rem;
+  }
+  &-mid {
+    border-bottom: dotted 0.1rem #646464;
+    padding: 1.6rem 0;
   }
   &__nav {
-    display: grid;
-    margin-top: 3rem;
-    color: #787878;
-    font-size: 1.4rem;
-    font-weight: 900;
-    font-family: 'Lato', sans-serif;
+    display: flex;
+    justify-content: center;
     & ul {
       list-style: none;
+      margin: 0 2rem;
       & li {
         padding: 0.5rem;
       }
     }
   }
+  &-copyright {
+    display: flex;
+    justify-content: center;
+    padding: 1.6rem 0;
+    font-size: 1.2rem;
+  }
 }
 
 @media (min-width: 1248px) {
   .footer {
-    padding: 2rem 20%;
+    padding: 0 15%;
     &__logo {
       width: 18rem;
     }
