@@ -31,7 +31,6 @@
   position: static;
   bottom: 0;
   left: 0;
-  width: 100%;
   padding: 0 6%;
   display: flex;
   flex-direction: column;
@@ -49,8 +48,8 @@
     padding: 1.6rem 0;
   }
   &__logo {
-    height: auto;
-    width: 14rem;
+    height: 2rem;
+    width: auto;
   }
   &-mid {
     width: 100%;
@@ -80,7 +79,7 @@
   .footer {
     padding: 0 15%;
     &__logo {
-      width: 18rem;
+      height: 2.4rem;
     }
   }
 }
