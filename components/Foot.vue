@@ -31,9 +31,11 @@
   position: static;
   bottom: 0;
   left: 0;
+  width: 100%;
   padding: 0 6%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   background: #26262a;
   color: #787878;
   font-size: 1.4rem;
@@ -42,7 +44,7 @@
   &__logo-container {
     display: flex;
     justify-content: center;
-    max-width: 100%;
+    width: 100%;
     border-bottom: dotted 0.1rem #646464;
     padding: 1.6rem 0;
   }
@@ -51,6 +53,7 @@
     width: 14rem;
   }
   &-mid {
+    width: 100%;
     border-bottom: dotted 0.1rem #646464;
     padding: 1.6rem 0;
   }
