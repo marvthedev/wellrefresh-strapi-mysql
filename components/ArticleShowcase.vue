@@ -57,7 +57,7 @@
           v-for="article in smallFeatured"
           :key="article.id"
           :to="{ name: 'articles-slug', params: { slug: article.slug } }"
-          class="card featured-small"
+          class="card"
         >
           <img :src="article.featuredImage.node.sourceUrl" class="card__img" />
           <div
@@ -161,7 +161,6 @@ export default {
   .article-showcase {
     margin-top: 10%;
     flex-direction: row;
-    justify-content: space-between;
     padding: 0 15%;
     &__side {
       display: flex;
@@ -183,12 +182,12 @@ export default {
     grid-auto-rows: minmax(min-content, max-content);
     grid-template-areas:
       'large large medium'
-      'large large medium';
+      'large large medium'
+      'small small small';
   }
 
   .featured-large {
     grid-area: large;
-    min-height: 75%;
     &__txt-container {
       padding: 6%;
     }
@@ -209,11 +208,9 @@ export default {
 
   .featured-small {
     grid-area: small;
-    grid-column: 1 / 4;
-    grid-row: 3 / 4;
     width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
   }
 }
 </style>

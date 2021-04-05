@@ -80,7 +80,7 @@ export default {
   background: #f9f9f9;
   &__title {
     margin-top: 2.8rem;
-    color: $secondary__color;
+    color: $primary__color;
     font-size: 2rem;
   }
 }

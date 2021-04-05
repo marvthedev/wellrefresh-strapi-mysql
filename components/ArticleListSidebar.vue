@@ -53,6 +53,8 @@ export default {
     font-family: $lato;
     text-align: center;
     padding: 1.4rem;
+    color: $primary__color;
+    font-weight: 900;
     &:not(:last-child) {
       border-bottom: 0.1rem solid #d8d8d8;
     }
