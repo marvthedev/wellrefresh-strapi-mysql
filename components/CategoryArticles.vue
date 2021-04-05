@@ -81,7 +81,7 @@ export default {
   &__title {
     margin-top: 2.8rem;
     color: $primary__color;
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 }
 

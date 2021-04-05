@@ -49,7 +49,7 @@ export default {
     width: 100%;
   }
   &__topic-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
     font-family: $lato;
     text-align: center;
     padding: 1.4rem;
