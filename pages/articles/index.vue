@@ -9,29 +9,12 @@
 </template>
 
 <script>
-import articlesQuery from '~/apollo/queries/articles/TestQuery'
-
 export default {
   data() {
     return {
       articles: []
     }
-  },
-
-  apollo: {
-    articles: {
-      prefetch: true,
-      query: articlesQuery,
-      update: (data) => data.categories.nodes
-    }
   }
-  // computed: {
-  //   nutritionCategory() {
-  //     return this.articles.categories.nodes.filter(
-  //       (articles) => articles.name == 'Nutrition'
-  //     )
-  //   }
-  // }
 }
 </script>
 

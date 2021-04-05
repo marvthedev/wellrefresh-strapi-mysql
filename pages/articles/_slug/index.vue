@@ -33,7 +33,7 @@
 
 <script>
 import ArticleQuery from '~/apollo/queries/articles/ArticleQuery'
-import ArticleListSide from '~/components/ArticleListSidebar'
+import ArticleListSide from '~/components/SidebarLatestGrid'
 import SocialHead from '~/components/SocialHead'
 
 export default {
@@ -64,7 +64,7 @@ export default {
 
 <style lang="scss">
 .article {
-  padding: 25% 5% 0 5%;
+  padding: 25% 5% 25% 5%;
   display: flex;
   align-items: center;
   flex-direction: column;
