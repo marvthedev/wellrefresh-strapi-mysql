@@ -40,7 +40,9 @@
   font-weight: 900;
   font-family: 'Lato', sans-serif;
   &__logo-container {
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
     border-bottom: dotted 0.1rem #646464;
     padding: 1.6rem 0;
   }
