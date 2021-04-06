@@ -7,7 +7,11 @@
         class="featured-large card"
         :to="{ name: 'articles-slug', params: { slug: article.slug } }"
       >
-        <img :src="article.featuredImage.node.sourceUrl" class="card__img" />
+        <img
+          :src="article.featuredImage.node.sourceUrl"
+          :srcset="article.featuredImage.node.srcSet"
+          class="card__img"
+        />
         <div
           v-for="category in article.categories.nodes"
           :key="category.id"
@@ -35,6 +39,7 @@
           <img
             v-if="article.featuredImage.node.sourceUrl"
             :src="article.featuredImage.node.sourceUrl"
+            :srcset="article.featuredImage.node.srcSet"
             class="card__img"
           />
           <div
@@ -59,7 +64,11 @@
           :to="{ name: 'articles-slug', params: { slug: article.slug } }"
           class="card"
         >
-          <img :src="article.featuredImage.node.sourceUrl" class="card__img" />
+          <img
+            :src="article.featuredImage.node.sourceUrl"
+            :srcset="article.featuredImage.node.srcSet"
+            class="card__img"
+          />
           <div
             v-for="category in article.categories.nodes"
             :key="category.id"

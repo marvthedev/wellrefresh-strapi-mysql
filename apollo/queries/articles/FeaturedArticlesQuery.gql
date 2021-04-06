@@ -15,6 +15,7 @@ query MyQuery($tag: ID!) {
         featuredImage {
           node {
             sourceUrl
+            srcSet
           }
         }
       }
