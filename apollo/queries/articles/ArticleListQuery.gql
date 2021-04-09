@@ -1,15 +1,9 @@
 query ArticleListQuery {
-  posts {
+  posts (first: 5) {
     nodes {
       title
       slug
       id
-      categories {
-        nodes {
-          name
-          id
-        }
-      }
     }
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <article v-if="!loading" class="article">
+  <div v-if="!loading" class="container">
     <SocialHead
       :pageTitle="article.title"
       :pageDescription="article.seo.metaDesc"
@@ -7,28 +7,36 @@
       :description="article.seo.metaDesc"
       :image="article.featuredImage.node.sourceUrl"
     />
-    <h1 class="article__title">{{ article.title }}</h1>
-    <div class="article-info">
-      <img :src="article.author.node.avatar.url" class="article-info__avatar" />
-      <div class="article-info__author">
-        <span class="article-info__author-head">written by</span>
-
-        <span class="article-info__author-name"
-          >{{ article.author.node.firstName }}
-          {{ article.author.node.lastName }}</span
+    <header class="head">
+      <div class="head-top">
+        <span
+          class="head-top__category card__category"
+          v-for="category in article.categories.nodes"
+          :key="category.id"
+          >{{ category.name }}</span
         >
+        <span class="head-top__date">{{ $formatDate(article.date) }}</span>
       </div>
-      <div class="article-info__date">
-        <span class="article-info__date-head">updated on</span>
-        <span article-info__date-update>{{ $formatDate(article.date) }}</span>
+      <h1 class="head__title">{{ article.title }}</h1>
+      <div class="head__excerpt" v-html="article.excerpt"></div>
+      <div class="head-info">
+        <img :src="article.author.node.avatar.url" class="head-info__avatar" />
+        <div class="head-info__author">
+          <span class="head-info__author-head">written by</span>
+
+          <span class="head-info__author-name"
+            >{{ article.author.node.firstName }}
+            {{ article.author.node.lastName }}</span
+          >
+        </div>
       </div>
-    </div>
-    <img :src="article.featuredImage.node.sourceUrl" class="article__img" />
-    <div class="article__container">
-      <div class="article__content" v-html="article.content"></div>
-      <section class="article__sidebar"><ArticleListSide /></section>
-    </div>
-  </article>
+    </header>
+    <main class="article">
+      <img :src="article.featuredImage.node.sourceUrl" class="article__img" />
+      <article class="article__content" v-html="article.content"></article>
+      <aside class="article__sidebar"><ArticleListSide /></aside>
+    </main>
+  </div>
 </template>
 
 <script>
@@ -63,43 +71,64 @@ export default {
 </script>
 
 <style lang="scss">
-.article {
+.container {
   padding: 25% 5% 25% 5%;
   display: flex;
   align-items: center;
   flex-direction: column;
   width: 100%;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  &-top {
+    &__category {
+      font-size: 1.4rem;
+    }
+    &__date {
+      margin-left: 0.4rem;
+      font-size: 1.4rem;
+      color: #757575;
+    }
+  }
   &__title {
     font-size: 3.4rem;
-    text-align: center;
   }
-
+  &__excerpt {
+    margin-top: 0.6rem;
+    font-size: 1.4rem;
+  }
   &-info {
     display: flex;
     align-items: center;
-    margin-top: 2.4rem;
+    margin-top: 0.8rem;
     font-size: 1.4rem;
     font-weight: 900;
     &__avatar {
-      height: 5.6rem;
+      height: 4rem;
       border-radius: 100%;
     }
-    &__author,
-    &__date {
+    &__author {
       display: flex;
-      flex-direction: column;
-      margin-left: 2rem;
+      margin-left: 1.4rem;
       &-head {
         font-weight: 400;
-        font-size: 1.2rem;
         font-style: italic;
+      }
+      &-name {
+        margin-left: 0.6rem;
       }
     }
   }
+}
 
+.article {
+  margin-top: 2rem;
+  display: grid;
   &__img {
-    margin: 3.2rem 0 1rem 0;
-    max-width: 100%;
+    width: 100%;
     height: auto;
   }
   &__content {
@@ -113,30 +142,51 @@ export default {
 
 //Desktop View
 @media (min-width: 1248px) {
-  .article {
-    padding: 10% 20%;
-    &__container {
-      display: flex;
-      flex-direction: row;
+  .container {
+    padding: 10% 15%;
+  }
+
+  .head {
+    &-top {
+      &__category {
+        font-size: 1.8rem;
+      }
+      &__date {
+        margin-left: 0.4rem;
+        font-size: 1.4rem;
+        color: #757575;
+      }
     }
     &__title {
-      font-size: 8.4rem;
+      font-size: 5.2rem;
     }
+    &__excerpt {
+      width: 75%;
+      font-size: 2rem;
+    }
+  }
+
+  .article {
+    grid-template-columns: 70% AUTO;
+    grid-template-rows: repeat(auto-fit, min-max(25rem, 1fr));
+    grid-template-areas:
+      'img side'
+      'content side';
+    justify-content: center;
     &__img {
-      height: 50rem;
-      width: auto;
+      grid-area: img;
       margin-bottom: 0.8rem;
     }
     &__content {
+      grid-area: content;
       width: 90%;
-      padding: 0 8%;
       font-size: 2rem;
+      width: 100%;
+      max-height: 100%;
     }
     &__sidebar {
-      margin-top: 2.5rem;
-      position: absolute;
-      right: 12%;
-      width: 15%;
+      padding: 0 10%;
+      grid-area: side;
     }
   }
 }

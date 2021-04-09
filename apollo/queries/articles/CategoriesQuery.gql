@@ -1,5 +1,5 @@
 query MyQuery($category: String) {
-  posts(where: {categoryName: $category}) {
+  posts(where: {categoryName: $category}, first: 4) {
     nodes {
       title
       excerpt

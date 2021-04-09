@@ -2,7 +2,7 @@
   <div class="article-showcase">
     <div class="featured-grid">
       <nuxt-link
-        v-for="article in largeFeatured"
+        v-for="article in largeFeatured.slice(0)"
         :key="article.id"
         class="featured-large card"
         :to="{ name: 'articles-slug', params: { slug: article.slug } }"
@@ -31,7 +31,7 @@
 
       <div class="featured-medium">
         <nuxt-link
-          v-for="article in mediumFeatured"
+          v-for="article in mediumFeatured.slice(0, 2)"
           :key="article.id"
           :to="{ name: 'articles-slug', params: { slug: article.slug } }"
           class="card"
@@ -59,7 +59,7 @@
 
       <div class="featured-small">
         <nuxt-link
-          v-for="article in smallFeatured"
+          v-for="article in smallFeatured.slice(0, 2)"
           :key="article.id"
           :to="{ name: 'articles-slug', params: { slug: article.slug } }"
           class="card"

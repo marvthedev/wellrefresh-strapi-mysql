@@ -4,6 +4,11 @@ query Article($slug: ID!) {
     content
     slug
     excerpt
+    categories {
+      nodes {
+        name
+      }
+    }
     author {
       node {
         firstName
