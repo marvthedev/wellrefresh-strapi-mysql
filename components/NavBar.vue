@@ -86,7 +86,6 @@ export default {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    background: white;
     &__scroll {
       background: rgba(255, 255, 255, 0.97);
       box-shadow: 0 3px 4px rgba(0, 0, 0, 0.08);
@@ -196,7 +195,7 @@ export default {
     &__container {
       flex-direction: column;
       justify-content: center;
-      padding: 2rem 0;
+      box-shadow: 0 4px 3px -3px rgba(0, 0, 0, 0.08);
       &__scroll {
         flex-direction: row;
         padding: 1.6rem 8%;
