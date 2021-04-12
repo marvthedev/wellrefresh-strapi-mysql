@@ -1,143 +1,69 @@
 <template>
-  <article v-if="!loading" class="article">
-    <SocialHead
-      :pageTitle="article.title"
-      :pageDescription="article.seo.metaDesc"
-      :title="article.seo.title"
-      :description="article.seo.metaDesc"
-      :image="article.featuredImage.node.sourceUrl"
-    />
-    <h1 class="article__title">{{ article.title }}</h1>
-    <div class="article-info">
-      <img :src="article.author.node.avatar.url" class="article-info__avatar" />
-      <div class="article-info__author">
-        <span class="article-info__author-head">written by</span>
-
-        <span class="article-info__author-name"
-          >{{ article.author.node.firstName }}
-          {{ article.author.node.lastName }}</span
-        >
-      </div>
-      <div class="article-info__date">
-        <span class="article-info__date-head">updated on</span>
-        <span article-info__date-update>{{ $formatDate(article.date) }}</span>
-      </div>
+  <div class="grid">
+    <div class="grid__item">
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry. Lorem Ipsum has been the industry's standard dummy text ever
+        since the 1500s, when an unknown printer took a galley of type and
+        scrambled it to make a type specimen book. It has survived not only five
+        centuries, but also the leap into electronic typesetting, remaining
+        essentially unchanged. It was popularised in the 1960s with the release
+        of Letraset sheets containing Lorem Ipsum passages, and more recently
+        with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum.
+      </p>
     </div>
-    <img :src="article.featuredImage.node.sourceUrl" class="article__img" />
-    <div class="article__container">
-      <div class="article__content" v-html="article.content"></div>
-      <section class="article__sidebar"><ArticleListSide /></section>
+    <div class="grid__item">
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry. Lorem Ipsum has been the industry's standard dummy text ever
+        since the 1500s, when an unknown printer took a galley of type and
+        scrambled it to make a type specimen book. It has survived not only five
+        centuries, but also the leap into electronic typesetting, remaining
+        essentially unchanged. It was popularised in the 1960s with the release
+        of Letraset sheets containing Lorem Ipsum passages, and more recently
+        with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum.
+      </p>
     </div>
-  </article>
+    <div class="grid__item">
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry. Lorem Ipsum has been the industry's standard dummy text ever
+        since the 1500s, when an unknown printer took a galley of type and
+        scrambled it to make a type specimen book. It has survived not only five
+        centuries, but also the leap into electronic typesetting, remaining
+        essentially unchanged. It was popularised in the 1960s with the release
+        of Letraset sheets containing Lorem Ipsum passages, and more recently
+        with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum.
+      </p>
+    </div>
+    <div class="grid__item">
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry. Lorem Ipsum has been the industry's standard dummy text ever
+        since the 1500s, when an unknown printer took a galley of type and
+        scrambled it to make a type specimen book. It has survived not only five
+        centuries, but also the leap into electronic typesetting, remaining
+        essentially unchanged. It was popularised in the 1960s with the release
+        of Letraset sheets containing Lorem Ipsum passages, and more recently
+        with desktop publishing software like Aldus PageMaker including versions
+        of Lorem Ipsum.
+      </p>
+    </div>
+  </div>
 </template>
 
-<script>
-import ArticleQuery from '~/apollo/queries/articles/ArticleQuery'
-import ArticleListSide from '~/components/SidebarLatestGrid'
-import SocialHead from '~/components/SocialHead'
-
-export default {
-  components: {
-    ArticleListSide,
-    SocialHead
-  },
-
-  data() {
-    return {
-      loading: 0,
-      article: []
-    }
-  },
-
-  apollo: {
-    article: {
-      prefetch: true,
-      query: ArticleQuery,
-      variables() {
-        return { slug: this.$route.params.slug }
-      },
-      update: (data) => data.post
-    }
-  }
-}
-</script>
-
-<style lang="scss">
-.article {
-  padding: 25% 5% 25% 5%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-  &__title {
-    font-size: 3.4rem;
-    text-align: center;
-  }
-
-  &-info {
-    display: flex;
-    align-items: center;
-    margin-top: 2.4rem;
-    font-size: 1.4rem;
-    font-weight: 900;
-    &__avatar {
-      height: 5.6rem;
-      border-radius: 100%;
-    }
-    &__author,
-    &__date {
-      display: flex;
-      flex-direction: column;
-      margin-left: 2rem;
-      &-head {
-        font-weight: 400;
-        font-size: 1.2rem;
-        font-style: italic;
-      }
-    }
-  }
-
-  &__img {
-    margin: 3.2rem 0 1rem 0;
-    max-width: 100%;
-    height: auto;
-  }
-  &__content {
-    font-size: 1.8rem;
-    & p {
-      margin-top: 2rem;
-      line-height: 1.7;
-    }
-  }
-}
-
-//Desktop View
-@media (min-width: 1248px) {
-  .article {
-    padding: 10% 10%;
-    &__container {
-      display: flex;
-      flex-direction: row;
-    }
-    &__title {
-      font-size: 8.4rem;
-    }
-    &__img {
-      height: 50rem;
-      width: auto;
-      margin-bottom: 0.8rem;
-    }
-    &__content {
-      width: 90%;
-      padding: 0 8%;
-      font-size: 2rem;
-    }
-    &__sidebar {
-      margin-top: 2.5rem;
-      position: absolute;
-      right: 12%;
-      width: 20%;
-    }
+<style lang="scss" scoped>
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax());
+  margin: 10% 0;
+  &__item {
+    border: 1px solid #e7ebfb;
+    border-radius: 1rem;
+    box-shadow: 0px 1.6rem 2rem -2.2rem rgba(0, 0, 0, 0.48);
   }
 }
 </style>

@@ -86,6 +86,9 @@ export default {
 }
 
 .weight-loss {
+  grid-template-columns: repeat(auto-fit, minmax(250px, auto));
+
+  column-gap: 1rem;
   margin: 4rem 0;
   display: grid;
   row-gap: 3.2rem;
@@ -102,10 +105,6 @@ export default {
     &__title {
       margin-top: 2.8rem;
     }
-  }
-  .weight-loss {
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 1rem;
   }
 }
 </style>

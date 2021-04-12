@@ -7,6 +7,7 @@ query Article($slug: ID!) {
     categories {
       nodes {
         name
+        id
       }
     }
     author {

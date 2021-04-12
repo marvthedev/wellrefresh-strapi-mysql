@@ -5,19 +5,19 @@
       description="A Health and Wellness website aiming to help people with dieting, weight loss, and fitness."
       :image="baseURL + '/twitter-seo-card.png'"
     />
-    <ArticleShowcase />
+    <FeaturedArticlesGrid />
     <CategoryArticles />
   </div>
 </template>
 
 <script>
-import ArticleShowcase from '~/components/ArticleShowcase'
+import FeaturedArticlesGrid from '~/components/FeaturedArticlesGrid'
 import CategoryArticles from '~/components/CategoryArticles'
 import SocialHead from '~/components/SocialHead'
 
 export default {
   components: {
-    ArticleShowcase,
+    FeaturedArticlesGrid,
     CategoryArticles,
     SocialHead
   },
