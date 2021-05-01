@@ -79,9 +79,12 @@ export default {
     },
     defaultOptions: {
       $query: {
-        loadingKey: 'loading'
+        fetchPolicy: 'network-only',
+        errorPolicy: 'all'
       }
-    }
+    },
+    watchLoading: '@/apollo/loadingHandler.js',
+    errorHandler: '@/apollo/errorHandler.js'
   },
 
   env: {

@@ -1,17 +1,15 @@
-query MyQuery($category: String) {
-  posts(where: {categoryName: $category}, first: 4) {
+query CategoriesQuery ($category: String) {
+  posts(where: {categoryName: $category}, first: 6) {
     nodes {
       title
       excerpt
       slug
       id
       categories {
-        edges {
-          node {
+          nodes {
             name
             id
           }
-        }
       }
       featuredImage {
         node {

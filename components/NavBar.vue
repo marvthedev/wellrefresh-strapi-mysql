@@ -29,7 +29,7 @@
           >Home</nuxt-link
         >
         <nuxt-link to="/about" class="nav__links-item">About</nuxt-link>
-        <nuxt-link to="/orthotics" class="nav__links-item"
+        <nuxt-link to="/weight-loss" class="nav__links-item"
           >Weight Loss</nuxt-link
         >
         <nuxt-link to="/contact" class="nav__links-item">Contact</nuxt-link>
@@ -43,7 +43,9 @@
       @click="menuOpened = !menuOpened"
     >
       <nuxt-link to="/" class="nav__menu-item">Home</nuxt-link>
-      <nuxt-link to="/orthotics" class="nav__menu-item">Weight Loss</nuxt-link>
+      <nuxt-link to="/weight-loss" class="nav__menu-item"
+        >Weight Loss</nuxt-link
+      >
       <nuxt-link to="/contact" class="nav__menu-item">Fitness</nuxt-link>
     </div>
   </nav>
@@ -204,7 +206,7 @@ export default {
     }
     &__logo {
       &-img {
-        height: 3rem;
+        height: 2.4rem;
         width: auto;
       }
       &__img__scroll {

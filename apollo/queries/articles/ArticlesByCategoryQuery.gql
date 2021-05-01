@@ -1,0 +1,25 @@
+query MyQuery($category: ID!, $cursor: String) {
+  category (id: $category, idType: NAME) {
+    posts (before: $cursor) {
+      edges {
+        cursor
+        node {
+          slug
+          id
+          title
+          featuredImage {
+            node {
+              sourceUrl
+              altText
+            }
+          }
+        }
+      }
+      pageInfo {
+        startCursor
+      }
+    }
+    name
+    id
+  }
+}

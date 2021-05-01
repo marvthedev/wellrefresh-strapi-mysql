@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import FeaturedArticlesGrid from '~/components/FeaturedArticlesGrid'
-import CategoryArticles from '~/components/CategoryArticles'
+import FeaturedArticlesGrid from '~/components/Home/FeaturedArticlesGrid'
+import CategoryArticles from '~/components/Home/CategoryArticles'
 import SocialHead from '~/components/SocialHead'
 
 export default {
