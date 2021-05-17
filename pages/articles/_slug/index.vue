@@ -1,10 +1,10 @@
 <template>
   <div class="container">
-    <template v-if="$apollo.queries.article.loading">loading...</template>
+    <template v-if="$apollo.queries.article.loading"><LoadingRing /></template>
     <template v-else>
       <SocialHead
-        :pageTitle="article.title"
-        :pageDescription="article.seo.metaDesc"
+        :page-title="article.title"
+        :page-description="article.seo.metaDesc"
         :title="article.seo.title"
         :description="article.seo.metaDesc"
         :image="article.featuredImage.node.sourceUrl"
@@ -49,11 +49,13 @@
 import ArticleQuery from '~/apollo/queries/articles/ArticleQuery'
 import ArticleListSide from '~/components/SidebarLatestGrid'
 import SocialHead from '~/components/SocialHead'
+import LoadingRing from '~/components/LoadingRing'
 
 export default {
   components: {
     ArticleListSide,
-    SocialHead
+    SocialHead,
+    LoadingRing
   },
 
   data() {
@@ -194,6 +196,43 @@ export default {
       padding: 0 10%;
       grid-area: side;
     }
+  }
+}
+
+//Loading ring animation
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: $secondary__color transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 </style>

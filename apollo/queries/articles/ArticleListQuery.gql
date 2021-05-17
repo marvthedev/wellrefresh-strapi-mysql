@@ -1,9 +1,16 @@
-query ArticleListQuery {
-  posts (first: 5) {
-    nodes {
-      title
-      slug
-      id
+query ArticleListQuery($first: Int!, $after: String) {
+  posts (first: $first, after: $after) {
+    edges {
+      cursor
+      node {
+        title
+        slug
+      }
+    }
+    pageInfo {
+      total
+      endCursor
+      hasNextPage
     }
   }
 }

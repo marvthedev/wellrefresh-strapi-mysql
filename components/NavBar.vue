@@ -28,7 +28,7 @@
         <nuxt-link to="/" class="nav__links-item nav__links-item-home"
           >Home</nuxt-link
         >
-        <nuxt-link to="/about" class="nav__links-item">About</nuxt-link>
+        <nuxt-link to="/articles" class="nav__links-item">Articles</nuxt-link>
         <nuxt-link to="/weight-loss" class="nav__links-item"
           >Weight Loss</nuxt-link
         >

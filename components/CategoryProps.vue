@@ -1,37 +1,38 @@
 <template>
   <div class="category-articles">
-    <template v-if="$apollo.queries.category.loading">loading...</template>
+    <template v-if="$apollo.queries.category.loading" class="loading"
+      ><div class="loading"><LoadingRing /></div
+    ></template>
     <template v-else>
       <h1 class="category-articles__title">{{ category.name }}</h1>
-      <Pagination>
-        <div class="category-articles__grid">
-          <div
-            v-for="article in category.posts.edges"
-            :key="article.node.id"
-            class="card"
-          >
-            <img
-              :src="article.node.featuredImage.node.sourceUrl"
-              :alt="article.node.featuredImage.node.altText"
-              class="card__img"
-            />
-            <div class="card__txt-container">
-              <h2 class="card__title">{{ article.node.title }}</h2>
-            </div>
+      <div class="category-articles__grid">
+        <div
+          v-for="article in category.posts.nodes"
+          :key="article.id"
+          class="card"
+        >
+          <img
+            :src="article.featuredImage.node.sourceUrl"
+            :alt="article.featuredImage.node.altText"
+            class="card__img"
+          />
+          <div class="card__txt-container">
+            <h2 class="card__title">{{ article.title }}</h2>
           </div>
         </div>
-      </Pagination>
+      </div>
+      <button v-if="showMoreEnabled" @click="showMore">Show more</button>
     </template>
   </div>
 </template>
 
 <script>
 import ArticlesByCategoryQuery from '~/apollo/queries/articles/ArticlesByCategoryQuery'
-import Pagination from '~/components/Pagination'
+import LoadingRing from '~/components/LoadingRing'
 
 export default {
   components: {
-    Pagination
+    LoadingRing
   },
 
   props: {
@@ -43,7 +44,9 @@ export default {
 
   data() {
     return {
-      category: []
+      category: {},
+      postQuantity: 3,
+      showMoreEnabled: true
     }
   },
 
@@ -52,14 +55,62 @@ export default {
       prefetch: true,
       query: ArticlesByCategoryQuery,
       variables() {
-        return { category: this.chosenCategory }
-      }
+        return {
+          category: this.chosenCategory,
+          first: 3,
+          after: null
+        }
+      },
+      notifyOnNetworkStatusChange: true
+    }
+  },
+
+  methods: {
+    showMore() {
+      this.$apollo.queries.category.fetchMore({
+        variables: {
+          category: this.chosenCategory,
+          first: this.postQuantity,
+          after: this.category.posts.pageInfo.endCursor
+        },
+        notifyOnNetworkStatusChange: true,
+
+        updateQuery: (existing, { fetchMoreResult }) => {
+          const hasMore = fetchMoreResult.category.posts.pageInfo.hasNextPage
+
+          this.showMoreEnabled = hasMore
+
+          console.log(this.category.posts.pageInfo.endCursor)
+          console.log(fetchMoreResult.category.posts.pageInfo)
+
+          return {
+            ...existing,
+            category: {
+              ...existing.category,
+              // Update the cursor
+              after: fetchMoreResult.category.posts.pageInfo.endCursor,
+              // Combine incoming posts to existing posts
+              posts: [
+                ...existing.category.posts.nodes,
+                ...fetchMoreResult.category.posts.nodes
+              ],
+              hasMore
+            }
+          }
+        }
+      })
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+//Center loading ring
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .category-articles {
   margin: 20% 0;
   display: flex;

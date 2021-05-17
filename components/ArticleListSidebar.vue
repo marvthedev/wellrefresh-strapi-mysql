@@ -2,12 +2,12 @@
   <div class="articles-side">
     <h2 class="articles-side__title">Latest Topics</h2>
     <nuxt-link
-      v-for="article in articles"
-      :key="article.slug"
-      :to="{ name: 'articles-slug', params: { slug: article.slug } }"
+      v-for="article in articles.edges"
+      :key="article.node.slug"
+      :to="{ name: 'articles-slug', params: { slug: article.node.slug } }"
       class="articles-side__list"
     >
-      <div class="articles-side__topic-title">{{ article.title }}</div>
+      <div class="articles-side__topic-title">{{ article.node.title }}</div>
     </nuxt-link>
   </div>
 </template>
@@ -18,7 +18,7 @@ import ArticleListQuery from '~/apollo/queries/articles/ArticleListQuery'
 export default {
   data() {
     return {
-      articles: ''
+      articles: {}
     }
   },
 
@@ -26,7 +26,13 @@ export default {
     articles: {
       prefetch: true,
       query: ArticleListQuery,
-      update: (data) => data.posts.nodes
+      update: (data) => data.posts,
+      variables() {
+        return {
+          first: 5,
+          after: null
+        }
+      }
     }
   }
 }

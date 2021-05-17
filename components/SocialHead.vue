@@ -8,10 +8,12 @@
 export default {
   props: {
     pageTitle: {
-      type: String
+      type: String,
+      default: ''
     },
     pageDescription: {
-      type: String
+      type: String,
+      default: 'Wellrefresh'
     },
     title: {
       type: String,

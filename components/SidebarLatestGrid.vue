@@ -47,6 +47,7 @@ export default {
   gap: 1.6rem;
   &__title {
     font-size: 2.2rem;
+    margin-bottom: 1rem;
   }
   &-item {
     display: flex;
@@ -77,11 +78,11 @@ export default {
       box-shadow: none;
       &__img {
         height: auto;
-        width: 8rem;
+        width: 6rem;
         border-radius: 0;
       }
       &__title {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
         font-weight: 400;
         margin: 0 0 0 1rem;
         padding: 0;

@@ -21,6 +21,7 @@ export default {
     CategoryArticles,
     SocialHead
   },
+
   data() {
     return {
       baseURL: process.env.BASE_URL

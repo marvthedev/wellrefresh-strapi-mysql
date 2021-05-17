@@ -89,5 +89,10 @@ export default {
 
   env: {
     baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+  },
+
+  loading: {
+    color: 'blue',
+    height: '5px'
   }
 }

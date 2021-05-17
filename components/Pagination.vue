@@ -1,42 +1,79 @@
 <template>
   <div class="pagination">
-    <slot />
-    <div>
-      <div class="pagination__container">
-        <button class="pagination__btn">Previous</button>
-        <span
-          v-for="(item, index) in new Array(9)"
-          :key="index"
-          class="pagination__row"
-        >
-          <button class="pagination__btn">{{ index + 1 }}</button>
-        </span>
-        <button class="pagination__btn">Next</button>
-      </div>
-    </div>
+    <a v-if="hasPreviousPage" @click="paginate(-1)" class="prev"
+      >← Previous Page</a
+    >
+    <a v-if="hasNextPage" @click="paginate(+1)" class="next">Next Page →</a>
   </div>
 </template>
 
-<style lang="scss" scoped>
-.pagination {
-  display: flex;
-  flex-direction: column;
-  &__container {
-    margin-top: 4rem;
-    display: flex;
-    justify-content: center;
-  }
-  &__btn {
-    padding: 0.8rem 1rem;
-    margin: 0.4rem;
-    border-radius: 0.3rem;
-    font-size: 1.4rem;
-    cursor: pointer;
-    background: $primary__color;
-    color: white;
-    &:hover {
-      background: $secondary__color;
+<script>
+export default {
+  name: 'Pagination',
+  data() {
+    return {
+      firstStartCursor: this.posts.data.posts.pageInfo.startCursor,
+      hasNextPage: this.posts.data.posts.pageInfo.hasNextPage,
+      hasPreviousPage: false,
+      first: null,
+      last: null,
+      startCursor: null,
+      endCursor: null
+    }
+  },
+  props: {
+    posts: {
+      type: Object
+    },
+    postsQuery: {
+      type: Object
+    },
+    limit: {
+      type: Number
+    },
+    where: {
+      type: Object
+    }
+  },
+  methods: {
+    async paginate(i) {
+      if (i < 0) {
+        this.first = null
+        this.last = this.limit
+        this.startCursor = this.posts.data.posts.pageInfo.startCursor
+        this.endCursor = null
+      } else if (i > 0) {
+        this.first = this.limit
+        this.last = null
+        this.startCursor = null
+        this.endCursor = this.posts.data.posts.pageInfo.endCursor
+      }
+      await this.$apolloProvider.defaultClient
+        .query({
+          query: this.postsQuery,
+          variables: {
+            first: this.first,
+            last: this.last,
+            endCursor: this.endCursor,
+            startCursor: this.startCursor,
+            where: this.where
+          }
+        })
+        .then((posts) => {
+          this.$emit('updatePosts', posts)
+          if (i < 0) {
+            this.hasNextPage = true
+            this.hasPreviousPage =
+              this.firstStartCursor == posts.data.posts.pageInfo.startCursor
+                ? false
+                : true
+          } else {
+            this.hasPreviousPage = true
+            this.hasNextPage = posts.data.posts.pageInfo.hasNextPage
+          }
+        })
+      window.scroll({ top: 0, left: 0, behavior: 'smooth' })
     }
   }
 }
-</style>
+</script>

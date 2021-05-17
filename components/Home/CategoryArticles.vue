@@ -1,34 +1,37 @@
 <template>
   <div class="categories">
-    <h2 class="categories__title">Weight Loss</h2>
-    <div class="categories__grid">
-      <div v-for="article in weightLoss" :key="article.id" class="card">
-        <img
-          :src="article.featuredImage.node.sourceUrl"
-          :alt="article.title"
-          class="card__img"
-        />
-        <div class="card__txt-container">
-          <h2 class="card__title">
-            {{ article.title }}
-          </h2>
+    <template v-if="$apollo.loading"><div></div></template>
+    <template v-else>
+      <h2 class="categories__title">Weight Loss</h2>
+      <div class="categories__grid">
+        <div v-for="article in weightLoss" :key="article.id" class="card">
+          <img
+            :src="article.featuredImage.node.sourceUrl"
+            :alt="article.title"
+            class="card__img"
+          />
+          <div class="card__txt-container">
+            <h2 class="card__title">
+              {{ article.title }}
+            </h2>
+          </div>
         </div>
       </div>
-    </div>
 
-    <h2 class="categories__title">Fitness</h2>
-    <div class="categories__grid">
-      <div v-for="article in fitness" :key="article.id" class="card">
-        <img
-          :src="article.featuredImage.node.sourceUrl"
-          :alt="article.title"
-          class="card__img"
-        />
-        <div class="card__txt-container">
-          <h2 class="card__title">{{ article.title }}</h2>
+      <h2 class="categories__title">Fitness</h2>
+      <div class="categories__grid">
+        <div v-for="article in fitness" :key="article.id" class="card">
+          <img
+            :src="article.featuredImage.node.sourceUrl"
+            :alt="article.title"
+            class="card__img"
+          />
+          <div class="card__txt-container">
+            <h2 class="card__title">{{ article.title }}</h2>
+          </div>
         </div>
       </div>
-    </div>
+    </template>
   </div>
 </template>
 

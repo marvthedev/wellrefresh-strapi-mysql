@@ -1,9 +1,7 @@
-query MyQuery($category: ID!, $cursor: String) {
-  category (id: $category, idType: NAME) {
-    posts (before: $cursor) {
-      edges {
-        cursor
-        node {
+query MyQuery($category: ID!, $first: Int!, $after: String) {
+  category(id: $category, idType: NAME) {
+    posts(first: $first, after: $after) {
+        nodes {
           slug
           id
           title
@@ -14,9 +12,9 @@ query MyQuery($category: ID!, $cursor: String) {
             }
           }
         }
-      }
       pageInfo {
-        startCursor
+        endCursor
+        hasNextPage
       }
     }
     name
