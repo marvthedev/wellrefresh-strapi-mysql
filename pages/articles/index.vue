@@ -4,13 +4,31 @@
       <LoadingRing />
     </template>
     <template v-else>
-      <div
-        v-for="article in articles.edges"
-        :key="article.node.id"
-        class="card"
-      >
-        <h1 class="card__title">{{ article.node.title }}</h1>
-      </div>
+      <section class="articles__grid">
+        <div
+          v-for="article in articles.edges"
+          :key="article.node.id"
+          class="card"
+        >
+          <img
+            :src="article.node.featuredImage.node.sourceUrl"
+            :alt="article.node.featuredImage.node.altText"
+            class="card__img"
+          />
+          <div
+            class="card__txt-container"
+            v-for="category in article.node.categories.edges"
+            :key="category.node.id"
+          >
+            <div class="card__category-container">
+              <div class="card__category">
+                {{ category.node.name }}
+              </div>
+            </div>
+            <h1 class="card__title">{{ article.node.title }}</h1>
+          </div>
+        </div>
+      </section>
       <button
         v-if="articleCount < articles.pageInfo.total && showMoreAvailable"
         @click="loadMore"
@@ -90,9 +108,14 @@ export default {
 
 <style lang="scss" scoped>
 .articles {
-  margin: 20rem 0;
+  margin: 25% 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 2%;
+  &__grid {
+    display: grid;
+    row-gap: 1.8rem;
+  }
 }
 </style>
