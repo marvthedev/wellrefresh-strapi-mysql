@@ -112,16 +112,14 @@ export default {
   align-items: center;
 }
 .category-articles {
-  margin: 20% 0;
   display: flex;
   flex-direction: column;
   padding: 0 2.5%;
   &__title {
-    font-size: 3.6rem;
-    color: $primary__color;
+    font-size: 2.2rem;
   }
   &__grid {
-    margin-top: 3.6rem;
+    margin-top: 1.6rem;
     display: grid;
     gap: 1.6rem;
     grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));

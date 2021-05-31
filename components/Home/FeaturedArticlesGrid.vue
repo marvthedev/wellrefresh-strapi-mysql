@@ -9,11 +9,7 @@
           class="featured-large card"
           :to="{ name: 'articles-slug', params: { slug: article.slug } }"
         >
-          <img
-            :src="article.featuredImage.node.sourceUrl"
-            :srcset="article.featuredImage.node.srcSet"
-            class="card__img"
-          />
+          <img :src="article.featuredImage.node.sourceUrl" class="card__img" />
           <div
             v-for="category in article.categories.nodes"
             :key="category.id"
@@ -40,7 +36,6 @@
           <img
             v-if="article.featuredImage.node.sourceUrl"
             :src="article.featuredImage.node.sourceUrl"
-            :srcset="article.featuredImage.node.srcSet"
             class="card__img"
           />
           <div
@@ -111,12 +106,11 @@ export default {
 .featured-articles {
   display: flex;
   flex-direction: column;
-  margin-top: 20%;
   justify-content: center;
   padding: 0 2.5%;
   &__grid {
     display: grid;
-    gap: 1rem;
+    gap: 1.6rem;
   }
 }
 .featured-large {
@@ -132,7 +126,6 @@ export default {
 //Tablet View
 @media (min-width: 768px) {
   .featured-articles {
-    margin-top: 12%;
     &__grid {
       width: 100%;
       grid-template-columns: repeat(3, 1fr);

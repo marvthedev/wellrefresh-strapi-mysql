@@ -30,7 +30,7 @@ export default {
       variables() {
         return {
           first: 5,
-          after: null
+          start: null
         }
       }
     }

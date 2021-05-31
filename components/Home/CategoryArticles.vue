@@ -83,20 +83,17 @@ export default {
   display: flex;
   flex-direction: column;
   padding: 0 2.5%;
-  background: #f9f9f9;
   &__title {
-    margin-top: 2.8rem;
-    color: $primary__color;
     font-size: 2.2rem;
   }
 }
 
 .categories__grid {
   grid-template-columns: repeat(auto-fit, minmax(30rem, auto));
-  column-gap: 1rem;
-  margin: 4rem 0;
+  gap: 1.6rem;
+  margin-top: 1.6rem;
   display: grid;
-  row-gap: 3.2rem;
+
   &__title {
     font-size: 2.2rem;
   }

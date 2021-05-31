@@ -1,6 +1,8 @@
 <template>
   <div>
-    <NavBar />
+    <div class="layout">
+      <NavBar />
+    </div>
     <Nuxt />
     <Foot />
   </div>
@@ -19,6 +21,13 @@ export default {
 </script>
 
 <style lang="scss">
+.layout {
+  margin-bottom: 25%;
+  @media (min-width: 1248px) {
+    margin-bottom: 10%;
+  }
+}
+
 html {
   font-family: 'PT Serif', serif;
   font-size: 62.5%;
