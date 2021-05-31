@@ -121,7 +121,7 @@ export default {
     align-items: center;
     width: 3.5rem;
     height: 3.5rem;
-    background: $primary__color;
+    background: $secondary__color;
     border-radius: 0.25rem;
     cursor: pointer;
     &-bar,

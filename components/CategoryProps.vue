@@ -119,7 +119,7 @@ export default {
     font-size: 2.2rem;
   }
   &__grid {
-    margin-top: 1.6rem;
+    margin-top: 2rem;
     display: grid;
     gap: 1.6rem;
     grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));

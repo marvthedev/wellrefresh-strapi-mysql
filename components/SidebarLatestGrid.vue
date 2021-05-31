@@ -47,6 +47,7 @@ export default {
   gap: 1.6rem;
   &__title {
     font-size: 2.2rem;
+    margin-bottom: 0.8rem;
   }
   &-item {
     display: flex;

@@ -91,7 +91,7 @@ export default {
 .categories__grid {
   grid-template-columns: repeat(auto-fit, minmax(30rem, auto));
   gap: 1.6rem;
-  margin-top: 1.6rem;
+  margin-top: 2rem;
   display: grid;
 
   &__title {
