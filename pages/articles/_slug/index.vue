@@ -150,7 +150,7 @@ export default {
 //Desktop View
 @media (min-width: 1248px) {
   .container {
-    padding: 10% 15%;
+    padding: 0 15%;
   }
 
   .head {
@@ -165,8 +165,8 @@ export default {
       }
     }
     &__title {
-      width: 90%;
-      font-size: 5.2rem;
+      width: 96%;
+      font-size: 5.4rem;
     }
     &__excerpt {
       width: 75%;

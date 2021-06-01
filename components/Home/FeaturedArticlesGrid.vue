@@ -1,61 +1,58 @@
 <template>
   <div class="featured-articles">
-    <template v-if="$apollo.queries.largeFeatured.loading"></template>
-    <template v-else>
-      <div class="featured-articles__grid">
-        <nuxt-link
-          v-for="article in largeFeatured.slice(0)"
-          :key="article.id"
-          class="featured-large card"
-          :to="{ name: 'articles-slug', params: { slug: article.slug } }"
+    <div class="featured-articles__grid">
+      <nuxt-link
+        v-for="article in largeFeatured.slice(0)"
+        :key="article.id"
+        class="featured-large card"
+        :to="{ name: 'articles-slug', params: { slug: article.slug } }"
+      >
+        <img :src="article.featuredImage.node.sourceUrl" class="card__img" />
+        <div
+          v-for="category in article.categories.nodes"
+          :key="category.id"
+          class="card__txt-container featured-large__txt-container"
         >
-          <img :src="article.featuredImage.node.sourceUrl" class="card__img" />
-          <div
-            v-for="category in article.categories.nodes"
-            :key="category.id"
-            class="card__txt-container featured-large__txt-container"
-          >
-            <div class="card__category-container">
-              <div class="featured-large__category card__category">
-                {{ category.name }}
-              </div>
+          <div class="card__category-container">
+            <div class="featured-large__category card__category">
+              {{ category.name }}
             </div>
-            <h2 class="card__title featured-large__title">
-              {{ article.title }}
-            </h2>
-            <div class="featured-large__excerpt" v-html="article.excerpt"></div>
           </div>
-        </nuxt-link>
+          <h2 class="card__title featured-large__title">
+            {{ article.title }}
+          </h2>
+          <div class="featured-large__excerpt" v-html="article.excerpt"></div>
+        </div>
+      </nuxt-link>
 
-        <nuxt-link
-          v-for="article in featured"
-          :key="article.id"
-          :to="{ name: 'articles-slug', params: { slug: article.slug } }"
-          class="card featured-reg"
+      <nuxt-link
+        v-for="article in featured"
+        :key="article.id"
+        :to="{ name: 'articles-slug', params: { slug: article.slug } }"
+        class="card featured-reg"
+      >
+        <img
+          v-if="article.featuredImage.node.sourceUrl"
+          :src="article.featuredImage.node.sourceUrl"
+          class="card__img"
+        />
+        <div
+          v-for="category in article.categories.nodes"
+          :key="category.id"
+          class="card__txt-container"
         >
-          <img
-            v-if="article.featuredImage.node.sourceUrl"
-            :src="article.featuredImage.node.sourceUrl"
-            class="card__img"
-          />
-          <div
-            v-for="category in article.categories.nodes"
-            :key="category.id"
-            class="card__txt-container"
-          >
-            <div class="card__category-container">
-              <span class="card__category">{{ category.name }}</span>
-            </div>
-            <h2 class="card__title">
-              {{ article.title }}
-            </h2>
+          <div class="card__category-container">
+            <span class="card__category">{{ category.name }}</span>
           </div>
-        </nuxt-link>
-      </div>
-      <div class="featured-articles__side">
-        <ArticleListSide />
-      </div>
-    </template>
+          <h2 class="card__title">
+            {{ article.title }}
+          </h2>
+        </div>
+      </nuxt-link>
+    </div>
+    <div class="featured-articles__side">
+      <ArticleListSide />
+    </div>
   </div>
 </template>
 

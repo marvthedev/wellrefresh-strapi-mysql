@@ -72,6 +72,7 @@ export default {
 @media (min-width: 1248px) {
   .sidebar-latest-grid {
     margin-top: 0;
+    width: 85%;
     &-item {
       flex-direction: row;
       border: none;

@@ -1,10 +1,11 @@
 <template>
   <div>
-    <div class="layout">
+    <div class="header-spacing">
       <NavBar />
     </div>
     <Nuxt />
-    <Foot />
+
+    <div class="footer-spacing"><Foot /></div>
   </div>
 </template>
 
@@ -21,10 +22,17 @@ export default {
 </script>
 
 <style lang="scss">
-.layout {
+.header-spacing {
   margin-bottom: 25%;
   @media (min-width: 1248px) {
     margin-bottom: 10%;
+  }
+}
+
+.footer-spacing {
+  margin-top: 14%;
+  @media (min-width: 1248px) {
+    margin-top: 6%;
   }
 }
 

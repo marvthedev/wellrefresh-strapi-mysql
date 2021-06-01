@@ -1,37 +1,34 @@
 <template>
   <div class="categories">
-    <template v-if="$apollo.loading"><div></div></template>
-    <template v-else>
-      <h2 class="categories__title">Weight Loss</h2>
-      <div class="categories__grid">
-        <div v-for="article in weightLoss" :key="article.id" class="card">
-          <img
-            :src="article.featuredImage.node.sourceUrl"
-            :alt="article.title"
-            class="card__img"
-          />
-          <div class="card__txt-container">
-            <h2 class="card__title">
-              {{ article.title }}
-            </h2>
-          </div>
+    <h2 class="categories__title">Weight Loss</h2>
+    <div class="categories__grid">
+      <div v-for="article in weightLoss" :key="article.id" class="card">
+        <img
+          :src="article.featuredImage.node.sourceUrl"
+          :alt="article.title"
+          class="card__img"
+        />
+        <div class="card__txt-container">
+          <h2 class="card__title">
+            {{ article.title }}
+          </h2>
         </div>
       </div>
+    </div>
 
-      <h2 class="categories__title">Fitness</h2>
-      <div class="categories__grid">
-        <div v-for="article in fitness" :key="article.id" class="card">
-          <img
-            :src="article.featuredImage.node.sourceUrl"
-            :alt="article.title"
-            class="card__img"
-          />
-          <div class="card__txt-container">
-            <h2 class="card__title">{{ article.title }}</h2>
-          </div>
+    <h2 class="categories__title">Fitness</h2>
+    <div class="categories__grid">
+      <div v-for="article in fitness" :key="article.id" class="card">
+        <img
+          :src="article.featuredImage.node.sourceUrl"
+          :alt="article.title"
+          class="card__img"
+        />
+        <div class="card__txt-container">
+          <h2 class="card__title">{{ article.title }}</h2>
         </div>
       </div>
-    </template>
+    </div>
   </div>
 </template>
 
@@ -85,6 +82,9 @@ export default {
   padding: 0 2.5%;
   &__title {
     font-size: 2.2rem;
+    &:not(:first-child) {
+      margin-top: 6rem;
+    }
   }
 }
 
