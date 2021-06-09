@@ -1,0 +1,36 @@
+query AllArticles {
+  posts {
+    edges {
+      node {
+        slug
+        excerpt
+        id
+        title
+        content
+        tags {
+          edges {
+            node {
+              id
+              name
+            }
+          }
+        }
+        featuredImage {
+          node {
+            sourceUrl
+            srcSet
+            altText
+          }
+        }
+        categories {
+          edges {
+            node {
+              name
+              id
+            }
+          }
+        }
+      }
+    }
+  }
+}

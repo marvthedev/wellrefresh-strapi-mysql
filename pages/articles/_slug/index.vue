@@ -46,10 +46,10 @@
 </template>
 
 <script>
-import ArticleQuery from '~/apollo/queries/articles/ArticleQuery'
-import ArticleListSide from '~/components/SidebarLatestGrid'
-import SocialHead from '~/components/SocialHead'
 import LoadingRing from '~/components/LoadingRing'
+import SocialHead from '~/components/SocialHead'
+import ArticleListSide from '~/components/SidebarLatestGrid'
+import ArticleBySlugQuery from '~/apollo/queries/articles/ArticleBySlugQuery'
 
 export default {
   components: {
@@ -67,7 +67,7 @@ export default {
   apollo: {
     article: {
       prefetch: true,
-      query: ArticleQuery,
+      query: ArticleBySlugQuery,
       variables() {
         return { slug: this.$route.params.slug }
       },

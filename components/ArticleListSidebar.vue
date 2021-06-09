@@ -1,37 +1,26 @@
 <template>
-  <div class="articles-side">
-    <h2 class="articles-side__title">Latest Topics</h2>
-    <nuxt-link
-      v-for="article in articles.edges"
-      :key="article.node.slug"
-      :to="{ name: 'articles-slug', params: { slug: article.node.slug } }"
-      class="articles-side__list"
-    >
-      <div class="articles-side__topic-title">{{ article.node.title }}</div>
-    </nuxt-link>
+  <div>
+    <div class="articles-side">
+      <h2 class="articles-side__title">Latest Topics</h2>
+      <nuxt-link
+        v-for="article in articleList.edges.slice(0, 5)"
+        :key="article.node.id"
+        :to="{ name: 'articles-slug', params: { slug: article.node.slug } }"
+        class="articles-side__list"
+      >
+        <div class="articles-side__topic-title">{{ article.node.title }}</div>
+      </nuxt-link>
+    </div>
   </div>
 </template>
 
 <script>
-import ArticleListQuery from '~/apollo/queries/articles/ArticleListQuery'
-
 export default {
-  data() {
-    return {
-      articles: {}
-    }
-  },
-
-  apollo: {
-    articles: {
-      prefetch: true,
-      query: ArticleListQuery,
-      update: (data) => data.posts,
-      variables() {
-        return {
-          first: 5,
-          start: null
-        }
+  props: {
+    articleList: {
+      type: Object,
+      default: function () {
+        return {}
       }
     }
   }
