@@ -3,9 +3,7 @@
     <div class="header-spacing">
       <NavBar />
     </div>
-    <div class="main-content">
-      <Nuxt />
-    </div>
+    <Nuxt />
     <div class="footer-spacing"><Foot /></div>
   </div>
 </template>
@@ -23,14 +21,16 @@ export default {
 </script>
 
 <style lang="scss">
+//Used to keep footer at the bottom
 .layout {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  &__content {
+    flex: 1;
+  }
 }
-.main-content {
-  flex: 1;
-}
+
 .header-spacing {
   margin-bottom: 25%;
   @media (min-width: 1248px) {

@@ -1,6 +1,8 @@
 <template>
-  <div>
-    <template v-if="$apollo.queries.posts.loading"><LoadingRing /></template>
+  <div class="layout__content">
+    <template v-if="$apollo.queries.posts.loading"
+      ><div class="load"><LoadingRing /></div
+    ></template>
     <template v-else>
       <div class="featured-articles">
         <div class="featured-articles__grid">
@@ -134,6 +136,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.load {
+  height: 54vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .featured-articles {
   display: flex;
   flex-direction: column;

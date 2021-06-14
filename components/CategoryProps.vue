@@ -1,28 +1,30 @@
 <template>
   <div class="category-articles">
-    <template v-if="$apollo.queries.category.loading" class="loading"
-      ><div class="loading"><LoadingRing /></div
-    ></template>
-    <template v-else>
-      <h1 class="category-articles__title">{{ category.name }}</h1>
-      <div class="category-articles__grid">
-        <div
-          v-for="article in category.posts.nodes"
-          :key="article.id"
-          class="card"
-        >
-          <img
-            :src="article.featuredImage.node.sourceUrl"
-            :alt="article.featuredImage.node.altText"
-            class="card__img"
-          />
-          <div class="card__txt-container">
-            <h2 class="card__title">{{ article.title }}</h2>
+    <div class="content">
+      <template v-if="$apollo.queries.category.loading" class="load"
+        ><div class="loading"><LoadingRing /></div
+      ></template>
+      <template v-else>
+        <h1 class="category-articles__title">{{ category.name }}</h1>
+        <div class="category-articles__grid">
+          <div
+            v-for="article in category.posts.nodes"
+            :key="article.id"
+            class="card"
+          >
+            <img
+              :src="article.featuredImage.node.sourceUrl"
+              :alt="article.featuredImage.node.altText"
+              class="card__img"
+            />
+            <div class="card__txt-container">
+              <h2 class="card__title">{{ article.title }}</h2>
+            </div>
           </div>
         </div>
-      </div>
-      <button v-if="showMoreEnabled" @click="showMore">Show more</button>
-    </template>
+        <button v-if="showMoreEnabled" @click="showMore">Show more</button>
+      </template>
+    </div>
   </div>
 </template>
 
@@ -106,13 +108,9 @@ export default {
 
 <style lang="scss" scoped>
 //Center loading ring
-.loading {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .category-articles {
   display: flex;
+  min-height: 100vh;
   flex-direction: column;
   padding: 0 2.5%;
   &__title {
