@@ -1,4 +1,6 @@
 <template>
+  <!-- Styling for class "layout__content" is found on layouts/default.vue 
+  and is used to keep the footer at the bottom -->
   <div class="layout__content">
     <template v-if="$apollo.queries.posts.loading"
       ><div class="load"><LoadingRing /></div
@@ -137,7 +139,7 @@ export default {
 
 <style lang="scss" scoped>
 .load {
-  height: 54vh;
+  min-height: 52vh;
   width: 100%;
   display: flex;
   align-items: center;
