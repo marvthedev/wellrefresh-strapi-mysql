@@ -1,10 +1,10 @@
 <template>
-  <div class="category-articles">
-    <div class="content">
-      <template v-if="$apollo.queries.category.loading" class="load"
-        ><div class="loading"><LoadingRing /></div
-      ></template>
-      <template v-else>
+  <div>
+    <template v-if="$apollo.queries.category.loading"
+      ><loading-ring
+    /></template>
+    <template v-else>
+      <div class="category-articles">
         <h1 class="category-articles__title">{{ category.name }}</h1>
         <div class="category-articles__grid">
           <div
@@ -23,18 +23,18 @@
           </div>
         </div>
         <button v-if="showMoreEnabled" @click="showMore">Show more</button>
-      </template>
-    </div>
+      </div>
+    </template>
   </div>
 </template>
 
 <script>
 import ArticlesByCategoryQuery from '~/apollo/queries/articles/ArticlesByCategoryQuery'
-import LoadingRing from '~/components/LoadingRing'
+import loadingRing from '~/components/LoadingRing'
 
 export default {
   components: {
-    LoadingRing
+    loadingRing
   },
 
   props: {
@@ -107,11 +107,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-//Center loading ring
 .category-articles {
   display: flex;
-  min-height: 100vh;
   flex-direction: column;
+  justify-content: center;
   padding: 0 2.5%;
   &__title {
     font-size: 2.2rem;

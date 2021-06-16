@@ -1,5 +1,5 @@
 <template>
-  <div class="weight-loss">
+  <div class="layout__content">
     <category-props chosen-category="Weight Loss" />
   </div>
 </template>

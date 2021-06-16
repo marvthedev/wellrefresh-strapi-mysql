@@ -2,9 +2,9 @@
   <!-- Styling for class "layout__content" is found on layouts/default.vue 
   and is used to keep the footer at the bottom -->
   <div class="layout__content">
-    <template v-if="$apollo.queries.posts.loading"
-      ><div class="load"><LoadingRing /></div
-    ></template>
+    <template v-if="$apollo.queries.posts.loading">
+      <loading-ring />
+    </template>
     <template v-else>
       <div class="featured-articles">
         <div class="featured-articles__grid">
@@ -85,7 +85,7 @@
 </template>
 
 <script>
-import LoadingRing from '~/components/LoadingRing'
+import loadingRing from '~/components/LoadingRing'
 import ArticleListSide from '~/components/ArticleListSidebar'
 import CategoryArticles from '~/components/Home/CategoryArticles'
 import AllArticlesQuery from '~/apollo/queries/articles/AllArticlesQuery'
@@ -93,7 +93,7 @@ import AllArticlesQuery from '~/apollo/queries/articles/AllArticlesQuery'
 export default {
   components: {
     ArticleListSide,
-    LoadingRing,
+    loadingRing,
     CategoryArticles
   },
 
@@ -138,13 +138,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.load {
-  min-height: 52vh;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 .featured-articles {
   display: flex;
   flex-direction: column;
