@@ -1,46 +1,51 @@
 <template>
-  <div class="container">
+  <div class="layout__content">
     <template v-if="$apollo.queries.article.loading"><LoadingRing /></template>
     <template v-else>
-      <SocialHead
-        :page-title="article.title"
-        :page-description="article.seo.metaDesc"
-        :title="article.seo.title"
-        :description="article.seo.metaDesc"
-        :image="article.featuredImage.node.sourceUrl"
-      />
-      <header class="head">
-        <div class="head-top">
-          <span
-            v-for="category in article.categories.nodes"
-            :key="category.id"
-            class="head-top__category card__category"
-            >{{ category.name }}</span
-          >
-          <span class="head-top__date">{{ $formatDate(article.date) }}</span>
-        </div>
-        <h1 class="head__title">{{ article.title }}</h1>
-        <div class="head__excerpt" v-html="article.excerpt"></div>
-        <div class="head-info">
-          <img
-            :src="article.author.node.avatar.url"
-            class="head-info__avatar"
-          />
-          <div class="head-info__author">
-            <span class="head-info__author-head">written by</span>
-
-            <span class="head-info__author-name"
-              >{{ article.author.node.firstName }}
-              {{ article.author.node.lastName }}</span
+      <div class="container">
+        <SocialHead
+          :page-title="article.title"
+          :page-description="article.seo.metaDesc"
+          :title="article.seo.title"
+          :description="article.seo.metaDesc"
+          :image="article.featuredImage.node.sourceUrl"
+        />
+        <header class="head">
+          <div class="head-top">
+            <span
+              v-for="category in article.categories.nodes"
+              :key="category.id"
+              class="head-top__category card__category"
+              >{{ category.name }}</span
             >
+            <span class="head-top__date">{{ $formatDate(article.date) }}</span>
           </div>
-        </div>
-      </header>
-      <main class="article">
-        <img :src="article.featuredImage.node.sourceUrl" class="article__img" />
-        <article class="article__content" v-html="article.content"></article>
-        <aside class="article__sidebar"><ArticleListSide /></aside>
-      </main>
+          <h1 class="head__title">{{ article.title }}</h1>
+          <div class="head__excerpt" v-html="article.excerpt"></div>
+          <div class="head-info">
+            <img
+              :src="article.author.node.avatar.url"
+              class="head-info__avatar"
+            />
+            <div class="head-info__author">
+              <span class="head-info__author-head">written by</span>
+
+              <span class="head-info__author-name"
+                >{{ article.author.node.firstName }}
+                {{ article.author.node.lastName }}</span
+              >
+            </div>
+          </div>
+        </header>
+        <main class="article">
+          <img
+            :src="article.featuredImage.node.sourceUrl"
+            class="article__img"
+          />
+          <article class="article__content" v-html="article.content"></article>
+          <aside class="article__sidebar"><ArticleListSide /></aside>
+        </main>
+      </div>
     </template>
   </div>
 </template>
@@ -80,9 +85,6 @@ export default {
 <style lang="scss">
 .container {
   padding: 0 5% 25% 5%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
   width: 100%;
 }
 
