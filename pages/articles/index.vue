@@ -1,7 +1,9 @@
 <template>
-  <div class="articles">
+  <!-- "layout__content" is used to keep the footer at the bottom of the page. 
+Styling is found in ~/layouts/default.vue -->
+  <div class="articles layout__content">
     <template v-if="$apollo.queries.articles.loading">
-      <LoadingRing />
+      <loading-ring />
     </template>
     <template v-else>
       <section class="articles__grid">
@@ -16,9 +18,9 @@
             class="card__img"
           />
           <div
-            class="card__txt-container"
             v-for="category in article.node.categories.edges"
             :key="category.node.id"
+            class="card__txt-container"
           >
             <div class="card__category-container">
               <div class="card__category">
@@ -40,12 +42,12 @@
 </template>
 
 <script>
-import ArticleListQuery from '~/apollo/queries/articles/ArticleListQuery'
-import LoadingRing from '~/components/LoadingRing'
+import articleListQuery from '~/apollo/queries/articles/ArticleListQuery'
+import loadingRing from '~/components/LoadingRing'
 
 export default {
   components: {
-    LoadingRing
+    loadingRing
   },
   data() {
     return {
@@ -59,7 +61,7 @@ export default {
   apollo: {
     articles: {
       prefetch: true,
-      query: ArticleListQuery,
+      query: articleListQuery,
       update: (data) => data.posts,
       variables() {
         return {
@@ -74,7 +76,6 @@ export default {
 
   methods: {
     loadMore() {
-      console.log(this.articles.pageInfo.total)
       this.cursor = this.articles.pageInfo.endCursor
       this.$apollo.queries.articles.fetchMore({
         variables: {
@@ -87,7 +88,6 @@ export default {
 
           this.cursor = fetchMoreResult.posts.pageInfo.endCursor
           this.showMoreAvailable = hasMore
-          console.log(fetchMoreResult.posts.edges.length)
 
           return {
             posts: {
@@ -108,13 +108,42 @@ export default {
 
 <style lang="scss" scoped>
 .articles {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   padding: 0 2%;
   &__grid {
     display: grid;
-    row-gap: 1.8rem;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 1.8rem;
+  }
+}
+
+// Desktop View
+@media (min-width: 1248px) {
+  .articles {
+    padding: 0 15%;
+  }
+  .articles__grid {
+    grid-auto-flow: dense;
+  }
+  .card:nth-child(3),
+  .card:nth-child(5) {
+    grid-column: span 2;
+    grid-row: span 2;
+    justify-content: space-evenly;
+    .card {
+      &__img {
+        height: 100%;
+        object-fit: cover;
+      }
+      &__category {
+        font-size: 1.4rem;
+      }
+      &__txt-container {
+        padding: 1.6rem;
+      }
+      &__title {
+        font-size: 3.2rem;
+      }
+    }
   }
 }
 </style>

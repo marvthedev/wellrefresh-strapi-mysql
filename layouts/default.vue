@@ -113,7 +113,7 @@ textarea {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 1.3rem;
+    padding: 1.4rem;
   }
   &__img {
     width: 100%;

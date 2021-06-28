@@ -1,5 +1,5 @@
 <template>
-  <!-- Styling for class "layout__content" is found on layouts/default.vue 
+  <!-- Styling for class "layout__content" is found in layouts/default.vue 
   and is used to keep the footer at the bottom -->
   <div class="layout__content">
     <template v-if="$apollo.queries.posts.loading">
