@@ -38,7 +38,7 @@ export default {
 .header-spacing {
   margin-bottom: 25%;
   @media (min-width: 1248px) {
-    margin-bottom: 10%;
+    margin-bottom: 8%;
   }
 }
 
@@ -85,6 +85,10 @@ h2,
 h3 {
   font-family: 'Lato', sans-serif;
   font-weight: 900;
+}
+
+h2 {
+  font-size: 2.4rem;
 }
 
 /* Forms */

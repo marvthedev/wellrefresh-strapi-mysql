@@ -6,6 +6,16 @@ Styling is found in ~/layouts/default.vue -->
       <loading-ring />
     </template>
     <template v-else>
+      <div class="articles-title">
+        <h1 class="articles-title__txt">Articles</h1>
+      </div>
+      <div class="articles__excerpt">
+        <p>
+          Browse through our library of health and wellness articles and get the
+          information you need to better your lifestyle! We got fitness, weight
+          loss, and diet articles for you to read and gain knowledge from.
+        </p>
+      </div>
       <section class="articles__grid">
         <div
           v-for="article in articles.edges"
@@ -109,7 +119,22 @@ export default {
 <style lang="scss" scoped>
 .articles {
   padding: 0 2%;
+  &-title {
+    width: 100%;
+    &__txt {
+      font-size: 5.2rem;
+    }
+  }
+
+  &__excerpt {
+    margin-top: 4rem;
+    font-size: 1.8rem;
+    background: #edfbfc;
+    padding: 2rem;
+    border-radius: 0.9rem;
+  }
   &__grid {
+    margin-top: 4rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
     gap: 1.8rem;
