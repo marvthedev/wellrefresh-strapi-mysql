@@ -6,6 +6,12 @@
       <loading-ring />
     </template>
     <template v-else>
+      <div class="wellrefresh-txt">
+        <p>
+          Wether your goal is to lose weight, build muscle, or just become
+          healthy in general, we got articles to help you reach your goal!
+        </p>
+      </div>
       <div class="featured-articles">
         <div class="featured-articles__grid">
           <div
@@ -139,6 +145,7 @@ export default {
 
 <style lang="scss" scoped>
 .featured-articles {
+  margin-top: 4rem;
   display: flex;
   flex-direction: column;
   justify-content: center;

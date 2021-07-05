@@ -105,6 +105,15 @@ textarea {
   resize: none;
 }
 
+//Styling for description and excerpt boxes
+.wellrefresh-txt {
+  margin-top: 4rem;
+  font-size: 1.8rem;
+  background: #edfbfc;
+  padding: 2rem;
+  border-radius: 0.9rem;
+}
+
 // Article grid cards styling
 .card {
   display: flex;

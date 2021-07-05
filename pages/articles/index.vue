@@ -9,7 +9,7 @@ Styling is found in ~/layouts/default.vue -->
       <div class="articles-title">
         <h1 class="articles-title__txt">Articles</h1>
       </div>
-      <div class="articles__excerpt">
+      <div class="wellrefresh-txt">
         <p>
           Browse through our library of health and wellness articles and get the
           information you need to better your lifestyle! We got fitness, weight
@@ -17,9 +17,10 @@ Styling is found in ~/layouts/default.vue -->
         </p>
       </div>
       <section class="articles__grid">
-        <div
+        <nuxt-link
           v-for="article in articles.edges"
           :key="article.node.id"
+          :to="{ name: 'articles-slug', params: { slug: article.node.slug } }"
           class="card"
         >
           <img
@@ -39,7 +40,7 @@ Styling is found in ~/layouts/default.vue -->
             </div>
             <h1 class="card__title">{{ article.node.title }}</h1>
           </div>
-        </div>
+        </nuxt-link>
       </section>
       <button
         v-if="articleCount < articles.pageInfo.total && showMoreAvailable"
@@ -124,14 +125,6 @@ export default {
     &__txt {
       font-size: 5.2rem;
     }
-  }
-
-  &__excerpt {
-    margin-top: 4rem;
-    font-size: 1.8rem;
-    background: #edfbfc;
-    padding: 2rem;
-    border-radius: 0.9rem;
   }
   &__grid {
     margin-top: 4rem;
