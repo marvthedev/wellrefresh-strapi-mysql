@@ -43,9 +43,7 @@
       @click="menuOpened = !menuOpened"
     >
       <nuxt-link to="/" class="nav__menu-item">Home</nuxt-link>
-      <nuxt-link to="/weight-loss" class="nav__menu-item"
-        >Weight Loss</nuxt-link
-      >
+      <nuxt-link to="/articles" class="nav__menu-item">Articles</nuxt-link>
       <nuxt-link to="/contact" class="nav__menu-item">Fitness</nuxt-link>
     </div>
   </nav>
