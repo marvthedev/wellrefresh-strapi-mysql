@@ -122,6 +122,7 @@ export default {
   padding: 0 2%;
   &-title {
     width: 100%;
+    margin-bottom: 2rem;
     &__txt {
       font-size: 5.2rem;
     }
