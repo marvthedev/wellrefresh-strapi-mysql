@@ -78,9 +78,6 @@ export default {
         return {
           first: this.articleCount
         }
-      },
-      result({ data }) {
-        this.totalCount = data.totalCount
       }
     }
   },

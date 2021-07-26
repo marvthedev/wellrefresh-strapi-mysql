@@ -13,6 +13,7 @@ query MyQuery($category: ID!, $first: Int!, $after: String) {
           }
         }
       pageInfo {
+        total
         endCursor
         hasNextPage
       }

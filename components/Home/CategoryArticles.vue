@@ -62,7 +62,7 @@ export default {
 
 <style lang="scss">
 .categories {
-  margin-bottom: 6rem;
+  margin-top: 6rem;
   display: flex;
   flex-direction: column;
   padding: 0 2.5%;
@@ -90,9 +90,6 @@ export default {
   .categories {
     padding: 0 15%;
     margin-top: 8rem;
-    &__title {
-      margin-top: 2.8rem;
-    }
     &__grid {
       grid-template-columns: repeat(4, 1fr);
       grid-template-rows: 1fr min-content;

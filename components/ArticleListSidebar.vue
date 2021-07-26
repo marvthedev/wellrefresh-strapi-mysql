@@ -29,7 +29,7 @@ export default {
 
 <style lang="scss">
 .articles-side {
-  margin: 6rem 0;
+  margin-top: 8rem;
   display: flex;
   flex-direction: column;
   &__title {

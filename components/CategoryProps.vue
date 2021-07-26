@@ -47,8 +47,9 @@ export default {
   data() {
     return {
       category: {},
-      postQuantity: 3,
-      showMoreEnabled: true
+      articleCount: 3,
+      showMoreEnabled: true,
+      cursor: null
     }
   },
 
@@ -58,12 +59,10 @@ export default {
       query: ArticlesByCategoryQuery,
       variables() {
         return {
-          category: this.chosenCategory,
-          first: 3,
-          after: null
+          first: this.articleCount,
+          category: this.chosenCategory
         }
-      },
-      notifyOnNetworkStatusChange: true
+      }
     }
   },
 
@@ -71,12 +70,9 @@ export default {
     showMore() {
       this.$apollo.queries.category.fetchMore({
         variables: {
-          category: this.chosenCategory,
-          first: this.postQuantity,
-          after: this.category.posts.pageInfo.endCursor
+          first: this.articleCount,
+          after: this.cursor
         },
-        notifyOnNetworkStatusChange: true,
-
         updateQuery: (existing, { fetchMoreResult }) => {
           const hasMore = fetchMoreResult.category.posts.pageInfo.hasNextPage
 
@@ -113,10 +109,10 @@ export default {
   justify-content: center;
   padding: 0 2.5%;
   &__title {
-    font-size: 2.2rem;
+    font-size: 5.2rem;
   }
   &__grid {
-    margin-top: 2rem;
+    margin-top: 4rem;
     display: grid;
     gap: 1.6rem;
     grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
@@ -125,7 +121,6 @@ export default {
 
 @media (min-width: 1248px) {
   .category-articles {
-    margin: 10% 0;
     padding: 0 15%;
   }
 }
