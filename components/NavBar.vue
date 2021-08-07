@@ -20,23 +20,21 @@
           class="nav__toggle-bar"
         ></div>
       </div>
+
       <!-- Only visible when viewing with iPad Pro and Desktop. -->
-      <div
-        class="nav__links"
-        :class="{ nav__links__scroll: scrollPosition > 50 }"
-      >
-        <nuxt-link to="/" class="nav__links-item nav__links-item-home"
-          >Home</nuxt-link
+      <div class="desk-nav">
+        <div
+          v-for="link in navBarLinks"
+          :key="link.url"
+          class="desk-nav__links"
+          :class="{ desknav__scroll: scrollPosition > 50 }"
         >
-        <nuxt-link to="/articles" class="nav__links-item">Articles</nuxt-link>
-        <nuxt-link to="/weight-loss" class="nav__links-item"
-          >Weight Loss</nuxt-link
-        >
-        <nuxt-link to="/contact" class="nav__links-item">Contact</nuxt-link>
+          <nuxt-link :to="link.url">{{ link.title }}</nuxt-link>
+        </div>
       </div>
     </div>
     <!-- Only visible when viewing with smaller devices. -->
-    <div
+    <!-- <div
       v-show="menuOpened"
       class="nav__menu"
       :class="{ nav__menu__scroll: scrollPosition > 50 }"
@@ -44,7 +42,21 @@
     >
       <nuxt-link to="/" class="nav__menu-item">Home</nuxt-link>
       <nuxt-link to="/articles" class="nav__menu-item">Articles</nuxt-link>
-      <nuxt-link to="/contact" class="nav__menu-item">Fitness</nuxt-link>
+      <nuxt-link to="/weight-loss" class="nav__menu-item"
+        >Weight Loss</nuxt-link
+      >
+    </div> -->
+    <div
+      v-for="link in navBarLinks"
+      v-show="menuOpened"
+      :key="link.url"
+      class="nav__menu"
+      :class="{ nav__menu__scroll: scrollPosition > 50 }"
+      @click="menuOpened = !menuOpened"
+    >
+      <nuxt-link :to="link.url" class="nav__menu-item">{{
+        link.title
+      }}</nuxt-link>
     </div>
   </nav>
 </template>
@@ -54,7 +66,12 @@ export default {
   data() {
     return {
       menuOpened: false,
-      scrollPosition: null
+      scrollPosition: null,
+      navBarLinks: [
+        { title: 'Home', url: '/' },
+        { title: 'Articles', url: '/articles' },
+        { title: 'Weight Loss', url: '/weight-loss' }
+      ]
     }
   },
   mounted() {
@@ -184,10 +201,12 @@ export default {
       }
     }
   }
-  &__links {
-    display: none;
-  }
 }
+
+.desk-nav {
+  display: none;
+}
+
 //Desktop View
 @media (min-width: 1248px) {
   .nav {
@@ -220,26 +239,23 @@ export default {
     &__toggle {
       display: none;
     }
-    //Navigation while viewing with bigger screens
+  }
+  .desk-nav {
+    display: flex;
     &__links {
-      margin-top: 1rem;
-      display: flex;
+      margin: 2rem 0 0 2rem;
+      display: grid;
       justify-content: center;
       font-size: 1.8rem;
       font-weight: 700;
-      &__scroll {
-        margin-top: 0;
-        padding-left: 3rem;
-      }
-      &-item {
-        margin: 0 1.7rem;
-        color: #333;
-        font-size: 1.8rem;
-        &:hover {
-          color: $secondary__color;
-        }
+
+      & a:hover {
+        color: $secondary__color;
       }
     }
+  }
+  &.desknav__scroll {
+    margin-top: 0;
   }
 }
 </style>

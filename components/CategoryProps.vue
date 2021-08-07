@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="category">
     <template v-if="$apollo.queries.category.loading"
       ><loading-ring
     /></template>
@@ -22,8 +22,10 @@
             </div>
           </div>
         </div>
-        <button v-if="showMoreEnabled" @click="showMore">Show more</button>
       </div>
+      <button v-if="showMoreEnabled" class="show-more-btn" @click="showMore">
+        Show more
+      </button>
     </template>
   </div>
 </template>
@@ -47,7 +49,7 @@ export default {
   data() {
     return {
       category: {},
-      articleCount: 3,
+      articleCount: 4,
       showMoreEnabled: true,
       cursor: null
     }
@@ -68,31 +70,32 @@ export default {
 
   methods: {
     showMore() {
+      this.cursor = this.category.posts.pageInfo.endCursor
+
       this.$apollo.queries.category.fetchMore({
         variables: {
           first: this.articleCount,
           after: this.cursor
         },
+
         updateQuery: (existing, { fetchMoreResult }) => {
+          if (!fetchMoreResult) return existing
           const hasMore = fetchMoreResult.category.posts.pageInfo.hasNextPage
 
           this.showMoreEnabled = hasMore
-
-          console.log(this.category.posts.pageInfo.endCursor)
-          console.log(fetchMoreResult.category.posts.pageInfo)
-
+          this.cursor = fetchMoreResult.category.posts.pageInfo.endCursor
+          console.log(fetchMoreResult.category.posts)
           return {
-            ...existing,
             category: {
-              ...existing.category,
-              // Update the cursor
-              after: fetchMoreResult.category.posts.pageInfo.endCursor,
-              // Combine incoming posts to existing posts
-              posts: [
-                ...existing.category.posts.nodes,
-                ...fetchMoreResult.category.posts.nodes
-              ],
-              hasMore
+              ...fetchMoreResult.category,
+              posts: {
+                ...fetchMoreResult.category.posts,
+                // Update the cursor
+                nodes: [
+                  ...existing.category.posts.nodes,
+                  ...fetchMoreResult.category.posts.nodes
+                ]
+              }
             }
           }
         }
@@ -103,24 +106,29 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.category-articles {
+.category {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 0 2.5%;
-  &__title {
-    font-size: 5.2rem;
-  }
-  &__grid {
-    margin-top: 4rem;
-    display: grid;
-    gap: 1.6rem;
-    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  align-items: center;
+  padding: 0 2%;
+  &-articles {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    &__title {
+      font-size: 5.2rem;
+    }
+    &__grid {
+      margin-top: 4rem;
+      display: grid;
+      gap: 1.6rem;
+      grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    }
   }
 }
 
 @media (min-width: 1248px) {
-  .category-articles {
+  .category {
     padding: 0 15%;
   }
 }

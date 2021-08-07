@@ -163,4 +163,21 @@ textarea {
     }
   }
 }
+
+.show-more-btn {
+  cursor: pointer;
+  border: 0.3rem solid $primary__color;
+  border-radius: 0.5rem;
+  margin-top: 12%;
+  background: none;
+  color: $primary__color;
+  padding: 1.4rem;
+  font-size: 1.6rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  &:hover {
+    background: $primary__color;
+    color: white;
+  }
+}
 </style>

@@ -44,9 +44,10 @@ Styling is found in ~/layouts/default.vue -->
       </section>
       <button
         v-if="articleCount < articles.pageInfo.total && showMoreAvailable"
+        class="show-more-btn"
         @click="loadMore"
       >
-        Load More
+        Show More
       </button>
     </template>
   </div>
@@ -65,7 +66,7 @@ export default {
       articles: {},
       showMoreAvailable: true,
       cursor: null,
-      articleCount: 10
+      articleCount: 4
     }
   },
 
