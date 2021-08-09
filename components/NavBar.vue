@@ -47,16 +47,18 @@
       >
     </div> -->
     <div
-      v-for="link in navBarLinks"
-      v-show="menuOpened"
-      :key="link.url"
-      class="nav__menu"
-      :class="{ nav__menu__scroll: scrollPosition > 50 }"
-      @click="menuOpened = !menuOpened"
+      class="mobile-nav"
+      :class="{ mobile__nav__scroll: scrollPosition > 50 }"
     >
-      <nuxt-link :to="link.url" class="nav__menu-item">{{
-        link.title
-      }}</nuxt-link>
+      <div
+        v-for="link in navBarLinks"
+        v-show="menuOpened"
+        :key="link.url"
+        class="mobile-nav__link"
+        @click="menuOpened = !menuOpened"
+      >
+        <nuxt-link :to="link.url">{{ link.title }}</nuxt-link>
+      </div>
     </div>
   </nav>
 </template>
@@ -70,7 +72,8 @@ export default {
       navBarLinks: [
         { title: 'Home', url: '/' },
         { title: 'Articles', url: '/articles' },
-        { title: 'Weight Loss', url: '/weight-loss' }
+        { title: 'Weight Loss', url: '/weight-loss' },
+        { title: 'Fitness', url: '/fitness' }
       ]
     }
   },
@@ -181,26 +184,49 @@ export default {
     padding: 0 2rem;
     position: relative;
     left: 0;
-    bottom: 0;
-    background: white;
-    &__scroll {
-      background: rgba(255, 255, 255, 0.97);
-    }
+    bottom: -5rem;
     &-item {
       font-size: 1.4rem;
       text-transform: uppercase;
       font-weight: 700;
       padding: 1rem;
       color: #333;
-      &:not(:last-child) {
-        border-bottom: 0.1rem solid #e8e8e8;
-      }
+
       &-hover {
         background: $primary__color;
         color: white;
       }
     }
   }
+}
+
+.mobile-nav {
+  background: white;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem;
+  position: relative;
+  left: 0;
+  bottom: 0;
+  &__link {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 1rem;
+    color: #333;
+    &:not(:last-child) {
+      border-bottom: 0.1rem solid #e8e8e8;
+    }
+    &-hover {
+      background: $primary__color;
+      color: white;
+    }
+  }
+}
+
+.mobile__nav__scroll {
+  background: rgba(255, 255, 255, 0.97);
 }
 
 .desk-nav {

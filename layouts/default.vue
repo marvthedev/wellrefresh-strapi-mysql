@@ -71,6 +71,10 @@ html {
 }
 
 /* Typography */
+a.nuxt-link-active,
+a.nuxt-link-exact {
+  margin: 0;
+}
 a {
   text-decoration: none;
   color: #333;
