@@ -66,7 +66,7 @@ export default {
       articles: {},
       showMoreAvailable: true,
       cursor: null,
-      articleCount: 4
+      articleCount: 5
     }
   },
 

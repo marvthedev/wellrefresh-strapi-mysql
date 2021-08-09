@@ -6,6 +6,11 @@
     <template v-else>
       <div class="category-articles">
         <h1 class="category-articles__title">{{ category.name }}</h1>
+        <div v-if="excerpt" class="wellrefresh-txt">
+          <p>
+            {{ excerpt }}
+          </p>
+        </div>
         <div class="category-articles__grid">
           <div
             v-for="article in category.posts.nodes"
@@ -41,6 +46,10 @@ export default {
 
   props: {
     chosenCategory: {
+      type: String,
+      default: ''
+    },
+    excerpt: {
       type: String,
       default: ''
     }
@@ -106,6 +115,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.wellrefresh-txt {
+  margin-top: 2rem;
+}
+
 .category {
   display: flex;
   flex-direction: column;
@@ -122,7 +135,7 @@ export default {
       margin-top: 4rem;
       display: grid;
       gap: 1.6rem;
-      grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
     }
   }
 }
