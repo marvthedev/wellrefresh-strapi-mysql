@@ -79,12 +79,6 @@ export default {
   }
 }
 
-@media (min-width: 768px) {
-  .card__title {
-    font-size: 1.8rem;
-  }
-}
-
 //Desktop view
 @media (min-width: 1248px) {
   .categories {

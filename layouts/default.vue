@@ -117,7 +117,7 @@ textarea {
   border-radius: 0.9rem;
 }
 
-// Article grid cards styling
+// Grid cards styling
 .card {
   display: flex;
   flex-direction: column;
@@ -127,13 +127,15 @@ textarea {
   box-shadow: 0px 1.6rem 2rem -2.2rem rgba(0, 0, 0, 0.48);
   &__txt-container {
     display: flex;
+    height: 100%;
     flex-direction: column;
-    justify-content: center;
-    padding: 1.4rem;
+    padding: 1.2rem;
   }
   &__img {
+    object-fit: cover;
     width: 100%;
-    height: auto;
+    position: relative;
+    max-height: 60%;
     border-radius: 1rem 1rem 0 0;
   }
   &__category-container {
@@ -152,7 +154,7 @@ textarea {
   }
   &__title {
     margin-top: 0.8rem;
-    font-size: 2rem;
+    font-size: 4rem;
   }
 }
 

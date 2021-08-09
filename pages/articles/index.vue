@@ -145,20 +145,15 @@ export default {
   .card:nth-child(5) {
     grid-column: span 2;
     grid-row: span 2;
-    justify-content: space-evenly;
     .card {
-      &__img {
-        height: 100%;
-        object-fit: cover;
-      }
       &__category {
-        font-size: 1.4rem;
+        font-size: 2rem;
       }
       &__txt-container {
         padding: 1.6rem;
       }
       &__title {
-        font-size: 3.2rem;
+        font-size: 4.6rem;
       }
     }
   }
