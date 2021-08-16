@@ -119,6 +119,11 @@ export default {
   margin-top: 2rem;
 }
 
+.card__img {
+  object-fit: cover;
+  height: 5rem;
+}
+
 .category {
   display: flex;
   flex-direction: column;
