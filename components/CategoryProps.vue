@@ -121,7 +121,7 @@ export default {
 
 .card__img {
   object-fit: cover;
-  height: 5rem;
+  max-height: 50%;
 }
 
 .category {

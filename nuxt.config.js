@@ -1,7 +1,8 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   server: {
-    host: process.env.HOST // default: localhost
+    // host: process.env.HOST // default: localhost
+    port: 8000
   },
   head: {
     title: 'Wellrefresh',

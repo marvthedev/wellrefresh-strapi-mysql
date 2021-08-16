@@ -134,7 +134,6 @@ textarea {
   &__img {
     object-fit: cover;
     width: 100%;
-    position: relative;
     max-height: 60%;
     border-radius: 1rem 1rem 0 0;
   }
@@ -154,7 +153,7 @@ textarea {
   }
   &__title {
     margin-top: 0.8rem;
-    font-size: 4rem;
+    font-size: 2.2rem;
   }
 }
 
@@ -163,9 +162,6 @@ textarea {
     &:hover {
       box-shadow: 0px 1.6rem 2rem -1.5rem rgba(0, 0, 0, 0.48);
       transform: translateY(-1rem);
-    }
-    &__title {
-      font-size: 2rem;
     }
   }
 }

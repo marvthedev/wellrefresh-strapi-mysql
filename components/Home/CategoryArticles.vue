@@ -2,33 +2,26 @@
   <div class="categories">
     <h2 class="categories__title">{{ categoryName }}</h2>
     <div class="categories__grid">
-      <div v-for="(article, index) in weightLossArticles" :key="index">
-        <div
-          v-for="category in article.node.categories.edges"
-          :key="category.node.id"
-        >
-          <nuxt-link
-            :to="{
-              name: 'articles-slug',
-              params: { slug: article.node.slug }
-            }"
-            class="card"
-          >
-            <div v-if="article.node && category.node.name == categoryName">
-              <img
-                :src="article.node.featuredImage.node.sourceUrl"
-                :alt="article.node.featuredImage.altText"
-                class="card__img"
-              />
-              <div class="card__txt-container">
-                <h2 class="card__title">
-                  {{ article.node.title }}
-                </h2>
-              </div>
-            </div>
-          </nuxt-link>
+      <nuxt-link
+        v-for="(article, index) in articlesByCategory"
+        :key="index"
+        class="card"
+        :to="{
+          name: 'articles-slug',
+          params: { slug: article.node.slug }
+        }"
+      >
+        <img
+          :src="article.node.featuredImage.node.sourceUrl"
+          :alt="article.node.featuredImage.altText"
+          class="card__img"
+        />
+        <div class="card__txt-container">
+          <h2 class="card__title">
+            {{ article.node.title }}
+          </h2>
         </div>
-      </div>
+      </nuxt-link>
     </div>
   </div>
 </template>
@@ -49,7 +42,7 @@ export default {
   },
 
   computed: {
-    weightLossArticles: function () {
+    articlesByCategory: function () {
       return this.articleList.edges.filter((post) => {
         return post.node.categories.edges.find((category) => {
           return category.node.name == this.categoryName
@@ -75,7 +68,8 @@ export default {
   &__grid {
     margin-top: 2.4rem;
     display: grid;
-    gap: 1.8rem;
+    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+    gap: 1.6rem;
   }
 }
 
@@ -84,13 +78,6 @@ export default {
   .categories {
     padding: 0 15%;
     margin-top: 8rem;
-    &__grid {
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: 1fr min-content;
-      &__title {
-        font-size: 2.2rem;
-      }
-    }
   }
 }
 </style>
