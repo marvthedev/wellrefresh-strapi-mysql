@@ -107,7 +107,7 @@ export default {
   }
   &__excerpt {
     margin-top: 0.6rem;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
   }
   &-info {
     display: flex;

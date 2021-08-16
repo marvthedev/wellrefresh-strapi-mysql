@@ -156,7 +156,11 @@ export default {
   }
 }
 .featured-large {
+  &__category {
+    font-size: 1.2rem;
+  }
   &__title {
+    margin-top: 0.4rem;
     font-size: 2.6rem;
   }
   &__excerpt {
