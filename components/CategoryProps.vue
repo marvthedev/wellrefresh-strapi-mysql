@@ -12,10 +12,14 @@
           </p>
         </div>
         <div class="category-articles__grid">
-          <div
+          <nuxt-link
             v-for="article in category.posts.nodes"
             :key="article.id"
             class="card"
+            :to="{
+              name: 'articles-slug',
+              params: { slug: article.slug }
+            }"
           >
             <img
               :src="article.featuredImage.node.sourceUrl"
@@ -25,7 +29,7 @@
             <div class="card__txt-container">
               <h2 class="card__title">{{ article.title }}</h2>
             </div>
-          </div>
+          </nuxt-link>
         </div>
       </div>
       <button v-if="showMoreEnabled" class="show-more-btn" @click="showMore">

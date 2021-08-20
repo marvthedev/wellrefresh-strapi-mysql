@@ -23,19 +23,17 @@ Styling is found in ~/layouts/default.vue -->
           :to="{ name: 'articles-slug', params: { slug: article.node.slug } }"
           class="card"
         >
-          <img
-            :src="article.node.featuredImage.node.sourceUrl"
-            :alt="article.node.featuredImage.node.altText"
-            class="card__img"
-          />
-          <div
-            v-for="category in article.node.categories.edges"
-            :key="category.node.id"
-            class="card__txt-container"
-          >
+          <div class="card__img-container">
+            <img
+              :src="article.node.featuredImage.node.sourceUrl"
+              :alt="article.node.featuredImage.node.altText"
+              class="card__img"
+            />
+          </div>
+          <div class="card__txt-container">
             <div class="card__category-container">
               <div class="card__category">
-                {{ category.node.name }}
+                {{ article.node.categories.edges[0].node.name }}
               </div>
             </div>
             <h1 class="card__title">{{ article.node.title }}</h1>
@@ -66,7 +64,7 @@ export default {
       articles: {},
       showMoreAvailable: true,
       cursor: null,
-      articleCount: 5
+      articleCount: 10
     }
   },
 
@@ -116,6 +114,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.card__img-container {
+  max-height: 60%;
+}
 .articles {
   padding: 0 2%;
   &-title {
@@ -130,6 +131,7 @@ export default {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
     gap: 1.8rem;
+    max-height: 50%;
   }
 }
 

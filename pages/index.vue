@@ -207,7 +207,7 @@ export default {
       font-size: 1.4rem;
     }
     &__title {
-      font-size: 2.8rem;
+      font-size: 3.2rem;
     }
   }
 }

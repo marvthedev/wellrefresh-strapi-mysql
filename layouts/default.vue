@@ -121,20 +121,22 @@ textarea {
 .card {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   border: 1px solid #e7ebfb;
   border-top: 0;
   border-radius: 1rem;
   box-shadow: 0px 1.6rem 2rem -2.2rem rgba(0, 0, 0, 0.48);
   &__txt-container {
+    height: 50%;
     display: flex;
-    height: 100%;
     flex-direction: column;
-    padding: 1.2rem;
+    justify-content: center;
+    padding: 0 1.2rem;
   }
   &__img {
     object-fit: cover;
     width: 100%;
-    max-height: 60%;
+    max-height: 100%;
     border-radius: 1rem 1rem 0 0;
   }
   &__category-container {
