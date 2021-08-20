@@ -127,10 +127,11 @@ textarea {
   border-radius: 1rem;
   box-shadow: 0px 1.6rem 2rem -2.2rem rgba(0, 0, 0, 0.48);
   &__txt-container {
+    margin-top: 0.8rem;
     height: 50%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+
     padding: 0 1.2rem;
   }
   &__img {
@@ -155,7 +156,7 @@ textarea {
   }
   &__title {
     margin-top: 0.8rem;
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
 }
 
