@@ -21,18 +21,24 @@
               params: { slug: article.slug }
             }"
           >
-            <img
-              :src="article.featuredImage.node.sourceUrl"
-              :alt="article.featuredImage.node.altText"
-              class="card__img"
-            />
+            <div class="card__img-container">
+              <img
+                :src="article.featuredImage.node.sourceUrl"
+                :alt="article.featuredImage.node.altText"
+                class="card__img"
+              />
+            </div>
             <div class="card__txt-container">
               <h2 class="card__title">{{ article.title }}</h2>
             </div>
           </nuxt-link>
         </div>
       </div>
-      <button v-if="showMoreEnabled" class="show-more-btn" @click="showMore">
+      <button
+        v-if="articleCount < category.posts.pageInfo.total && showMoreEnabled"
+        class="show-more-btn"
+        @click="showMore"
+      >
         Show more
       </button>
     </template>
@@ -62,7 +68,7 @@ export default {
   data() {
     return {
       category: {},
-      articleCount: 4,
+      articleCount: 8,
       showMoreEnabled: true,
       cursor: null
     }
@@ -121,11 +127,6 @@ export default {
 <style lang="scss" scoped>
 .wellrefresh-txt {
   margin-top: 2rem;
-}
-
-.card__img {
-  object-fit: cover;
-  max-height: 50%;
 }
 
 .category {

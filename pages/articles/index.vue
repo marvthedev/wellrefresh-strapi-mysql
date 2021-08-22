@@ -114,9 +114,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.card__img-container {
-  max-height: 60%;
-}
 .articles {
   padding: 0 2%;
   &-title {

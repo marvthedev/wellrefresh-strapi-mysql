@@ -126,15 +126,18 @@ textarea {
   border-top: 0;
   border-radius: 1rem;
   box-shadow: 0px 1.6rem 2rem -2.2rem rgba(0, 0, 0, 0.48);
+  height: 100%;
   &__txt-container {
     margin-top: 0.8rem;
     height: 50%;
     display: flex;
     flex-direction: column;
-
     padding: 0 1.2rem;
   }
   &__img {
+    &-container {
+      max-height: 60%;
+    }
     object-fit: cover;
     width: 100%;
     max-height: 100%;

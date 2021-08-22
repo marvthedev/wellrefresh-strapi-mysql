@@ -26,10 +26,12 @@
                 params: { slug: article.node.slug }
               }"
             >
-              <img
-                :src="article.node.featuredImage.node.sourceUrl"
-                class="card__img"
-              />
+              <div class="card__img-container">
+                <img
+                  :src="article.node.featuredImage.node.sourceUrl"
+                  class="card__img"
+                />
+              </div>
               <div
                 v-for="category in article.node.categories.edges"
                 :key="category.node.id"
@@ -201,7 +203,7 @@ export default {
 
   .featured-large {
     &__txt-container {
-      padding: 2.6rem;
+      padding: 0 2.6rem;
     }
     &__category {
       font-size: 1.4rem;

@@ -11,11 +11,13 @@
           params: { slug: article.node.slug }
         }"
       >
-        <img
-          :src="article.node.featuredImage.node.sourceUrl"
-          :alt="article.node.featuredImage.altText"
-          class="card__img"
-        />
+        <div class="card__img-container">
+          <img
+            :src="article.node.featuredImage.node.sourceUrl"
+            :alt="article.node.featuredImage.altText"
+            class="card__img"
+          />
+        </div>
         <div class="card__txt-container">
           <h2 class="card__title">
             {{ article.node.title }}
