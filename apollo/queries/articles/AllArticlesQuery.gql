@@ -1,5 +1,5 @@
-query AllArticles {
-  posts {
+query AllArticles ($tag: String) {
+  posts(where: {tag: $tag}) {
     edges {
       node {
         slug
@@ -7,14 +7,6 @@ query AllArticles {
         id
         title
         content
-        tags {
-          edges {
-            node {
-              id
-              name
-            }
-          }
-        }
         featuredImage {
           node {
             sourceUrl
@@ -27,6 +19,13 @@ query AllArticles {
             node {
               name
               id
+            }
+          }
+        }
+        tags(where: {}) {
+          edges {
+            node {
+              name
             }
           }
         }

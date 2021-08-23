@@ -140,7 +140,7 @@ textarea {
     }
     object-fit: cover;
     width: 100%;
-    max-height: 100%;
+    height: 100%;
     border-radius: 1rem 1rem 0 0;
   }
   &__category-container {

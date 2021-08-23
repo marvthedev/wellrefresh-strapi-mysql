@@ -1,0 +1,36 @@
+query AllArticlesByTag($tag: String) {
+  tags {
+    edges {
+      node {
+        posts(where: { tag: $tag }) {
+          edges {
+            node {
+              title
+              id
+              slug
+              excerpt
+              content
+              featuredImage {
+                node {
+                  sourceUrl
+                  srcSet
+                  altText
+                }
+              }
+              categories {
+                edges {
+                  node {
+                    name
+                    id
+                  }
+                }
+              }
+            }
+          }
+        }
+        name
+        id
+      }
+    }
+  }
+}

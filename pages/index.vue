@@ -15,7 +15,7 @@
       <div class="featured-articles">
         <div class="featured-articles__grid">
           <div
-            v-for="article in largeFeaturedArticle"
+            v-for="article in largeFeaturedPost.edges"
             :key="article.node.title"
             class="featured-large"
           >
@@ -53,7 +53,7 @@
             </nuxt-link>
           </div>
 
-          <div v-for="article in featured" :key="article.node.tag">
+          <div v-for="article in featuredPosts.edges" :key="article.node.id">
             <nuxt-link
               class="card"
               :to="{
@@ -107,39 +107,33 @@ export default {
 
   data() {
     return {
-      posts: {}
+      posts: {},
+      featuredPosts: {},
+      largeFeaturedPost: {}
     }
   },
+
   apollo: {
     posts: {
       prefetch: true,
       query: AllArticlesQuery
-    }
-  },
-  computed: {
-    //List of articles with a tag "featured-large"
-    largeFeaturedArticle: function () {
-      return this.posts.edges.filter((post) => {
-        return post.node.tags.edges.find((tag) => {
-          return tag.node.name == 'featured-large'
-        })
-      })
     },
-    //List of articles with a tag "featured"
-    featured: function () {
-      return this.posts.edges.filter((post) => {
-        return post.node.tags.edges.find((tag) => {
-          return tag.node.name == 'featured'
-        })
-      })
+
+    largeFeaturedPost: {
+      prefetch: true,
+      query: AllArticlesQuery,
+      update: (data) => data.posts,
+      variables: {
+        tag: 'featured-large'
+      }
     },
-    //List of articles with a category of "Weight Loss"
-    weightLossArticles: function () {
-      return this.posts.edges.filter((post) => {
-        return post.node.categories.edges.find((category) => {
-          return category.node.name == 'Weight Loss'
-        })
-      })
+    featuredPosts: {
+      prefetch: true,
+      query: AllArticlesQuery,
+      update: (data) => data.posts,
+      variables: {
+        tag: 'featured'
+      }
     }
   }
 }
@@ -176,8 +170,7 @@ export default {
   .featured-articles {
     &__grid {
       width: 100%;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(auto-fit, minmax(25rem, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
     }
   }
 
