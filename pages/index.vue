@@ -89,8 +89,14 @@
           <ArticleListSide :article-list="posts" />
         </div>
       </div>
-      <CategoryArticles category-name="Weight Loss" :article-list="posts" />
-      <CategoryArticles category-name="Fitness" :article-list="posts" />
+      <CategoryArticles
+        category-name="Weight Loss"
+        :article-list="weightLossArticles"
+      />
+      <CategoryArticles
+        category-name="Fitness"
+        :article-list="fitnessCategory"
+      />
     </template>
   </div>
 </template>
@@ -112,7 +118,9 @@ export default {
     return {
       posts: {},
       featuredPosts: {},
-      largeFeaturedPost: {}
+      largeFeaturedPost: {},
+      weightLossArticles: {},
+      fitnessCategory: {}
     }
   },
 
@@ -122,6 +130,7 @@ export default {
       query: AllArticlesQuery
     },
 
+    //Queries for featured posts section
     largeFeaturedPost: {
       prefetch: true,
       query: AllArticlesQuery,
@@ -136,6 +145,32 @@ export default {
       update: (data) => data.posts,
       variables: {
         tag: 'featured'
+      }
+    },
+
+    //Queries for categories section
+    weightLossArticles: {
+      prefetch: true,
+      query: AllArticlesQuery,
+      update: (data) => data.posts,
+      variables: {
+        category: 'Weight Loss'
+      }
+    },
+    fitnessCategory: {
+      prefetch: true,
+      query: AllArticlesQuery,
+      update: (data) => data.posts,
+      variables: {
+        category: 'Fitness'
+      }
+    },
+    categoryArticles: {
+      prefetch: true,
+      query: AllArticlesQuery,
+      update: (data) => data.posts,
+      variables: {
+        category: 'Fitness'
       }
     }
   }

@@ -3,7 +3,7 @@
     <h2 class="categories__title">{{ categoryName }}</h2>
     <div class="categories__grid">
       <nuxt-link
-        v-for="(article, index) in articlesByCategory"
+        v-for="(article, index) in articleList.edges.slice(0, 8)"
         :key="index"
         class="card"
         :to="{
@@ -34,7 +34,9 @@ export default {
     articleList: {
       type: Object,
       default: function () {
-        return {}
+        return {
+          variables() {}
+        }
       }
     },
     categoryName: {
@@ -47,7 +49,7 @@ export default {
     articlesByCategory: function () {
       return this.articleList.edges.filter((post) => {
         return post.node.categories.edges.find((category) => {
-          return category.node.name == this.categoryName
+          return category.node.name == 'Fitness'
         })
       })
     }
