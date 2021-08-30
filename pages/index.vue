@@ -1,3 +1,4 @@
+/* eslint-disable vue/no-v-html */
 <template>
   <!-- Styling for class "layout__content" is found in layouts/default.vue 
   and is used to keep the footer at the bottom -->
@@ -61,10 +62,12 @@
                 params: { slug: article.node.slug }
               }"
             >
-              <img
-                :src="article.node.featuredImage.node.sourceUrl"
-                class="card__img"
-              />
+              <div class="card__img-container">
+                <img
+                  :src="article.node.featuredImage.node.sourceUrl"
+                  class="card__img"
+                />
+              </div>
               <div
                 v-for="category in article.node.categories.edges"
                 :key="category.node.name"

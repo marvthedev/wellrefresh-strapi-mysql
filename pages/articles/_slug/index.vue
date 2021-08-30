@@ -13,7 +13,7 @@
         <header class="head">
           <div class="head-top">
             <span
-              v-for="category in article.categories.nodes"
+              v-for="category in article.categories.nodes.slice(0, 1)"
               :key="category.id"
               class="head-top__category card__category"
               >{{ category.name }}</span

@@ -1,4 +1,4 @@
-query AllArticles ($tag: String) {
+query AllArticles ($tag: String, $category: String) {
   posts(where: {tag: $tag}) {
     edges {
       node {
@@ -14,7 +14,7 @@ query AllArticles ($tag: String) {
             altText
           }
         }
-        categories {
+        categories (where: {nameLike: $category}) {
           edges {
             node {
               name
@@ -22,7 +22,7 @@ query AllArticles ($tag: String) {
             }
           }
         }
-        tags(where: {}) {
+        tags {
           edges {
             node {
               name
