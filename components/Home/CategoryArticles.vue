@@ -3,7 +3,7 @@
     <h2 class="categories__title">{{ categoryName }}</h2>
     <div class="categories__grid">
       <nuxt-link
-        v-for="(article, index) in articleList.edges.slice(0, 8)"
+        v-for="(article, index) in articleList.edges"
         :key="index"
         class="card"
         :to="{

@@ -120,7 +120,8 @@ export default {
       featuredPosts: {},
       largeFeaturedPost: {},
       weightLossArticles: {},
-      fitnessCategory: {}
+      fitnessCategory: {},
+      CategoryArticlesCount: 8
     }
   },
 
@@ -153,24 +154,22 @@ export default {
       prefetch: true,
       query: AllArticlesQuery,
       update: (data) => data.posts,
-      variables: {
-        category: 'Weight Loss'
+      variables() {
+        return {
+          category: 'Weight Loss',
+          articleCount: this.CategoryArticlesCount
+        }
       }
     },
     fitnessCategory: {
       prefetch: true,
       query: AllArticlesQuery,
       update: (data) => data.posts,
-      variables: {
-        category: 'Fitness'
-      }
-    },
-    categoryArticles: {
-      prefetch: true,
-      query: AllArticlesQuery,
-      update: (data) => data.posts,
-      variables: {
-        category: 'Fitness'
+      variables() {
+        return {
+          category: 'Fitness',
+          articleCount: this.CategoryArticlesCount
+        }
       }
     }
   }

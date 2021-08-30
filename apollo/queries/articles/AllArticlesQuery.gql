@@ -1,5 +1,5 @@
-query AllArticles ($tag: String, $category: String) {
-  posts (where: {tag: $tag, categoryName: $category}) {
+query AllArticles ($tag: String, $category: String, $articleCount: Int) {
+  posts (where: {tag: $tag, categoryName: $category}, first: $articleCount) {
     edges {
       node {
         slug
