@@ -27,12 +27,11 @@
                 params: { slug: article.node.slug }
               }"
             >
-              <div class="card__img-container">
-                <img
-                  :src="article.node.featuredImage.node.sourceUrl"
-                  class="card__img"
-                />
-              </div>
+              <img
+                :src="article.node.featuredImage.node.sourceUrl"
+                class="card__img featured-large__img"
+              />
+
               <div
                 v-for="category in article.node.categories.edges"
                 :key="category.node.id"
@@ -62,12 +61,11 @@
                 params: { slug: article.node.slug }
               }"
             >
-              <div class="card__img-container">
-                <img
-                  :src="article.node.featuredImage.node.sourceUrl"
-                  class="card__img"
-                />
-              </div>
+              <img
+                :src="article.node.featuredImage.node.sourceUrl"
+                class="card__img"
+              />
+
               <div
                 v-for="category in article.node.categories.edges"
                 :key="category.node.name"
@@ -89,14 +87,8 @@
           <ArticleListSide :article-list="posts" />
         </div>
       </div>
-      <CategoryArticles
-        category-name="Weight Loss"
-        :article-list="weightLossArticles"
-      />
-      <CategoryArticles
-        category-name="Fitness"
-        :article-list="fitnessCategory"
-      />
+      <CategoryArticles category-name="Weight Loss" :article-list="posts" />
+      <CategoryArticles category-name="Fitness" :article-list="posts" />
     </template>
   </div>
 </template>
@@ -128,7 +120,12 @@ export default {
   apollo: {
     posts: {
       prefetch: true,
-      query: AllArticlesQuery
+      query: AllArticlesQuery,
+      variables() {
+        return {
+          articleCount: 9999
+        }
+      }
     },
 
     //Queries for featured posts section
@@ -146,30 +143,6 @@ export default {
       update: (data) => data.posts,
       variables: {
         tag: 'featured'
-      }
-    },
-
-    //Queries for categories section
-    weightLossArticles: {
-      prefetch: true,
-      query: AllArticlesQuery,
-      update: (data) => data.posts,
-      variables() {
-        return {
-          category: 'Weight Loss',
-          articleCount: this.CategoryArticlesCount
-        }
-      }
-    },
-    fitnessCategory: {
-      prefetch: true,
-      query: AllArticlesQuery,
-      update: (data) => data.posts,
-      variables() {
-        return {
-          category: 'Fitness',
-          articleCount: this.CategoryArticlesCount
-        }
       }
     }
   }
@@ -190,11 +163,10 @@ export default {
 }
 .featured-large {
   &__category {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
   }
   &__title {
-    margin-top: 0.4rem;
-    font-size: 2.6rem;
+    font-size: 3.2rem;
   }
   &__excerpt {
     margin-top: 1.6rem;
@@ -232,14 +204,17 @@ export default {
   }
 
   .featured-large {
+    &__img {
+      height: 29rem;
+    }
     &__txt-container {
-      padding: 0 2.6rem;
+      padding: 1.2rem;
     }
     &__category {
       font-size: 1.4rem;
     }
     &__title {
-      font-size: 3.2rem;
+      font-size: 3rem;
     }
   }
 }

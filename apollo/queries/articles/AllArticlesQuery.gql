@@ -1,5 +1,8 @@
 query AllArticles ($tag: String, $category: String, $articleCount: Int) {
   posts (where: {tag: $tag, categoryName: $category}, first: $articleCount) {
+     pageInfo {
+      total
+    }
     edges {
       node {
         slug

@@ -121,36 +121,31 @@ textarea {
 .card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   border: 1px solid #e7ebfb;
   border-top: 0;
   border-radius: 1rem;
   box-shadow: 0px 1.6rem 2rem -2.2rem rgba(0, 0, 0, 0.48);
-  height: 100%;
   &__txt-container {
-    margin-top: 0.8rem;
-    height: 50%;
     display: flex;
     flex-direction: column;
-    padding: 0 1.2rem;
+    height: 60%;
+    padding: 1.2rem;
   }
   &__img {
-    &-container {
-      max-height: 60%;
-    }
     object-fit: cover;
     width: 100%;
-    height: 100%;
+    height: 20rem;
     border-radius: 1rem 1rem 0 0;
   }
   &__category-container {
     display: flex;
+    margin-bottom: 0.8rem;
   }
 
   &__category {
     font-family: 'Lato', sans-serif;
     font-weight: 900;
-    font-size: 1rem;
+    font-size: 1.2rem;
     background: $secondary__color;
     padding: 0.24rem 0.4rem;
     border-radius: 0.14rem;
@@ -158,8 +153,7 @@ textarea {
     text-transform: uppercase;
   }
   &__title {
-    margin-top: 0.8rem;
-    font-size: 2rem;
+    font-size: 2.4rem;
   }
 }
 
@@ -168,6 +162,12 @@ textarea {
     &:hover {
       box-shadow: 0px 1.6rem 2rem -1.5rem rgba(0, 0, 0, 0.48);
       transform: translateY(-1rem);
+    }
+    &__img {
+      height: 14rem;
+    }
+    &__title {
+      font-size: 1.8rem;
     }
   }
 }
