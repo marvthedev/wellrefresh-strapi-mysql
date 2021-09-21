@@ -16,7 +16,7 @@
       <div class="featured-articles">
         <div class="featured-articles__grid">
           <div
-            v-for="article in largeFeaturedPost.edges"
+            v-for="article in featuredLargeArticle.slice(0, 1)"
             :key="article.node.title"
             class="featured-large"
           >
@@ -53,7 +53,10 @@
             </nuxt-link>
           </div>
 
-          <div v-for="article in featuredPosts.edges" :key="article.node.id">
+          <div
+            v-for="article in featuredArticles.slice(0, 5)"
+            :key="article.node.id"
+          >
             <nuxt-link
               class="card"
               :to="{
@@ -108,12 +111,7 @@ export default {
 
   data() {
     return {
-      posts: {},
-      featuredPosts: {},
-      largeFeaturedPost: {},
-      weightLossArticles: {},
-      fitnessCategory: {},
-      CategoryArticlesCount: 8
+      posts: {}
     }
   },
 
@@ -126,24 +124,22 @@ export default {
           articleCount: 9999
         }
       }
-    },
+    }
+  },
 
-    //Queries for featured posts section
-    largeFeaturedPost: {
-      prefetch: true,
-      query: AllArticlesQuery,
-      update: (data) => data.posts,
-      variables: {
-        tag: 'featured-large'
-      }
+  computed: {
+    //Get a single featured article
+    featuredLargeArticle() {
+      return this.posts.edges.filter((articles) =>
+        articles.node.tags.edges.find(
+          (tag) => tag.node.name === 'featured-large'
+        )
+      )
     },
-    featuredPosts: {
-      prefetch: true,
-      query: AllArticlesQuery,
-      update: (data) => data.posts,
-      variables: {
-        tag: 'featured'
-      }
+    featuredArticles() {
+      return this.posts.edges.filter((articles) =>
+        articles.node.tags.edges.find((tag) => tag.node.name === 'featured')
+      )
     }
   }
 }

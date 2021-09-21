@@ -42,11 +42,11 @@ export default {
 
   computed: {
     articlesByCategory: function () {
-      return this.articleList.edges.filter((post) => {
-        return post.node.categories.edges.find((category) => {
-          return category.node.name == this.categoryName
-        })
-      })
+      return this.articleList.edges.filter((post) =>
+        post.node.categories.edges.find(
+          (category) => category.node.name == this.categoryName
+        )
+      )
     }
   }
 }
