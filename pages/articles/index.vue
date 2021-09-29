@@ -59,6 +59,8 @@ export default {
   components: {
     loadingRing
   },
+  scrollToTop: false,
+
   data() {
     return {
       articles: {},

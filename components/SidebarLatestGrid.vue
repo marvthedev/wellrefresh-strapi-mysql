@@ -12,9 +12,20 @@
         :alt="article.featuredImage.node.altText"
         class="sidebar-latest-grid-item__img"
       />
-      <h2 class="sidebar-latest-grid-item__title">
-        {{ article.title }}
-      </h2>
+      <div class="sidebar-latest-grid-item__txt-container">
+        <div
+          v-for="category in article.categories.nodes"
+          :key="category.id"
+          class="sidebar-latest-grid-item__category-container"
+        >
+          <div class="sidebar-latest-grid-item__category">
+            {{ category.name }}
+          </div>
+        </div>
+        <h2 class="sidebar-latest-grid-item__title">
+          {{ article.title }}
+        </h2>
+      </div>
     </nuxt-link>
   </div>
 </template>
@@ -24,7 +35,7 @@ import ArticleListQuery from '~/apollo/queries/articles/SideArticleGridQuery'
 export default {
   data() {
     return {
-      articles: []
+      articles: {}
     }
   },
 
@@ -57,14 +68,32 @@ export default {
     border-radius: 1rem;
     box-shadow: 0px 1.6rem 2rem -2.2rem rgba(0, 0, 0, 0.48);
     border: 1px solid #e7ebfb;
+    &__txt-container {
+      display: flex;
+      flex-direction: column;
+      padding: 5%;
+    }
+    &__category-container {
+      display: flex;
+    }
+    &__category {
+      font-family: 'Lato', sans-serif;
+      font-weight: 900;
+      font-size: 1.2rem;
+      background: $secondary__color;
+      border-radius: 0.14rem;
+      color: white;
+      text-transform: uppercase;
+      padding: 0.24rem 0.4rem;
+    }
     &__img {
       border-radius: 1rem 1rem 0 0;
       width: 100%;
       height: auto;
     }
     &__title {
-      padding: 1.4rem;
-      font-size: 2rem;
+      margin-top: 0.8rem;
+      font-size: 2.4rem;
     }
   }
 }
@@ -77,6 +106,12 @@ export default {
       flex-direction: row;
       border: none;
       box-shadow: none;
+      &__txt-container {
+        padding: 0 5%;
+      }
+      &__category-container {
+        display: none;
+      }
       &__img {
         height: auto;
         width: 6rem;
@@ -85,8 +120,6 @@ export default {
       &__title {
         font-size: 1.4rem;
         font-weight: 400;
-        margin: 0 0 0 1rem;
-        padding: 0;
         &:hover {
           color: $primary__color;
         }

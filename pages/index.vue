@@ -128,7 +128,7 @@ export default {
   },
 
   computed: {
-    //Get a single featured article
+    //Get a single LARGE featured article for featured article grid
     featuredLargeArticle() {
       return this.posts.edges.filter((articles) =>
         articles.node.tags.edges.find(
@@ -136,6 +136,8 @@ export default {
         )
       )
     },
+
+    //Get small featured articles for featured articles grid
     featuredArticles() {
       return this.posts.edges.filter((articles) =>
         articles.node.tags.edges.find((tag) => tag.node.name === 'featured')
@@ -202,9 +204,6 @@ export default {
   .featured-large {
     &__img {
       height: 29rem;
-    }
-    &__txt-container {
-      padding: 1.2rem;
     }
     &__category {
       font-size: 1.4rem;

@@ -1,0 +1,1 @@
+Had issues with page scrolling back to the top after clicking on "Load More" button which uses fetchMore method.

@@ -16,9 +16,8 @@
           <li>Contact</li>
         </ul>
         <ul class="footer__nav-row-2">
-          <li>Weight Loss</li>
-          <li>Fitness</li>
-          <li>Build Muscle</li>
+          <nuxt-link to="/weight-loss"><li>Weight Loss</li></nuxt-link>
+          <nuxt-link to="/fitness"><li>Fitness</li></nuxt-link>
         </ul>
       </div>
     </div>
@@ -40,6 +39,12 @@
   font-size: 1.4rem;
   font-weight: 900;
   font-family: 'Lato', sans-serif;
+  & a {
+    color: #787878;
+    &:hover {
+      color: $secondary__color;
+    }
+  }
   &__logo-container {
     display: flex;
     justify-content: center;

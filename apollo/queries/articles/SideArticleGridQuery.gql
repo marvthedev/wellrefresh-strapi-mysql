@@ -1,13 +1,19 @@
 query SideArticleGridQuery {
-  posts (first: 5) {
+  posts(first: 5) {
     nodes {
       title
       slug
       id
       featuredImage {
         node {
-          sourceUrl(size: MEDIUM)
+          sourceUrl
           altText
+        }
+      }
+      categories {
+        nodes {
+          name
+          id
         }
       }
     }

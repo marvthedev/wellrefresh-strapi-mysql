@@ -43,7 +43,9 @@
             class="article__img"
           />
           <article class="article__content" v-html="article.content"></article>
-          <aside class="article__sidebar"><ArticleListSide /></aside>
+          <aside class="article__sidebar">
+            <ArticleListSide />
+          </aside>
         </main>
       </div>
     </template>
@@ -65,7 +67,7 @@ export default {
 
   data() {
     return {
-      article: []
+      article: {}
     }
   },
 

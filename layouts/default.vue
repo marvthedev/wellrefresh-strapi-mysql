@@ -129,7 +129,7 @@ textarea {
     display: flex;
     flex-direction: column;
     height: 60%;
-    padding: 1.2rem;
+    padding: 5%;
   }
   &__img {
     object-fit: cover;
