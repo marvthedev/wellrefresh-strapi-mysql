@@ -33,32 +33,22 @@
         </div>
       </div>
     </div>
-    <!-- Only visible when viewing with smaller devices. -->
-    <!-- <div
-      v-show="menuOpened"
-      class="nav__menu"
-      :class="{ nav__menu__scroll: scrollPosition > 50 }"
-      @click="menuOpened = !menuOpened"
-    >
-      <nuxt-link to="/" class="nav__menu-item">Home</nuxt-link>
-      <nuxt-link to="/articles" class="nav__menu-item">Articles</nuxt-link>
-      <nuxt-link to="/weight-loss" class="nav__menu-item"
-        >Weight Loss</nuxt-link
-      >
-    </div> -->
+
     <div
       class="mobile-nav"
       :class="{ mobile__nav__scroll: scrollPosition > 50 }"
     >
-      <div
+      <nuxt-link
         v-for="link in navBarLinks"
         v-show="menuOpened"
         :key="link.url"
+        :to="link.url"
+        div
         class="mobile-nav__link"
         @click="menuOpened = !menuOpened"
       >
-        <nuxt-link :to="link.url">{{ link.title }}</nuxt-link>
-      </div>
+        <div @click="menuOpened = !menuOpened">{{ link.title }}</div>
+      </nuxt-link>
     </div>
   </nav>
 </template>
