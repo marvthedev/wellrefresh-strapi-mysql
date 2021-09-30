@@ -63,7 +63,8 @@ export default {
         { title: 'Home', url: '/' },
         { title: 'Articles', url: '/articles' },
         { title: 'Weight Loss', url: '/weight-loss' },
-        { title: 'Fitness', url: '/fitness' }
+        { title: 'Fitness', url: '/fitness' },
+        { title: 'Contact', url: '/contact' }
       ]
     }
   },
